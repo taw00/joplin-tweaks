@@ -25,7 +25,9 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-# Tweaks for the Markdown Previewer and Joplin Cloud
+# Tweaks for the Markdown Previewer & Joplin Cloud
+
+&ZeroWidthSpace;
 
 ## — [jvirtpage.css](jvirtpage.css)
 
@@ -80,6 +82,8 @@ in Joplin Cloud.
 > to file (PDF). In a few months—as of this writing (20250916)—this will
 > no longer be an issue.
 
+&ZeroWidthSpace;
+
 ## — more tweaks coming …
 
 &ZeroWidthSpace;
@@ -87,6 +91,8 @@ in Joplin Cloud.
 &ZeroWidthSpace;
 
 # Tweaks for the Joplin UI
+
+&ZeroWidthSpace;
 
 ## — tweaks coming …
 
