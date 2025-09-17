@@ -5,7 +5,7 @@ notebook application.
 
 **Table of Tweaks**
 
-1. [jvirtpage.css](#jvirtpagecss) - Joplin preview as virtual page
+1. [jvirtpage.css](#jvirtpagecss) - Joplin preview as virtual page ([docs](docs/jvirtpage.md))
 2. […more tweaks coming…](#-more-tweaks-coming-)
 
 &ZeroWidthSpace;
