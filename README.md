@@ -15,11 +15,11 @@ in Joplin Cloud.
 
 - [jvirtpage.css](#jvirtpagecss) - a Joplin note preview rendered as an
   attractive virtual page ([docs](docs/jvirtpage.md))
-- …more tweaks coming…
+- More tweaks coming…
 
 #### Tweaks for the Joplin UI
 
-- …tweaks coming…
+- Tweaks coming…
 
 &ZeroWidthSpace;
 
@@ -86,7 +86,7 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-## — more tweaks coming …
+## — More tweaks coming …
 
 &ZeroWidthSpace;
 
@@ -98,7 +98,7 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-## — tweaks coming …
+## — Tweaks coming …
 
 &ZeroWidthSpace;
 
