@@ -1,15 +1,17 @@
 # joplin-tweaks
 
-Style customizations for the [Joplin](https://joplinapp.org/), a secure
+Style customizations for [Joplin](https://joplinapp.org/), a secure
 open-source, notebook application.
 
 Included in this repository are snippets of CSS that customize the look and
 feel of the Joplin UI, its markdown previewer, and how documents are presented
 in Joplin Cloud.
 
+&ZeroWidthSpace;
+
 ### Table of Tweaks
 
-#### Tweaks for the Markdown Previewer and Joplin Cloud
+#### Tweaks for the Markdown Previewer & Joplin Cloud
 
 - [jvirtpage.css](#jvirtpagecss) - a Joplin note preview rendered as an
   attractive virtual page ([docs](docs/jvirtpage.md))
@@ -19,12 +21,13 @@ in Joplin Cloud.
 
 - …tweaks coming…
 
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
 # Tweaks for the Markdown Previewer and Joplin Cloud
 
-## [jvirtpage.css](jvirtpage.css)
+## — [jvirtpage.css](jvirtpage.css)
 
 - Preview your document as an aesthetically pleasing virtual page that
   matches international standard dimensions for US Letter, US Half-letter, A4,
@@ -77,13 +80,17 @@ in Joplin Cloud.
 > to file (PDF). In a few months—as of this writing (20250916)—this will
 > no longer be an issue.
 
-## … more tweaks coming …
+## — more tweaks coming …
+
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
 # Tweaks for the Joplin UI
 
-## … tweaks coming …
+## — tweaks coming …
+
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
