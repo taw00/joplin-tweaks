@@ -7,8 +7,10 @@ notebook application.
 
 - Preview your document as an aesthetically pleasing virtual page that
   matches international standard dimensions for US Letter, US Half-letter, A4,
-  A5, A6 pages. Themeable to default (white page), dim, and dark views.
+  A5, A6 pages. Themeable: default (white page), dim, and dark views.
 - Render the document to those dimensions when you export to PDF.
+- For more detail, please read:
+  https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md
 
 ### Quickstart guide to `jvirtpage.css`
 
