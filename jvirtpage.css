@@ -1,0 +1,340 @@
+/* Render a virtual page view in Joplin's previewer
+ *
+ * This will generate, in the Joplin previewer, a virtual US letter page with
+ * 1in margin by default (adjustable). The page will look like a floating
+ * paper on a desktop surface. The text will be black and the text white
+ * (themeable). The page dimensions will shrink if the window small than can
+ * be fit as defined.
+ *
+ * Exported to PDF or Print will … do what you expect and the virtual page will
+ * be what your export with the correct margins and whatnot.
+ *
+ * EXCEPTION FOR JOPLIN PDF EXPORTS: Joplin has a bug (fix due to be included
+ * in the next release).  Currently, if your page settings (see switches below)
+ * diverge from your Joplin page settings in your Joplin configuration (Tools >
+ * Options > General > Show advanced > "Page size for PDF export") then the
+ * export will not be correct. Until the fix is release, export to HTML, open
+ * with a browser, and then generate the PDF (print to file).
+ *
+ *
+ * There are four ways to use this stylesheet. Either (1) import it into your
+ * note from the filesystem, or (2) from the web, (3) import it from another
+ * note that is only this stylesheet content, or (4) copy this file into your
+ * userstyle.css.
+ *
+ * (1) If you are importing this into your note from the filesystem …
+ * 
+ * - Install the "Import local CSS" Joplin plugin (and restart).
+ * - Then do this at the top of your note …
+ * <style>
+ *     @import url("/path/to/jvirtpage.css");
+ * </style>
+ *
+ * - If you want to change the default behavior, add this line anywhere in your
+ *   note …
+ * <div id="jvp" class="SWITCH"></div>
+ *
+ * SWITCH can be one of:
+ * - US, A4, A5, A6, or USh
+ *   Page dimension switches (USh means US Half-letter). US is the default.
+ * - landscape
+ *   Switch that flips the width x height. Default is portrait.
+ * - dim or dark
+ *   Theme switches. Black text on a white page on a gray backound is the
+ *   default.
+ *
+ * (2) If you are importing this into your note from the web …
+ * 
+ * - Stick the jvirtpage.css somewhere on the web where it is accessible to
+ *   your system
+ * - Change the @import example above to look something like:
+ *   @import url("https://mywebserver.com/pub/jvirtpage.css");
+ *
+ * (3) If you want to import from a "CSS note" …
+ *
+ * - Create note. Name it something like jvirtpage.css
+ * - Copy this stylesheet into the note
+ * - Wrap the whole thing in a ```css and ``` code block
+ * - Delete all these preliminary comments (they break the plugin)
+ * - Right click on the css note and "Copy Markdown Link"
+ * - Use only the :/HASHVALUE part of it and, for example …
+ *   @import url(":/7d66d959fa974468b4670db7228943a1");
+ *
+ * (4) Add to your userstyle.css - makes the virtpage persistent for all of
+ *     your notes; no import needed! …
+ * - copy the contents of this stylesheet into your Joplin user styles. Either,
+ * - edit the styles in Tools > Options > General > Appearance >
+ *   Show Advanced Settings > Custom stylsheet for rendered Markdown
+ * - edit directly the userstyles.css file that can be found (if you created
+ *   it previously) in the joplin-desktop folder on your computer. That's
+ *   ~/.config/joplin-desktop/ on a linux system, for example.
+ *
+ *
+ * If you want the virtual page to be rendered ONLY when <div id="jvp"></div>
+ * exists, ucomment the ":has( div#jvp) {" block that wraps the @media screen
+ * and @media print blocks.
+ *
+ * JOPLIN CLOUD
+ * If you want to use this with Joplin Cloud, you will have to import it from a
+ * web url (option 2) or stick the styles in your userstyle.css (option 4).
+ *
+ *
+ * Copyright (c) Todd Warner <t0dd@protonmail.com>
+ * This work is licensed under Attribution 4.0 International. To view a copy
+ * of this license, visit http://creativecommons.org/licenses/by/4.0/
+ */
+
+@layer jvirtpage {
+    :root {
+        /* CONSTANTS */
+        --jvp-text-color: black;
+        --jvp-paper-color: white;
+        --jvp-desktop-color: darkgray;
+        --jvp-paper-box-shadow: 0 0 20px black;
+
+        --jvp-dim-text-color: black;
+        --jvp-dim-paper-color: silver;
+        --jvp-dim-desktop-color: dimgray;
+
+        --jvp-dark-text-color: whitesmoke; /* not white */
+        --jvp-dark-paper-color: hsl(0deg 0% 12%); /* very dark gray */
+        --jvp-dark-desktop-color: hsl(0deg 0% 20%); /* darker than dimgray */
+        /*--jvp-dark-desktop-color: hsl(222deg 12% 16%);*/ /* a dark purple-blue */
+
+        /* popular page dimensions */
+        --jvp-page-widthUS:  8.5in;  --jvp-page-heightUS:   11in;  --jvp-page-marginUS:   1in;
+        --jvp-page-widthUSh: 5.5in;  --jvp-page-heightUSh: 8.5in;  --jvp-page-marginUSh: .5in;
+        --jvp-page-widthA4:  210mm;  --jvp-page-heightA4:  297mm;  --jvp-page-marginA4:   1in;
+        --jvp-page-widthA5:  148mm;  --jvp-page-heightA5:  210mm;  --jvp-page-marginA5:  .5in;
+        --jvp-page-widthA6:  105mm;  --jvp-page-heightA6:  148mm;  --jvp-page-marginA6: .25in;
+
+        /* default for each is 1/2 the default margin widths */
+        --jvp-indentUS:  calc(var(--jvp-page-marginUS)  * .5);
+        --jvp-indentUSh: calc(var(--jvp-page-marginUSh) * .5);
+        --jvp-indentA4:  calc(var(--jvp-page-marginA4)  * .5);
+        --jvp-indentA5:  calc(var(--jvp-page-marginA5)  * .5);
+        --jvp-indentA6:  calc(var(--jvp-page-marginA6)  * .5);
+
+        /* the defaults for page dimensions and margin and indent */
+        --jvp-page-width:   var(--jvp-page-widthUS);
+        --jvp-page-height: var(--jvp-page-heightUS);
+        --jvp-page-margin: var(--jvp-page-marginUS);
+        --jvp-indent:      var(--jvp-page-indentUS);
+
+
+        /* SWITCHES
+         * Switches to change the default page dimensions, margins, indent and
+         * theme.  Enabled by sticking this div somewhere in your document, for
+         * example:
+         *      <div id="jvp" class="A5 landscape dark"></div>               */
+        &:has( div#jvp:is(.dark)) {
+            --jvp-text-color:    var(--jvp-dark-text-color);
+            --jvp-paper-color:   var(--jvp-dark-paper-color);
+            --jvp-desktop-color: var(--jvp-dark-desktop-color);
+        }
+        &:has( div#jvp:is(.dim)) {
+            --jvp-text-color:    var(--jvp-dim-text-color);
+            --jvp-paper-color:   var(--jvp-dim-paper-color);
+            --jvp-desktop-color: var(--jvp-dim-desktop-color);
+        }
+
+        &:has( div#jvp:is(.US,.us)) {
+            /* the defaults for everything - already set; being pedantic */
+            --jvp-page-width:   var(--jvp-page-widthUS);
+            --jvp-page-height: var(--jvp-page-heightUS);
+            --jvp-page-margin: var(--jvp-page-marginUS);
+            --jvp-indent:      var(--jvp-page-indentUS);
+        }
+        &:has( div#jvp:is(.US,.us).landscape) {
+            --jvp-page-width: var(--jvp-page-heightUS);
+            --jvp-page-height: var(--jvp-page-widthUS);
+        }
+        &:has( div#jvp:is(.USh,.USH,.ush)) {
+            --jvp-page-width:   var(--jvp-page-widthUSh);
+            --jvp-page-height: var(--jvp-page-heightUSh);
+            --jvp-page-margin: var(--jvp-page-marginUSh);
+            --jvp-indent:      var(--jvp-page-indentUSh);
+        }
+        &:has( div#jvp:is(.USh,.USH,.ush).landscape) {
+            --jvp-page-width: var(--jvp-page-heightUSh);
+            --jvp-page-height: var(--jvp-page-widthUSh);
+        }
+        &:has( div#jvp:is(.A4,.a4)) {
+            --jvp-page-width:   var(--jvp-page-widthA4);
+            --jvp-page-height: var(--jvp-page-heightA4);
+            --jvp-page-margin: var(--jvp-page-marginA4);
+            --jvp-indent:      var(--jvp-page-indentA4);
+        }
+        &:has( div#jvp:is(.A4,.a4).landscape) {
+            --jvp-page-width: var(--jvp-page-heightA4);
+            --jvp-page-height: var(--jvp-page-widthA4);
+        }
+        &:has( div#jvp:is(.A5,.a5)) {
+            --jvp-page-width:   var(--jvp-page-widthA5);
+            --jvp-page-height: var(--jvp-page-heightA5);
+            --jvp-page-margin: var(--jvp-page-marginA5);
+            --jvp-indent:      var(--jvp-page-indentA5);
+        }
+        &:has( div#jvp:is(.A5,.a5).landscape) {
+            --jvp-page-width: var(--jvp-page-heightA5);
+            --jvp-page-height: var(--jvp-page-widthA5);
+        }
+        &:has( div#jvp:is(.A6,.a6)) {
+            --jvp-page-width:   var(--jvp-page-widthA6);
+            --jvp-page-height: var(--jvp-page-heightA6);
+            --jvp-page-margin: var(--jvp-page-marginA6);
+            --jvp-indent:      var(--jvp-page-indentA6);
+        }
+        &:has( div#jvp:is(.A6,.a6).landscape) {
+            --jvp-page-width: var(--jvp-page-heightA6);
+            --jvp-page-height: var(--jvp-page-widthA6);
+        }
+    } /* end :root */
+} /* end @layer jvirtpage */
+
+
+@page jvp-page-dimensions {
+    /* IMPORTANT NOTE: Joplin 3.4.12 and older disallow exporting to PDF with a
+     * different page size than what you set in the joplin settings. That is a
+     * bug that should be fixed in the next major release.
+     * https://github.com/laurent22/joplin/issues/13096
+     *
+     * The workaround is to export to HTML, open that in a browser, then print
+     * to file (PDF). In a few months, as of this writing (20250916), this will
+     * no longer be an issue.
+     */
+    size: var(--jvp-page-width) var(--jvp-page-height);
+    margin: var(--jvp-page-margin);
+}
+
+
+/* Uncomment this :has if you want <div is="jvp"></div> to be required to exist
+ * for this to function.
+:has( div#jvp) {
+*/
+
+@media screen {
+    html { background-color: transparent; }
+    body {
+        /* a virtual paper look: <body> is the "desk" behind the paper */
+        background-color: var(--jvp-desktop-color);
+        padding: 0;
+    }
+
+    body#joplin-container-body {
+        /* Remove the padding and bg that frames #rendered-md */
+        & > #joplin-container-content {
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+    /* rendered to HTML view */ 
+    body:not(#joplin-container-body) {
+        & > div.exported-note {
+            margin: 0;
+            padding: 0;
+            & > div.exported-note-title {
+                display: none !important;
+            }
+        }
+    }
+
+    /* Joplin Cloud stuff
+     * - Fade the navbar and footer. Still present, just not prominent.
+     * - Remove the viewport cruft (title, last-updated, padding, etc.) */
+    body.page-note {
+        /* footer with copright and T&Cs - fade to watermark */
+        & > div.footer { opacity: .5; }
+        & > main.main > div.container.main-container {
+            /* branded navbar - fade to watermark */
+            & > nav.navbar {
+                opacity: .15;
+                background-color: inherit;
+            }
+            & > div.note-main {
+                /* viewport to 100% */
+                margin: 0 auto;
+                padding: 0;
+                max-width: 100%;
+                /* remove note title */
+                /* remove "Last updated" line */
+                & > h1.title,
+                & > p.last-updated { display: none; }
+            }
+        }
+    }
+
+    #rendered-md {
+        box-shadow: var(--jvp-paper-box-shadow);
+        box-sizing: border-box;
+        margin: 20px auto; /* just sets the page off the top a bit */
+        padding: var(--jvp-page-margin);
+        color: var(--jvp-text-color);
+        background-color: var(--jvp-paper-color);
+        width: 100%;
+        max-width: var(--jvp-page-width);
+        min-height: var(--jvp-page-height);
+    } /* end #rendered-md */
+} /* end @media screen */
+
+
+@media print {
+    /* the body color needs to be irrelevant (trans) */
+    body {
+        page: jvp-page-dimensions;
+        /* Exported print: the body should be colorless for print */
+        background-color: transparent;
+        /* Exported print: Remove the padding & bg that frames #rendered-md */
+        & > #joplin-container-content {
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+
+    /* remove Joplin-inserted title & padding */
+    body > div.exported-note {
+        margin: 0;
+        padding: 0;
+        & > div.exported-note-title {
+            display: none;
+        }
+    }
+
+    /* Joplin Cloud stuff
+     * - We don't want anything but our document to be printed. */
+    body.page-note {
+        /* remove footer with copright and T&Cs */
+        & > div.footer { display: none; }
+        & > main.main > div.container.main-container {
+            /* remove branded navbar */
+            & > nav.navbar { display: none; }
+            & > div.note-main {
+                /* viewport to 100% */
+                margin: 0 auto;
+                padding: 0;
+                max-width: 100%;
+                /* remove note title */
+                /* remove "Last updated" line */
+                & > h1.title,
+                & > p.last-updated { display: none; }
+            }
+        }
+    }
+
+    div#joplin-container-pluginAssetsContainer { display: none !important; }
+
+
+    html,
+    body {
+        width: 100%; max-width: 100%; border: 0; padding: 0; margin: 0; background-color: transparent;
+    }
+    #rendered-md {
+        width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: unset;
+    }
+}
+
+/* Uncomment this brace if you want <div is="jvp"></div> required to exist for
+ * this to function. … end :has( div#jvp)
+}
+*/
+
