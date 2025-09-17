@@ -6,7 +6,7 @@ notebook application.
 ## [jvirtpage.css](jvirtpage.css)
 
 - Preview your document as an aesthetically pleasing virtual page that
-  matches internation standard dimensions for US Letter, US Half-letter, A4,
+  matches international standard dimensions for US Letter, US Half-letter, A4,
   A5, A6 pages. Themeable to default (white page), dim, and dark views.
 - Render the document to those dimensions when you export to PDF.
 
@@ -16,7 +16,7 @@ notebook application.
 
 `git clone https://github.com/taw00/joplin-tweaks`
 
-2. Install "Import Local CSS" plugin in Joplin and restart
+2. Install Joplin's "Import Local CSS" plugin and restart
 
 3. Create note in Joplin and add these three lines to the top …
 
