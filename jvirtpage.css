@@ -89,17 +89,20 @@
         /* CONSTANTS */
         --jvp-text-color: black;
         --jvp-paper-color: white;
-        --jvp-desktop-color: darkgray;
-        --jvp-paper-box-shadow: 0 0 20px black;
+        --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
+        --jvp-paper-box-shadow: 0 0 var(--jvp-page-spacing) black;
+        --jvp-1st-page-marker-color: var(--jvp-desktop-color);
 
         --jvp-dim-text-color: black;
-        --jvp-dim-paper-color: silver;
-        --jvp-dim-desktop-color: dimgray;
+        --jvp-dim-paper-color: hsl(0deg 0% 75%); /* silver */
+        --jvp-dim-desktop-color: hsl(0deg 0% 41%); /* dimgray */
+        --jvp-dim-1st-page-marker-color: var(--jvp-dim-desktop-color);
 
-        --jvp-dark-text-color: whitesmoke; /* not white */
+        --jvp-dark-text-color: hsl(0deg 0% 96%); /* whitesmoke; not white */
         --jvp-dark-paper-color: hsl(0deg 0% 12%); /* very dark gray */
         --jvp-dark-desktop-color: hsl(0deg 0% 20%); /* darker than dimgray */
         /*--jvp-dark-desktop-color: hsl(222deg 12% 16%);*/ /* a dark purple-blue */
+        --jvp-dark-1st-page-marker-color: var(--jvp-dark-desktop-color);
 
         /* popular page dimensions */
         --jvp-page-widthUS:  8.5in;  --jvp-page-heightUS:   11in;  --jvp-page-marginUS:   1in;
@@ -131,11 +134,13 @@
             --jvp-text-color:    var(--jvp-dark-text-color);
             --jvp-paper-color:   var(--jvp-dark-paper-color);
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
+            --jvp-1st-page-marker-color: var(--jvp-dark-1st-page-marker-color);
         }
         &:has( div#jvp:is(.dim)) {
             --jvp-text-color:    var(--jvp-dim-text-color);
             --jvp-paper-color:   var(--jvp-dim-paper-color);
             --jvp-desktop-color: var(--jvp-dim-desktop-color);
+            --jvp-1st-page-marker-color: var(--jvp-dim-1st-page-marker-color);
         }
 
         &:has( div#jvp:is(.US,.us)) {
@@ -189,6 +194,12 @@
             --jvp-page-width: var(--jvp-page-heightA6);
             --jvp-page-height: var(--jvp-page-widthA6);
         }
+        &:has( div#jvp.no-1st-page-marker) {
+            --jvp-1st-page-marker-color: transparent;
+        }
+
+        /* OTHER CONSTANTS - don't change these */
+        --jvp-page-spacing: 20px;
     } /* end :root */
 } /* end @layer jvirtpage */
 
@@ -265,9 +276,10 @@
     }
 
     #rendered-md {
+        position: relative;
         box-shadow: var(--jvp-paper-box-shadow);
         box-sizing: border-box;
-        margin: 20px auto; /* just sets the page off the top a bit */
+        margin: var(--jvp-page-spacing) auto; /* just sets the page off the top a bit */
         padding: var(--jvp-page-margin);
         color: var(--jvp-text-color);
         background-color: var(--jvp-paper-color);
@@ -275,6 +287,19 @@
         max-width: var(--jvp-page-width);
         min-height: var(--jvp-page-height);
     } /* end #rendered-md */
+
+    /* add a 1st-page-marker to the rendering */
+    #rendered-md::before {
+        display: block;
+        position: absolute;
+        content: "";
+        top: var(--jvp-page-height);
+        left: 0;
+        width: calc(var(--jvp-page-margin) / 2);
+        border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
+        opacity: 0.5;
+    }
+
 } /* end @media screen */
 
 
