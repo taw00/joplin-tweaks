@@ -36,6 +36,16 @@ notebook application.
 <div id="jvp" class="A5 landscape dark"></div>
 ```
 
+### Example 1: no customization
+
+![jvirtpage-default-us-letter](images/jvirtpage-default-us-letter.png)
+
+### Example 2: dark theme and A6 in a landscape orientation
+![jvirtpage-dark-a6-landscape](images/jvirtpage-dark-a6-landscape.png)
+
+
+---
+---
 
 ## … more tweaks coming …
 
