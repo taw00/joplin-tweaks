@@ -3,6 +3,15 @@
 Customizations for the [Joplin](https://joplinapp.org/), a secure open-source,
 notebook application.
 
+**Table of Tweaks**
+
+1. [jvirtpage.css](#jvirtpagecss) - Joplin preview as virtual page
+2. […more tweaks coming…](#-more-tweaks-coming-)
+
+&ZeroWidthSpace;
+
+&ZeroWidthSpace;
+
 ## [jvirtpage.css](jvirtpage.css)
 
 - Preview your document as an aesthetically pleasing virtual page that
@@ -55,7 +64,6 @@ notebook application.
 > **The workaround** is to export to HTML, open that in a browser, then print
 > to file (PDF). In a few months—as of this writing (20250916)—this will
 > no longer be an issue.
-
 
 &ZeroWidthSpace;
 
