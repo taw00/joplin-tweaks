@@ -1,5 +1,6 @@
 # joplin-tweaks
-A repository of customizations for the Joplin Note-taking Application
+
+Customizations for the [Joplin Note-taking Application](https://joplinapp.org/)
 
 **[jvirtpage.css](jvirtpage.css)**
 
