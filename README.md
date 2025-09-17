@@ -77,8 +77,8 @@ in Joplin Cloud.
 > 
 > Joplin 3.4.12 and older disallow exporting to PDF with a different page size
 > than what you have set in the joplin settings. That limitation is a bug that
-> should be fixed in the next major release.
-> https://github.com/laurent22/joplin/issues/13096
+> should be fixed in the next major release. (Ref.
+> https://github.com/laurent22/joplin/issues/13096)
 >
 > **The workaround** is to export to HTML, open that in a browser, then print
 > to file (PDF). In a few months—as of this writing (20250916)—this will
