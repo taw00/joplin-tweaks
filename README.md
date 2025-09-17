@@ -25,6 +25,8 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 # Tweaks for the Markdown Previewer & Joplin Cloud
 
 &ZeroWidthSpace;
@@ -85,6 +87,8 @@ in Joplin Cloud.
 &ZeroWidthSpace;
 
 ## — more tweaks coming …
+
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
