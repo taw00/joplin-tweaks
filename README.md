@@ -1,15 +1,43 @@
 # joplin-tweaks
 
-Customizations for the [Joplin Note-taking Application](https://joplinapp.org/)
+Customizations for the [Joplin](https://joplinapp.org/), a secure open-source,
+notebook application.
 
-**[jvirtpage.css](jvirtpage.css)**
+## [jvirtpage.css](jvirtpage.css)
 
 - Preview your document as an aesthetically pleasing virtual page that
   matches internation standard dimensions for US Letter, US Half-letter, A4,
   A5, A6 pages. Themeable to default (white page), dim, and dark views.
 - Render the document to those dimensions when you export to PDF.
 
-**… more tweaks coming …**
+### Quickstart guide to `jvirtpage.css`
+
+1. Download this repository …
+
+`git clone https://github.com/taw00/joplin-tweaks`
+
+2. Install "Import Local CSS" plugin in Joplin and restart
+
+3. Create note in Joplin and add these three lines to the top …
+
+```markdown
+<style>
+    @import url("/path/to/joplin-tweaks/jvirtpage.css");
+</style>
+```
+
+4. Save, and you should see a pretty, virtualized page in the preview pane in
+   the Joplin application.
+
+5. Want an A5 landscape virtual page and dark themed? Add this one line to your
+   note …
+
+```markdown
+<div id="jvp" class="A5 landscape dark"></div>
+```
+
+
+## … more tweaks coming …
 
 ---
 
