@@ -31,8 +31,8 @@ notebook application.
 4. Save, and you should see a pretty, virtualized page in the preview pane in
    the Joplin application.
 
-5. Want an A5 landscape virtual page and dark themed? Add this one line to your
-   note …
+5. Want an A5 landscape virtual page with a dark themed? Add this one line to
+   your note …
 
 ```html
 <div id="jvp" class="A5 landscape dark"></div>
