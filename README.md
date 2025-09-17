@@ -20,7 +20,7 @@ notebook application.
 
 3. Create note in Joplin and add these three lines to the top …
 
-```markdown
+```html
 <style>
     @import url("/path/to/joplin-tweaks/jvirtpage.css");
 </style>
@@ -32,7 +32,7 @@ notebook application.
 5. Want an A5 landscape virtual page and dark themed? Add this one line to your
    note …
 
-```markdown
+```html
 <div id="jvp" class="A5 landscape dark"></div>
 ```
 
@@ -50,7 +50,7 @@ notebook application.
 > should be fixed in the next major release.
 > https://github.com/laurent22/joplin/issues/13096
 >
-> The workaround is to export to HTML, open that in a browser, then print
+> **The workaround** is to export to HTML, open that in a browser, then print
 > to file (PDF). In a few months—as of this writing (20250916)—this will
 > no longer be an issue.
 

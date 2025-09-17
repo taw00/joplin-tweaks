@@ -1,83 +1,20 @@
 /* Render a virtual page view in Joplin's previewer
  *
- * This will generate, in the Joplin previewer, a virtual US letter page with
- * 1in margin by default (adjustable). The page will look like a floating
- * paper on a desktop surface. The text will be black and the text white
- * (themeable). The page dimensions will shrink if the window small than can
- * be fit as defined.
- *
- * Exported to PDF or Print will … do what you expect and the virtual page will
- * be what your export with the correct margins and whatnot.
- *
- * EXCEPTION FOR JOPLIN PDF EXPORTS: Joplin has a bug (fix due to be included
- * in the next release).  Currently, if your page settings (see switches below)
- * diverge from your Joplin page settings in your Joplin configuration (Tools >
- * Options > General > Show advanced > "Page size for PDF export") then the
- * export will not be correct. Until the fix is release, export to HTML, open
- * with a browser, and then generate the PDF (print to file).
- *
- *
- * There are four ways to use this stylesheet. Either (1) import it into your
- * note from the filesystem, or (2) from the web, (3) import it from another
- * note that is only this stylesheet content, or (4) copy this file into your
- * userstyle.css.
- *
- * (1) If you are importing this into your note from the filesystem …
+ * jvirtpage.css is a stylesheet that will enable any note within the Joplin
+ * application to render as an aesthetically pleasing virtual page in the
+ * Joplin markdown viewer (the previewer).
  * 
- * - Install the "Import local CSS" Joplin plugin (and restart).
- * - Then do this at the top of your note …
+ * ### TL;DR
+ *
+ * After downloading this repository, add this to the top of your notes …
+ * ```html
  * <style>
- *     @import url("/path/to/jvirtpage.css");
+ *     @import url("/path/to/joplin-tweaks/jvirtpage.css");
  * </style>
+ * ```
  *
- * - If you want to change the default behavior, add this line anywhere in your
- *   note …
- * <div id="jvp" class="SWITCH"></div>
- *
- * SWITCH can be one of:
- * - US, A4, A5, A6, or USh
- *   Page dimension switches (USh means US Half-letter). US is the default.
- * - landscape
- *   Switch that flips the width x height. Default is portrait.
- * - dim or dark
- *   Theme switches. Black text on a white page on a gray backound is the
- *   default.
- *
- * (2) If you are importing this into your note from the web …
- * 
- * - Stick the jvirtpage.css somewhere on the web where it is accessible to
- *   your system
- * - Change the @import example above to look something like:
- *   @import url("https://mywebserver.com/pub/jvirtpage.css");
- *
- * (3) If you want to import from a "CSS note" …
- *
- * - Create note. Name it something like jvirtpage.css
- * - Copy this stylesheet into the note
- * - Wrap the whole thing in a ```css and ``` code block
- * - Delete all these preliminary comments (they break the plugin)
- * - Right click on the css note and "Copy Markdown Link"
- * - Use only the :/HASHVALUE part of it and, for example …
- *   @import url(":/7d66d959fa974468b4670db7228943a1");
- *
- * (4) Add to your userstyle.css - makes the virtpage persistent for all of
- *     your notes; no import needed! …
- * - copy the contents of this stylesheet into your Joplin user styles. Either,
- * - edit the styles in Tools > Options > General > Appearance >
- *   Show Advanced Settings > Custom stylsheet for rendered Markdown
- * - edit directly the userstyles.css file that can be found (if you created
- *   it previously) in the joplin-desktop folder on your computer. That's
- *   ~/.config/joplin-desktop/ on a linux system, for example.
- *
- *
- * If you want the virtual page to be rendered ONLY when <div id="jvp"></div>
- * exists, ucomment the ":has( div#jvp) {" block that wraps the @media screen
- * and @media print blocks.
- *
- * JOPLIN CLOUD
- * If you want to use this with Joplin Cloud, you will have to import it from a
- * web url (option 2) or stick the styles in your userstyle.css (option 4).
- *
+ * For more detail, see documentaton at:
+ * https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md
  *
  * Copyright (c) Todd Warner <t0dd@protonmail.com>
  * This work is licensed under Attribution 4.0 International. To view a copy
