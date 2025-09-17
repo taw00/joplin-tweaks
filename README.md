@@ -10,8 +10,6 @@ notebook application.
 
 &ZeroWidthSpace;
 
-&ZeroWidthSpace;
-
 ## [jvirtpage.css](jvirtpage.css)
 
 - Preview your document as an aesthetically pleasing virtual page that
@@ -64,8 +62,6 @@ notebook application.
 > **The workaround** is to export to HTML, open that in a browser, then print
 > to file (PDF). In a few months—as of this writing (20250916)—this will
 > no longer be an issue.
-
-&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
