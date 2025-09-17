@@ -54,4 +54,3 @@ notebook application.
 If you have any questions or concerns, open an issue or email me at t0dd [at]
 protonmail [dot] com.
 
-- 
