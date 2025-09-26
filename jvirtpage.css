@@ -56,6 +56,10 @@
         --jvp-page-margin: var(--jvp-page-marginUS);
         --jvp-indent:      var(--jvp-page-indentUS);
 
+        /* by default, PDFs are displayed in a note */
+        --jvp-pdf-display: none;  /* if you want it off by default */
+        --jvp-pdf-display: block; /* if you want it on by default */
+
 
         /* SWITCHES
          * Switches to change the default page dimensions, margins, indent and
@@ -129,6 +133,12 @@
         &:has( div#jvp.no-1st-page-marker) {
             --jvp-1st-page-marker-color: transparent;
         }
+        &:has( div#jvp:is(.nopdf,.no-pdf) ) {
+            --jvp-pdf-display: none;
+        }
+        &:has( div#jvp:is(.showpdf,.show-pdf,.pdf) ) {
+            --jvp-pdf-display: block;
+        }
 
         /* OTHER CONSTANTS - don't change these */
         --jvp-page-spacing: 20px;
@@ -163,6 +173,36 @@
  * somewhere within your note */
 :not( :has( div#jvpoff, div#jvp.off ) ) {
 
+
+/*
+ * configuration for both @media screen and print
+ */
+#rendered-md .media-player.media-pdf {
+    /* do we display PDFs? */
+    display: var(--jvp-pdf-display);
+}
+
+/* Joplin Cloud stuff
+ * - Remove the viewport cruft (title, last-updated, padding, etc.) */
+body.page-note {
+    & > main.main > div.container.main-container {
+        & > div.note-main {
+            /* viewport to 100% */
+            margin: 0 auto;
+            padding: 0;
+            max-width: 100%;
+            /* remove note title */
+            /* remove "Last updated" line */
+            & > h1.title,
+            & > p.last-updated { display: none; }
+        }
+    }
+}
+
+
+/*
+ * configuration for screen and HTML rendering
+ */
 @media screen {
     html { background-color: transparent; }
     body {
@@ -178,7 +218,7 @@
             padding: 0;
         }
     }
-    /* rendered to HTML view */ 
+    /* exported to HTML */
     body:not(#joplin-container-body) {
         & > div.exported-note {
             margin: 0;
@@ -190,8 +230,7 @@
     }
 
     /* Joplin Cloud stuff
-     * - Fade the navbar and footer. Still present, just not prominent.
-     * - Remove the viewport cruft (title, last-updated, padding, etc.) */
+     * - Fade the navbar and footer. Still present, just not prominent. */
     body.page-note {
         /* footer with copyright and T&Cs - fade to watermark */
         & > div.footer { opacity: .5; }
@@ -200,16 +239,6 @@
             & > nav.navbar {
                 opacity: .15;
                 background-color: inherit;
-            }
-            & > div.note-main {
-                /* viewport to 100% */
-                margin: 0 auto;
-                padding: 0;
-                max-width: 100%;
-                /* remove note title */
-                /* remove "Last updated" line */
-                & > h1.title,
-                & > p.last-updated { display: none; }
             }
         }
     }
@@ -242,17 +271,15 @@
 } /* end @media screen */
 
 
+/*
+ * configuration for print and PDF rendering
+ */
 @media print {
     /* the body color needs to be irrelevant (trans) */
     body {
         page: jvp-page-dimensions;
         /* Exported print: the body should be colorless for print */
         background-color: transparent;
-        /* Exported print: Remove the padding & bg that frames #rendered-md */
-        & > #joplin-container-content {
-            background-color: transparent;
-            padding: 0;
-        }
     }
 
     /* remove Joplin-inserted title & padding */
@@ -272,16 +299,6 @@
         & > main.main > div.container.main-container {
             /* remove branded navbar */
             & > nav.navbar { display: none; }
-            & > div.note-main {
-                /* viewport to 100% */
-                margin: 0 auto;
-                padding: 0;
-                max-width: 100%;
-                /* remove note title */
-                /* remove "Last updated" line */
-                & > h1.title,
-                & > p.last-updated { display: none; }
-            }
         }
     }
 

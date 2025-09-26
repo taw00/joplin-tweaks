@@ -144,7 +144,14 @@ SWITCH can be one of …
 - `dim` or `dark`  
   Theme switches. Black text on a white page on a gray backound is the
   default.
-- `off`
+- `no-1st-page-marker`  
+  Turns off the marker that notes the page length of the current configuration.
+- `no-pdf`  
+  Turns off rendering a PDF in the note.
+- `pdf`  
+  Turns on rendering a PDF in the note (only useful if you turn it off by
+  default by editing the initial constant value within the CSS).
+- `off`  
   Same as id="jvpoff". This will turn off the stylings for a note.  
   I.e., if you want to turn off the stylings for a particular note, just add  
   `<div id="jvpoff"></div>` or `<div id="jvp" class="off"></div>  
