@@ -9,17 +9,19 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 ### Table of Tweaks
 
-#### Tweaks for the Markdown Previewer & Joplin Cloud
+#### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-for-the-markdown-previewer--joplin-cloud-1)
 
 - [jvirtpage.css](#jvirtpagecss) - a Joplin note preview rendered as an
   attractive virtual page ([docs](docs/jvirtpage.md))
-- More tweaks coming…
+- [More tweaks coming]
 
-#### Tweaks for the Joplin UI
+#### [Tweaks for the Joplin UI](#tweaks-for-the-joplin-ui-1)
 
-- Tweaks coming…
+- [Tweaks eventually coming]
 
 &ZeroWidthSpace;
 
@@ -86,7 +88,7 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-## — More tweaks coming …
+## — [More tweaks coming]
 
 &ZeroWidthSpace;
 
@@ -98,7 +100,7 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-## — Tweaks coming …
+## — [Tweaks eventually coming]
 
 &ZeroWidthSpace;
 
