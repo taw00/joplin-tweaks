@@ -6,19 +6,27 @@ markdown viewer (the previewer).
 
 > ### TL;DR
 >
-> After downloading this repository, add this to the top of your notes …
+> 1. download this repository
+> 2. install the "Import Local CSS" plugin and restart Joplin
+> 3. add this to the top of your notes
 > ```html
 > <style>
 >     @import url("/path/to/joplin-tweaks/jvirtpage.css");
 > </style>
 > ```
+>
+> Alternatively, to enable this CSS for all of your notes by default …
+> 3. cut-n-paste `jvirtpage.css` into a note, but surrounded by
+> ~~~html
+> ```css
+> this CSS document inserted here
+> ```
+> ~~~
+> 4. right-click on the new CSS note and "Copy markdown link"
+> 5. Tools >  Options > Local CSS > Global CSS > insert link you just copied
 
 By default, the page will be …
-- US Letter and 1in margins
-  - 8.5in x 11in (though the length is infinite in the previewer.
-    But we do add a 1st-page marker so that you have an idea as to the length
-    of a page.
-  - In the previewer, the page will shrink if need be when the viewport shrinks
+- US Letter with 1in margins
 - Black text
 - White paper
 - Darkened "desktop"
@@ -40,35 +48,25 @@ and margins. Except in the case of …
 > no longer be an issue.
 
 
-## Methods of Usage
+## Methods of Enabling the Stylesheet
 
-There are four ways to use this stylesheet. Either (1) import it into your note
-from the filesystem, or (2) from the web, (3) import it from another note that
-is only this stylesheet content, or (4) copy this file into your
-`userstyle.css`.
+There are five ways to enable this stylesheet for a note. Either … (1) import
+it into your note from the filesystem, or (2) import it into your note from the
+web, (3) import it from a dedicated stylesheet note, (4) configure the "Import
+Local CSS" plugin to set the stylesheet as the default for all notes, or add
+the stylesheet to `userstyle.css`.
 
-1. If you are importing this into your note from the filesystem …
+> Do this first before doing anything else:  
+> Install the "Import local CSS" Joplin plugin (and restart).
 
-- Install the "Import local CSS" Joplin plugin (and restart).
+1. Importing the stylesheet from the filesystem …
+
 - Then do this at the top of your note …
 ```html
 <style>
-    @import url("/path/to/jvirtpage.css");
+    @import url("/path/to/joplin-tweaks/jvirtpage.css");
 </style>
 ```
-
-- If you want to change the default behavior, add this line anywhere in your
-  note …
-`<div id="jvp" class="SWITCH"></div>`
-
-SWITCH can be one of:
-- US, A4, A5, A6, or USh
-  Page dimension switches (USh means US Half-letter). US is the default.
-- landscape
-  Switch that flips the width x height. Default is portrait.
-- dim or dark
-  Theme switches. Black text on a white page on a gray backound is the
-  default.
 
 2. If you are importing this into your note from the web …
 
@@ -81,29 +79,71 @@ SWITCH can be one of:
 
 - Create note. Name it something like `jvirtpage.css`
 - Copy this stylesheet into the note
-- Wrap the whole thing in a ``\`css and ``\` code block
-- Delete all these preliminary comments (they break the plugin)
+- Wrap the whole thing in a ``\`css and ``\` fenced code block  
+  *You may have to delete all of the preliminary comments (they sometimes break the plugin)*
 - Right click on the css note and "Copy Markdown Link"
 - Use only the :/HASHVALUE part of it and, for example …
   `@import url(":/7d66d959fa974468b4670db7228943a1");`
 
-4. Add to your `userstyle.css` - makes the virtpage persistent for all of
-    your notes; no import needed! …
-- copy the contents of this stylesheet into your Joplin user styles. Either,
-- edit the styles in Tools > Options > General > Appearance >
-  Show Advanced Settings > Custom stylsheet for rendered Markdown
-- edit directly the userstyles.css file that can be found (if you created
-  it previously) in the joplin-desktop folder on your computer. That's
-  `~/.config/joplin-desktop/` on a linux system, for example.
+4. If you want this formattting available by default for ALL of your notes …
+
+- Perform step 3 above.
+- Add the copied link to Tools > Options > Import CSS > Global CSS:
+  `[jvirtpage.css](:/7d66d959fa974468b4670db7228943a1)`
+- This configuration must be repeated on each device.
+
+4.b. If you want this formatting available by default for all notes, but only
+enabled with a switch …
+
+- Perform step 4 above
+- Edit the CSS note and uncomment the `:has( div#jvp ) {`  and `}` lines that
+  wrap `@media screen` and `@media print`
+- Add `<div id="jvp"></div>` to any note you wish to be rendered as a virtual
+  page. In this case, without the `<div>` element, the page will be rendered
+  according to Joplin's defaults.
+
+5. Add stylesheet to `userstyle.css` (not recommended)
+
+If you cut-n-paste this styles sheet into the `userstyle.css` inside the
+`joplin-desktop` folder (Linux/macOS: `~/.config/joplin-desktop/` -or- Windows:
+`C:\Users\%USERNAME%\.config\joplin-desktop\`) the styles will also be
+persistent AND available to Joplin Cloud published notes. But, it's messy and I
+don't recommend it. Instead, if you want the styles to be enabled for a
+published note, I would instead directly import the stylesheet (option 2 or 3).
 
 
-If you want the virtual page to be rendered ONLY when <div id="jvp"></div>
-exists, ucomment the `:has( div#jvp) {` block that wraps the `@media screen`
-and `@media print` blocks.
+## Usage
 
-JOPLIN CLOUD
-If you want to use this with Joplin Cloud, you will have to import it from a
-web url (option 2) or stick the styles in your userstyle.css (option 4).
+Once imported into a note or enabled for all notes, the default behavior should
+be evident. The preview for the styled note should be rendered as a "virtual
+page".
+
+Again, by default, the page will be …
+
+- US Letter with 1in margins
+  - 8.5in x 11in at maximum view
+    - note that the length is infinite in the preview because the preview is
+      note a "page" really, but …
+    - a 1st-page marker is added so that you have an idea as to the length of a
+      page.
+  - The virtual page will shrink if need be when the viewport shrinks.
+- Black text
+- White paper
+- Darkened "desktop"
+
+If you want to change the default behavior, add this line anywhere in your
+  note …
+`<div id="jvp" class="SWITCH"></div>`
+
+SWITCH can be one of …
+
+- `US`, `A4`, `A5`, `A6`, or `USh`  
+  Page dimension switches (`USh` means US Half-letter). `US` is the default.
+- `landscape`  
+  Switch that flips the width x height. Default is portrait.
+- `dim` or `dark`  
+  Theme switches. Black text on a white page on a gray backound is the
+  default.
 
 
 Copyright (c) Todd Warner <t0dd@protonmail.com>

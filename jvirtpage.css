@@ -4,16 +4,11 @@
  * application to render as an aesthetically pleasing virtual page in the
  * Joplin markdown viewer (the previewer).
  * 
- * ### TL;DR
+ * Install the "Import Local CSS" plugin. Then @import this stylesheet within
+ * your note. Alternatively, configure "Import Local CSS" to enable this
+ * stylesheet by default for all of your notes.
  *
- * After downloading this repository, add this to the top of your notes …
- * ```html
- * <style>
- *     @import url("/path/to/joplin-tweaks/jvirtpage.css");
- * </style>
- * ```
- *
- * For more detail, see documentaton at:
+ * For more detail, refer to the documentation:
  * https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md
  *
  * Copyright (c) Todd Warner <t0dd@protonmail.com>
@@ -156,9 +151,10 @@
 }
 
 
-/* Uncomment this :has if you want <div is="jvp"></div> to be required to exist
- * for this to function.
-:has( div#jvp) {
+/* Uncomment this :has and its mirroring brace at the end of the file if you
+ * want to require <div id="jvp"></div> to exist in a note before allowing any
+ * of this formatting to function.
+:has( div#jvp ) {
 */
 
 @media screen {
@@ -191,7 +187,7 @@
      * - Fade the navbar and footer. Still present, just not prominent.
      * - Remove the viewport cruft (title, last-updated, padding, etc.) */
     body.page-note {
-        /* footer with copright and T&Cs - fade to watermark */
+        /* footer with copyright and T&Cs - fade to watermark */
         & > div.footer { opacity: .5; }
         & > main.main > div.container.main-container {
             /* branded navbar - fade to watermark */
@@ -295,8 +291,9 @@
     }
 }
 
-/* Uncomment this brace if you want <div is="jvp"></div> required to exist for
- * this to function. … end :has( div#jvp)
+/* Uncomment this brace and its mirroring :has toward the top of the file if
+ * you want to require <div id="jvp"></div> to exist in a note before allowing
+ * any of this formatting to function.
 }
 */
 
