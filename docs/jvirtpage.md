@@ -153,9 +153,8 @@ SWITCH can be one of …
   default by editing the initial constant value within the CSS).
 - `off`  
   Same as id="jvpoff". This will turn off the stylings for a note.  
-  I.e., if you want to turn off the stylings for a particular note, just add  
-  `<div id="jvpoff"></div>` or `<div id="jvp" class="off"></div>  
-  anywhere within that note.
+  I.e., if you want to turn off the stylings for a particular note, just add
+  `<div id="jvp" class="off"></div> anywhere within that note.
 
 For example, many (maybe most) of my notes are configured as such:  
 `<div id="jvp" class="dark no-pdf"></div>`
