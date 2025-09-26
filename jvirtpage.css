@@ -161,7 +161,7 @@
 /* If on by default (i.e., you haven't uncommented the above), turn off these
  * stylings with <div id="jvpoff"></div> or <div id="jvp" class="off"></div>
  * somewhere within your note */
-:not ( :has( div#jvpoff, div#jvp.off )) {
+:not( :has( div#jvpoff, div#jvp.off ) ) {
 
 @media screen {
     html { background-color: transparent; }
@@ -297,7 +297,7 @@
     }
 }
 
-} /* end :not(:has(div#jvpoff)) */
+} /* end :not( :has( div#jvpoff, div#jvp.off ) ) */
 
 /* Uncomment this brace and its mirroring :has toward the top of the file if
  * you want to require <div id="jvp"></div> to exist in a note before allowing
