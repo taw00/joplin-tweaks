@@ -145,6 +145,9 @@ SWITCH can be one of …
   Theme switches. Black text on a white page on a gray backound is the
   default.
 
+If you want to turn off the stylings for a particular note, just add
+`<div id="jvpoff"></div>` anywhere in that note.
+
 
 Copyright (c) Todd Warner <t0dd@protonmail.com>
 This work is licensed under Attribution 4.0 International. To view a copy

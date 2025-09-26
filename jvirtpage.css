@@ -153,9 +153,14 @@
 
 /* Uncomment this :has and its mirroring brace at the end of the file if you
  * want to require <div id="jvp"></div> to exist in a note before allowing any
- * of this formatting to function.
+ * of this formatting to function. I.e., the stylings will be OFF by default if
+ * you uncomment this and its ending brace.
 :has( div#jvp ) {
 */
+
+/* If on by default (i.e., you haven't uncommented the above), turn off these
+ * stylings with <div id="jvpoff"></div> at the top of your note */
+:not ( :has( div#jvpoff )) {
 
 @media screen {
     html { background-color: transparent; }
@@ -290,6 +295,8 @@
         width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: unset;
     }
 }
+
+} /* end :not(:has(div#jvpoff)) */
 
 /* Uncomment this brace and its mirroring :has toward the top of the file if
  * you want to require <div id="jvp"></div> to exist in a note before allowing
