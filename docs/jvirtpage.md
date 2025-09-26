@@ -144,9 +144,11 @@ SWITCH can be one of …
 - `dim` or `dark`  
   Theme switches. Black text on a white page on a gray backound is the
   default.
-
-If you want to turn off the stylings for a particular note, just add
-`<div id="jvpoff"></div>` anywhere in that note.
+- `off`
+  Same as id="jvpoff". This will turn off the stylings for a note.  
+  I.e., if you want to turn off the stylings for a particular note, just add  
+  `<div id="jvpoff"></div>` or `<div id="jvp" class="off"></div>  
+  anywhere within that note.
 
 
 Copyright (c) Todd Warner <t0dd@protonmail.com>
