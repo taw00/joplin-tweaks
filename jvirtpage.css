@@ -169,9 +169,13 @@
 */
 
 /* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jvpoff"></div> or <div id="jvp" class="off"></div>
- * somewhere within your note */
-:not( :has( div#jvpoff, div#jvp.off ) ) {
+ * stylings with <div id="jvp" class="off"></div> somewhere within your note.
+ * The div#vpage rule makes this compatible with the manuscript-css project */
+:not( :has(
+    div#jvpoff,
+    div#jvp.off,
+    div#vpage > article#manuscript
+    ) ) {
 
 
 /*
