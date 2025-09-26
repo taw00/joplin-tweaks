@@ -157,6 +157,12 @@ SWITCH can be one of …
   `<div id="jvpoff"></div>` or `<div id="jvp" class="off"></div>  
   anywhere within that note.
 
+For example, many (maybe most) of my notes are configured as such:  
+`<div id="jvp" class="dark no-pdf"></div>`
+
+-
+
+Enjoy!
 
 Copyright (c) Todd Warner <t0dd@protonmail.com>
 This work is licensed under Attribution 4.0 International. To view a copy
