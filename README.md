@@ -70,10 +70,10 @@ in Joplin Cloud.
 
 ### Example 1: no customization
 
-![jvirtpage-default-us-letter](images/jvirtpage-default-us-letter.png)
+![jvirtpage-default-us-letter](docs/images/jvirtpage-default-us-letter.png)
 
 ### Example 2: dark theme and A6 in a landscape orientation
-![jvirtpage-dark-a6-landscape](images/jvirtpage-dark-a6-landscape.png)
+![jvirtpage-dark-a6-landscape](docs/images/jvirtpage-dark-a6-landscape.png)
 
 > ### [IMPORTANT NOTE: Joplin PDF Rendering Bug](https://github.com/laurent22/joplin/issues/13096)
 > 
