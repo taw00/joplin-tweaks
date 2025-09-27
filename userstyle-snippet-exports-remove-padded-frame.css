@@ -1,0 +1,14 @@
+/* Remove 1em padding added to exported (PDF/Print) notes
+ *
+ * For whatever reason, a small padded frame is added to notes when exported.
+ * Remove that.
+ *
+ * Add this CSS configuration block to your userstyle.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+@media print {
+    /* remove 1em padding around an exported note */
+    .exported-note { margin: 0; padding: 0; }
+}

@@ -1,0 +1,14 @@
+/* Remove the automated title from exported (PDF/Print) notes
+ *
+ * Joplin automatically adds the title of your note when exported. I like to
+ * control that myself. And therefore, I remove it.
+ *
+ * Add this CSS configuration block to your userstyle.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+@media print {
+    /* remove the Joplin automated note title header */
+    .exported-note-title { display: none; }
+}

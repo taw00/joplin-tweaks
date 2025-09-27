@@ -11,17 +11,21 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-### Table of Tweaks
-
-#### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-for-the-markdown-previewer--joplin-cloud-1)
-
-- [jvirtpage.css](#jvirtpagecss) - a Joplin note preview rendered as an
-  attractive virtual page ([docs](docs/jvirtpage.md))
-- [More tweaks coming]
-
-#### [Tweaks for the Joplin UI](#tweaks-for-the-joplin-ui-1)
-
-- [Tweaks eventually coming]
+> ### Table of Tweaks
+> 
+> #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-for-the-markdown-previewer--joplin-cloud-1)
+> 
+> - [jvirtpage.css](#jvirtpagecss) - render your Joplin note preview as an
+>   attractive virtual page ([docs](docs/jvirtpage.md))
+> - userstyle-snippet-exports-no-pre-scrollbars.css - exported notes should not include scrollbars on pre-blocks
+> - userstyle-snippet-exports-remove-padded-frame.css - remove Joplin-added framing when exporting a note
+> - userstyle-snippet-exports-remove-title.css - remove Joplin-added automated note titles when exporting a note
+> 
+> #### [Tweaks for the Joplin UI](#tweaks-for-the-joplin-ui-1)
+> 
+> - userchrome-snippet-remove-editor-switching-button.css - remove the markdown vs. rich text editor switching button
+> - userchrome-snippet-remove-click-to-add-tags.css - don't use tags? then remove the widget
+> - userchrome-snippet-shrink-click-to-add-tags.css - do use tags but that widget bar is too large? let's shrink it
 
 &ZeroWidthSpace;
 

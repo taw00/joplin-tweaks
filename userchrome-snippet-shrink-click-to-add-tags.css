@@ -1,0 +1,16 @@
+/* Make the "Click to add tags…" at bottom of a note MUCH smaller
+ *
+ * If you use tags, but want a bit more screen real estate, let's make that
+ * "Click to add tags…" bar quite a bit smaller.
+ *
+ * Add this CSS configuration block to your userchrome.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+div.tag-bar {
+     height: 10px !important;
+}
+div.tag-bar * {
+     font-size: 8px !important;
+}

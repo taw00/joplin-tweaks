@@ -1,0 +1,13 @@
+/* Remove "Click to add tags…" at bottom of a note
+ *
+ * If you don't use tags, remove the ever-present "Click to add tags…" widget
+ * found below every note.
+ *
+ * Add this CSS configuration block to your userchrome.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+div.tag-bar {
+     display: none !important;
+}

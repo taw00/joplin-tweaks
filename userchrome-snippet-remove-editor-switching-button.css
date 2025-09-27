@@ -1,0 +1,18 @@
+/* Remove the WYSIWYG (MARKDOWN/RICH TEXT) button
+ *
+ * I like the traditional Markdown editor found in Joplin versus the wiz-bang
+ * Rich Text Editor. For one reason, at least at one point in time, the Rich
+ * Text Editor would do things like … remove any comments in your markdown
+ * file. It may or may not still do that. Still … I prefer the simplicity of
+ * the traditional markdown editor. And so, I remove the button that allows
+ * switching away from it.
+ *
+ * Add this CSS configuration block to your userchrome.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+button.markdown-active {
+  display: none !important;
+}
+

@@ -1,0 +1,33 @@
+/* Ensure <pre> preformatted blocks don't have scrollbars when exported to PDF
+ *
+ * At one point in time, if you exported a document that had a code
+ * block (or an preformatted block) in it, and it would not fit in the
+ * document width, scrollbars would be added to see the rest of the text.
+ * This is fine when viewing on the screen, but not when exported to a PDF or
+ * printed.
+ *
+ * This will trim anything beyond the page and remove the scrollbars.
+ * Note, there are two settings for "white-space" to choose from here:
+ *   - pre: preserves the formatting (the original intent), trims outside
+ *          of the print block.
+ *   - pre-wrap (Joplin's default): preserves the formatting until it wraps
+ *          the line in order to fit all the data in a print block.
+ *   This is a double-edged sword. At some level, we want preservation of
+ *   data. But from another perspective, we want preservation of intent
+ *   and leave it to the writer of the note to adjust their text or their
+ *   inline CSS to fix output. I choose "pre".
+ *
+ * Add this CSS configuration block to your userstyle.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+@media print {
+    /* make <pre> more print-friendly in exported note */
+    #rendered-md pre {
+        /* no-wrapping of text */
+        white-space: pre;
+        /* no scrollbar in printed output please. :) */
+        overflow-x: hidden;
+    }
+}
