@@ -142,6 +142,8 @@
 
         /* OTHER CONSTANTS - don't change these */
         --jvp-page-spacing: 20px;
+        --jvp-min-margin: 13vw; /* 13% of the viewport width. */
+
     } /* end :root */
 } /* end @layer jvirtpage */
 
@@ -252,25 +254,81 @@ body.page-note {
         box-shadow: var(--jvp-paper-box-shadow);
         box-sizing: border-box;
         margin: var(--jvp-page-spacing) auto; /* just sets the page off the top a bit */
-        padding: var(--jvp-page-margin);
+        padding: min(var(--jvp-page-margin),var(--jvp-min-margin))
+                 min(var(--jvp-page-margin),var(--jvp-min-margin));
         color: var(--jvp-text-color);
         background-color: var(--jvp-paper-color);
-        width: 100%;
-        max-width: var(--jvp-page-width);
-        min-height: var(--jvp-page-height);
-    } /* end #rendered-md */
 
-    /* add a 1st-page-marker to the rendering */
-    #rendered-md::before {
-        display: block;
-        position: absolute;
-        content: "";
-        top: var(--jvp-page-height);
-        left: 0;
-        width: calc(var(--jvp-page-margin) / 2);
-        border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
-        opacity: 0.5;
-    }
+        /* show bit of margin surrounding the virtual page on small screens */
+        width: 96%;
+        max-width: var(--jvp-page-width);
+
+        min-height: var(--jvp-page-height);
+
+        /* This is either ugly or clever. Maybe simply "too clever" …
+         * If the first child is not <div id="jvp"></div> then blank its top
+         * margin/padding. Then if it is <div id="jvp"></div> then blank the
+         * next element's top margin/padding. If you do anything fancy, well, we
+         * just can't account for that. :) */
+        & :first-child:not(#jvp,#jvpoff) {
+            margin-block-start: 0;
+            padding-block-start: 0;
+        }
+        & :first-child:is(#jvp,#jvpoff) + * {
+            margin-block-start: 0;
+            padding-block-start: 0;
+        }
+
+        /* add a 1st-page-marker to the rendering */
+        &::before {
+            display: block;
+            position: absolute;
+            content: "";
+            top: var(--jvp-page-height);
+            left: 0;
+            width: calc(var(--jvp-page-margin) / 2);
+            border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
+            opacity: 0.5;
+        }
+
+        /* debugging only: sketch the top margin * /
+        &::before {
+            display: block;
+            position: absolute;
+            content: "";
+            top: 0; left: 0;
+            height: 1in;
+            width: 100%;
+            border: green 1px dashed;
+            opacity: 1;
+        }*/
+
+        /* debugging only: sketch a left margin * /
+        &::after {
+            display: block;
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 1in;
+            width: calc(var(--jvp-page-margin));
+            height: var(--jvp-page-height);
+            border: red 1px dashed;
+        }*/
+
+        /* debugging only: show a right margin * /
+        &::after {
+            display: block;
+            position: absolute;
+            content: "";
+            top: 0;
+            right: 0;
+            width: 1in;
+            width: calc(var(--jvp-page-margin));
+            height: var(--jvp-page-height);
+            border: red 1px dashed;
+        }*/
+    } /* end #rendered-md */
 
 } /* end @media screen */
 
