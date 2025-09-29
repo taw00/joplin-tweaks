@@ -15,11 +15,10 @@ in Joplin Cloud.
 > 
 > #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-for-the-markdown-previewer--joplin-cloud-1)
 > 
-> - [jvirtpage.css](#jvirtpagecss) - render your Joplin note preview as an
->   attractive virtual page ([docs](docs/jvirtpage.md))
-> - userstyle-snippet-exports-no-pre-scrollbars.css - exported notes should not include scrollbars on pre-blocks
-> - userstyle-snippet-exports-remove-padded-frame.css - remove Joplin-added framing when exporting a note
-> - userstyle-snippet-exports-remove-title.css - remove Joplin-added automated note titles when exporting a note
+> - Render Jopin note preview as an [attractive virtual page](#jvirtpagecss)
+> - snippet (exported note): exported notes should not include scrollbars
+> - snippet (exported note): remove excess spaced framing of exported content
+> - snippet (exported note): remove automated note titles from exported note
 > 
 > #### [Tweaks for the Joplin UI](#tweaks-for-the-joplin-ui-1)
 > 
@@ -37,7 +36,9 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-## — [jvirtpage.css](jvirtpage.css)
+## — <span id="jvirtpagecss">Render Jopin note preview as an attractive virtual page</span>
+
+[jvirtpage.css](./jvirtpage.css) and [docs](docs/jvirtpage.md)
 
 - Preview your document as an aesthetically pleasing virtual page that
   matches international standard dimensions for US Letter, US Half-letter, A4,
@@ -89,6 +90,37 @@ in Joplin Cloud.
 > **The workaround** is to export to HTML, open that in a browser, then print
 > to file (PDF). In a few months—as of this writing (20250916)—this will
 > no longer be an issue.
+
+&ZeroWidthSpace;
+
+## — snippet (exported note): exported notes should not include scrollbars
+
+[userstyle-snippet-exports-no-pre-scrollbars.css](./userstyle-snippet-exports-no-pre-scrollbars.css)
+
+Joplin exports that include things like programming code will include
+scrollbars in the PDF that are, of course, just visual clutter. Instead we
+trim any code that extends beyond the visual window and remove any scrollbars.
+It is up to the document creator to reformat those code blocks so that they
+appear on the page completely.
+
+&ZeroWidthSpace;
+
+## — snippet (exported note): remove excess spaced framing of exported content
+
+[userstyle-snippet-exports-remove-padded-frame.css](./userstyle-snippet-exports-remove-padded-frame.css)
+
+When exporting a raw note, Joplin will frame it and add margin space around the
+note. We remove that when this snippet of CSS.
+
+&ZeroWidthSpace;
+
+## — snippet (exported note): remove automated note titles from exported note
+
+[userstyle-snippet-exports-remove-title.css](./userstyle-snippet-exports-remove-title.css)
+
+Most of the time, I simply do not want Joplin adding a note title to my
+exported content. If I want a title, I will add it to the note. This snippet
+removes that inserted/automated title.
 
 &ZeroWidthSpace;
 
