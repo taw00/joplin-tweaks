@@ -126,12 +126,8 @@ note. We remove that when this snippet of CSS.
 [userstyle-snippet-exports-remove-title.css](./userstyle-snippet-exports-remove-title.css)
 
 Most of the time, I simply do not want Joplin adding a note title to my
-exported content. If I want a title, I will add it to the note. This snippet
-removes that inserted/automated title.
-
-&ZeroWidthSpace;
-
-## <span id="">—</span> [More tweaks coming]
+exported content. If I want a title, I will add it to the note myself. This
+snippet removes that inserted/automated title.
 
 &ZeroWidthSpace;
 
@@ -175,8 +171,6 @@ Do you use tags, but wished the tags widget that sits below your note in the UI
 was a bit smaller? This does exactly that.
 
 &ZeroWidthSpace;
-
-## <span id="">—</span> [More tweaks coming]
 
 &ZeroWidthSpace;
 
