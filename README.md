@@ -13,18 +13,18 @@ in Joplin Cloud.
 
 > ### Table of Tweaks
 > 
-> #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-for-the-markdown-previewer--joplin-cloud-1)
+> #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-renderer-md)
 > 
 > - Render Jopin note preview as an [attractive virtual page](#jvirtpagecss)
-> - snippet (exported note): exported notes should not include scrollbars
-> - snippet (exported note): remove excess spaced framing of exported content
-> - snippet (exported note): remove automated note titles from exported note
+> - snippet (exported note): exported notes [should not include scrollbars](#noscrollbars)
+> - snippet (exported note): [remove excess spaced framing](#noframe) of exported content
+> - snippet (exported note): [remove automated note titles](#notitle) from exported note
 > 
-> #### [Tweaks for the Joplin UI](#tweaks-for-the-joplin-ui-1)
+> #### [Tweaks for the Joplin UI](#tweaks-ui)
 > 
-> - userchrome-snippet-remove-editor-switching-button.css - remove the markdown vs. rich text editor switching button
-> - userchrome-snippet-remove-click-to-add-tags.css - don't use tags? then remove the widget
-> - userchrome-snippet-shrink-click-to-add-tags.css - do use tags but that widget bar is too large? let's shrink it
+> - [remove the markdown vs. rich text editor switch (button)](#noeditorswitch)
+> - [remove the tags widget](#notagswidget)
+> - [make the tags widget smaller](#smallertagswidget)
 
 &ZeroWidthSpace;
 
@@ -32,11 +32,18 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-# Tweaks for the Markdown Previewer & Joplin Cloud
+
+
+
+
+# <span id="tweaks-renderer-md"></span>Tweaks for the Markdown Previewer & Joplin Cloud & Exported Notes
+
+The snippets are added to the `userstyle.css` style configuration file.
+`jvirtpage.css` is treated differently. See the associated documentation.
 
 &ZeroWidthSpace;
 
-## — <span id="jvirtpagecss">Render Jopin note preview as an attractive virtual page</span>
+## <span id="jvirtpagecss">—</span> Render Jopin note preview as an attractive virtual page
 
 [jvirtpage.css](./jvirtpage.css) and [docs](docs/jvirtpage.md)
 
@@ -93,7 +100,7 @@ in Joplin Cloud.
 
 &ZeroWidthSpace;
 
-## — snippet (exported note): exported notes should not include scrollbars
+## <span id="noscrollbars">—</span> snippet (exported note): exported notes should not include scrollbars
 
 [userstyle-snippet-exports-no-pre-scrollbars.css](./userstyle-snippet-exports-no-pre-scrollbars.css)
 
@@ -105,7 +112,7 @@ appear on the page completely.
 
 &ZeroWidthSpace;
 
-## — snippet (exported note): remove excess spaced framing of exported content
+## <span id="noframe">—</span> snippet (exported note): remove excess spaced framing of exported content
 
 [userstyle-snippet-exports-remove-padded-frame.css](./userstyle-snippet-exports-remove-padded-frame.css)
 
@@ -114,7 +121,7 @@ note. We remove that when this snippet of CSS.
 
 &ZeroWidthSpace;
 
-## — snippet (exported note): remove automated note titles from exported note
+## <span id="notitle">—</span> snippet (exported note): remove automated note titles from exported note
 
 [userstyle-snippet-exports-remove-title.css](./userstyle-snippet-exports-remove-title.css)
 
@@ -124,7 +131,7 @@ removes that inserted/automated title.
 
 &ZeroWidthSpace;
 
-## — [More tweaks coming]
+## <span id="">—</span> [More tweaks coming]
 
 &ZeroWidthSpace;
 
@@ -132,15 +139,52 @@ removes that inserted/automated title.
 
 &ZeroWidthSpace;
 
-# Tweaks for the Joplin UI
+
+
+
+
+# <span id="#tweaks-ui"></span>Tweaks to the Joplin UI
+
+These are added to the `userchrome.css` styling configuration file.
 
 &ZeroWidthSpace;
 
-## — [Tweaks eventually coming]
+## <span id="#noeditorswitch">—</span> snippet (UI): remove the markdown vs. rich text editor switch (button)
+
+[userchrome-snippet-remove-editor-switching-button.css](./userchrome-snippet-remove-editor-switching-button.css)
+
+Do you only use the markdown editor and not the "rich text editor" then get rid
+of that button that lets you toggle between the two.
+
+&ZeroWidthSpace;
+
+## <span id="notagswidget">—</span> snippet (UI): remove the tags widget
+
+[userchrome-snippet-remove-click-to-add-tags.css](./userchrome-snippet-remove-click-to-add-tags.css)
+
+Some folks don't use Joplin's tagging system at all. If so, maybe just remove
+that bit of UI and give yourself some extra space.
+
+&ZeroWidthSpace;
+
+## <span id="smallertagswidget">—</span> make the tags widget smaller
+
+[userchrome-snippet-shrink-click-to-add-tags.css](./userchrome-snippet-shrink-click-to-add-tags.css)
+
+Do you use tags, but wished the tags widget that sits below your note in the UI
+was a bit smaller? This does exactly that.
+
+&ZeroWidthSpace;
+
+## <span id="">—</span> [More tweaks coming]
 
 &ZeroWidthSpace;
 
 &ZeroWidthSpace;
+
+
+
+
 
 --- 
 
