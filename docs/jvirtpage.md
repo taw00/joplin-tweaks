@@ -163,7 +163,7 @@ For example, many (maybe most) of my notes are configured as such:
 
 Enjoy!
 
-Copyright (c) Todd Warner <t0dd@protonmail.com>
+Copyright (c) Todd Warner  
 This work is licensed under Attribution 4.0 International. To view a copy
 of this license, visit http://creativecommons.org/licenses/by/4.0/
 

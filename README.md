@@ -182,6 +182,24 @@ was a bit smaller? This does exactly that.
 
 --- 
 
-If you have any questions or concerns, open an issue or email me at t0dd [at]
-protonmail [dot] com.
+Joplin is Copyright (c) Laurent Cozic  
 
+This readme, the documentation, and another additional work is …
+
+Copyright (c) Todd Warner <t0dd [at] protonmail [dot] com>  
+This work is licensed under Attribution 4.0 International. To view a copy of
+this license, visit http://creativecommons.org/licenses/by/4.0/
+
+If you have any questions or concerns, open an issue in Github or email me at
+t0dd [at] protonmail [dot] com.
+
+---
+
+#### Thanking me?
+
+Several people have asked how they could thank me for work that I have done
+that they found valueable. Well, one easy way to thank me is to "buy me a cup
+of coffee": <https://buymeacoff.ee/toddwarner> Or just send me an email (see
+above) and express your appreciation. Or star this on Github. Or whatever.
+
+Cheers!
