@@ -20,6 +20,7 @@ in Joplin Cloud.
 > - snippet (exported note): [remove excess spaced framing](#noframe) of exported content
 > - snippet (exported note): [remove automated note titles](#notitle) from exported note
 > - snippet (rendered and exported note): [toggle the embedded display of linked-to PDF](#embeddedpdf)
+> - snippet (rendered and exported note): [disable links](#disablelinks)
 > 
 > #### [Tweaks for the Joplin UI](#tweaks-ui)
 > 
@@ -132,7 +133,7 @@ snippet removes that inserted/automated title.
 
 &ZeroWidthSpace;
 
-## <span id="embeddedpdf">—</span>
+## <span id="embeddedpdf">—</span> (#jtweaks switches) toggle behavior of linked-to PDF
 
 [userstyle-snippet-toggle-embedded-pdf.css](./userstyle-snippet-toggle-embedded-pdf.css)
 
@@ -147,6 +148,16 @@ default (like I do), do the same, but add
 
 *Note: This switch is also built into `jvirtpage.css`, and so, if you use both
 there may be a conflict. Or not. Experiment. :)*
+
+&ZeroWidthSpace;
+
+## <span id="disablelinks">—</span> (#jtweaks switches) disable links for a note and/or exported PDF
+
+[userstyle-snippet-disable-links.css](./userstyle-snippet-disable-links.css)
+
+Sometimes you just wanna disable links in a note. Or, as if often the case,
+in it's exported PDF. The `jweaks` switches are: `no-links` and
+`no-links-export`
 
 &ZeroWidthSpace;
 
