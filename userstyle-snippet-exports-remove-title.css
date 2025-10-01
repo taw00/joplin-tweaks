@@ -8,7 +8,35 @@
  * -or-
  * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
  */ 
+
+
+/* Uncomment this :has and its mirroring brace at the end of the file if you
+ * want to require <div id="jtweaks"></div> to exist in a note before allowing
+ * any of this formatting to function. I.e., the stylings will be OFF by
+ * default if you uncomment this and its ending brace.
+:has( div#jtweaks ) {
+*/
+
+/* If on by default (i.e., you haven't uncommented the above), turn off these
+ * stylings with <div id="jtweaks off"></div> somewhere within your note. */
+:not( :has( div#jtweaks:is(.off,#off) ) ) {
+
+
+
+
 @media print {
     /* remove the Joplin automated note title header */
     .exported-note-title { display: none; }
 }
+
+
+
+
+} /* end :not( :has( div#jtweaks:is(.off,#off) ) ) */
+
+/* Uncomment this brace and its mirroring :has toward the top of the file if
+ * you want to require <div id="tweaks"></div> to exist in a note before
+ * allowing any of this formatting to function.
+}
+*/
+

@@ -36,6 +36,22 @@
 }
 
 
+
+
+/* Uncomment this :has and its mirroring brace at the end of the file if you
+ * want to require <div id="jtweaks"></div> to exist in a note before allowing
+ * any of this formatting to function. I.e., the stylings will be OFF by
+ * default if you uncomment this and its ending brace.
+:has( div#jtweaks ) {
+*/
+
+/* If on by default (i.e., you haven't uncommented the above), turn off these
+ * stylings with <div id="jtweaks off"></div> somewhere within your note. */
+:not( :has( div#jtweaks:is(.off,#off) ) ) {
+
+
+
+
 /*
  * configuration for both @media screen and print
  */
@@ -43,4 +59,15 @@
     /* do we display PDFs? */
     display: var(--jtweak-pdf-display);
 }
+
+
+
+
+} /* end :not( :has( div#jtweaks:is(.off,#off) ) ) */
+
+/* Uncomment this brace and its mirroring :has toward the top of the file if
+ * you want to require <div id="tweaks"></div> to exist in a note before
+ * allowing any of this formatting to function.
+}
+*/
 
