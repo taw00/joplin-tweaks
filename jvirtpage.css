@@ -373,7 +373,7 @@ body.page-note {
     /* Joplin Cloud stuff
      * - We don't want anything but our document to be printed. */
     body.page-note {
-        /* remove footer with copright and T&Cs */
+        /* remove footer with copyright and T&Cs */
         & > div.footer { display: none; }
         & > main.main > div.container.main-container {
             /* remove branded navbar */
