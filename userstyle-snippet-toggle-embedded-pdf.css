@@ -1,0 +1,46 @@
+/* Toggle PDF display either on or off.
+ * 
+ * Joplin, by default, will display an embedded view of a linked-to PDF.
+ * This stylesheet enables an on and an off switch for that behavior.
+ *
+ * TO SET THE DEFAULT BEHAVOIR:
+ * You decide the default behavior (we leave it on, by default) by editing the
+ * initial value of the --jtweak-pdf-display variable below.
+ *
+ * TO ENABLE:
+ * Then add this CSS configuration block to your userstyle.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ *
+ * TO USE:
+ * Add on of these lines anywhere in your note:
+ * <div id="jtweaks show-pdf"></div>
+ *   or
+ * <div id="jtweaks no-pdf"></div>
+ */ 
+
+@layer jtweaks {
+    :root {
+        /* the default behavior of the embedding of a PDF in a note */
+        --jtweak-pdf-display: none;  /* if you want it not embedded (remains a link) by default */
+        --jtweak-pdf-display: block; /* if you want it displayed (embedded) by default */
+
+        &:has( div#jtweaks:is(.nopdf,.no-pdf,#nopdf,#no-pdf) ) {
+            --jtweak-pdf-display: none;
+        }
+        &:has( div#jtweaks:is(.showpdf,.show-pdf,#showpdf,#show-pdf) ) {
+            --jtweak-pdf-display: block;
+        }
+    }
+}
+
+
+/*
+ * configuration for both @media screen and print
+ */
+#rendered-md .media-player.media-pdf {
+    /* do we display PDFs? */
+    display: var(--jtweak-pdf-display);
+}
+

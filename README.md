@@ -19,6 +19,7 @@ in Joplin Cloud.
 > - snippet (exported note): exported notes [should not include scrollbars](#noscrollbars)
 > - snippet (exported note): [remove excess spaced framing](#noframe) of exported content
 > - snippet (exported note): [remove automated note titles](#notitle) from exported note
+> - snippet (rendered and exported note): [toggle the embedded display of linked-to PDF](#embeddedpdf)
 > 
 > #### [Tweaks for the Joplin UI](#tweaks-ui)
 > 
@@ -128,6 +129,24 @@ note. We remove that when this snippet of CSS.
 Most of the time, I simply do not want Joplin adding a note title to my
 exported content. If I want a title, I will add it to the note myself. This
 snippet removes that inserted/automated title.
+
+&ZeroWidthSpace;
+
+## <span id="embeddedpdf">—</span>
+
+[userstyle-snippet-toggle-embedded-pdf.css](./userstyle-snippet-toggle-embedded-pdf.css)
+
+Joplin, by default, will expand a PDF within a functional viewport within a
+note.  An embedded PDF, if you will. This feature is very convenient, but I
+also don't have a need for it most of the time. This CSS snippet adds a toggle
+of sorts. Add this snippet to your `userstyle.css` configuration and add
+`<div id="jtweaks no-pdf"></div>` anywhere within your note to turn this
+behavior off. And if you configured the CSS to turn off the display of PDFs by
+default (like I do), do the same, but add
+`<div id="jtweaks show-pdf"></div>` when you want to show that PDF.
+
+*Note: This switch is also built into `jvirtpage.css`, and so, if you use both
+there may be a conflict. Or not. Experiment. :)*
 
 &ZeroWidthSpace;
 
