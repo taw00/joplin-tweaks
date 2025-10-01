@@ -173,12 +173,11 @@
 */
 
 /* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jvp" class="off"></div> somewhere within your note.
- * The div#vpage rule makes this compatible with the manuscript-css project */
+ * stylings with <div id="jvp off"></div> somewhere within your note.
+ * (Note that the div#vpage rule makes this compatible with the manuscript-css
+ * project.) */
 :not( :has(
-    div#jvpoff,
-    div#jvp.off,
-    div#jvp#off,
+    div#jvp:is(.off,#off),
     div#vpage > article#manuscript
     ) ) {
 
@@ -190,6 +189,7 @@
     /* do we display PDFs? */
     display: var(--jvp-pdf-display);
 }
+
 /* no-links, no-links-export
  * If you want to disable links in your document: one option disables all
  * links (no-links), and another only disables links in an exported PDF
@@ -408,9 +408,9 @@ body.page-note {
             border: unset;
         }
     }
-}
+} /* end @media print */
 
-} /* end :not( :has( div#jvpoff, div#jvp.off ) ) */
+} /* end :not( :has( div#jvp:is(.off,#off) ) ) */
 
 /* Uncomment this brace and its mirroring :has toward the top of the file if
  * you want to require <div id="jvp"></div> to exist in a note before allowing
