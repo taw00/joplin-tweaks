@@ -137,6 +137,11 @@ If you want to change the default behavior, add this line anywhere in your
 
 SWITCH can be one of …
 
+- `off`  
+  This will disable all of `jvirtpage.css`'s functionality.
+  I.e., if you want to turn off these stylings for a particular note, just add
+  `<div id="jvp" class="off"></div>` (or `<div id="jvp off"></div>`)
+  anywhere within that note.
 - `US`, `A4`, `A5`, `A6`, or `USh`  
   Page dimension switches (`USh` means US Half-letter). `US` is the default.
 - `landscape`  
@@ -148,13 +153,15 @@ SWITCH can be one of …
   Turns off the marker that notes the page length of the current configuration.
 - `no-pdf`  
   Turns off rendering a PDF in the note.
-- `pdf`  
+- `show-pdf`  
   Turns on rendering a PDF in the note (only useful if you turn it off by
   default by editing the initial constant value within the CSS).
-- `off`  
-  Same as id="jvpoff". This will turn off the stylings for a note.  
-  I.e., if you want to turn off the stylings for a particular note, just add
-  `<div id="jvp" class="off"></div> anywhere within that note.
+- `no-links`  
+  This will turn off all link functionality within a note and attempt to set
+  their stylings to something neutral.
+- `no-links-export`
+  This will turn off all link functionality within an *exported* note and
+  attempt to set their stylings to something neutral.
 
 For example, many (maybe most) of my notes are configured as such:  
 `<div id="jvp" class="dark no-pdf"></div>`
