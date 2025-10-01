@@ -58,9 +58,9 @@
         --jvp-page-margin: var(--jvp-page-marginUS);
         --jvp-indent:      var(--jvp-page-indentUS);
 
-        /* by default, PDFs are displayed in a note */
-        --jvp-pdf-display: none;  /* if you want it off by default */
-        --jvp-pdf-display: block; /* if you want it on by default */
+        /* the default behavior of a linked-to PDF in a note */
+        --jvp-pdf-display: none;  /* if you want it not embedded (remains a link) by default */
+        --jvp-pdf-display: block; /* if you want it displayed (embedded) by default */
 
 
         /* SWITCHES
@@ -135,10 +135,10 @@
         &:has( div#jvp.no-1st-page-marker) {
             --jvp-1st-page-marker-color: transparent;
         }
-        &:has( div#jvp:is(.nopdf,.no-pdf) ) {
+        &:has( div#jvp:is(.nopdf,.no-pdf,#nopdf,#no-pdf) ) {
             --jvp-pdf-display: none;
         }
-        &:has( div#jvp:is(.showpdf,.show-pdf,.pdf) ) {
+        &:has( div#jvp:is(.showpdf,.show-pdf,#showpdf,#show-pdf) ) {
             --jvp-pdf-display: block;
         }
 
@@ -178,6 +178,7 @@
 :not( :has(
     div#jvpoff,
     div#jvp.off,
+    div#jvp#off,
     div#vpage > article#manuscript
     ) ) {
 
@@ -188,6 +189,20 @@
 #rendered-md .media-player.media-pdf {
     /* do we display PDFs? */
     display: var(--jvp-pdf-display);
+}
+/* no-links, no-links-export
+ * If you want to disable links in your document: one option disables all
+ * links (no-links), and another only disables links in an exported PDF
+ * (no-links-export or no-links-pdf) */
+:has(div#jvp:is(#no-links,#disable-links,.no-links,.disable-links)) {
+    a,
+    a:is(:any-link,:link,:active,:visited,:hover) {
+        pointer-events: none;
+        cursor: default;
+        color: inherit;
+        text-decoration: unset;
+        border: unset;
+    }
 }
 
 /* Joplin Cloud stuff
@@ -375,6 +390,23 @@ body.page-note {
     }
     #rendered-md {
         width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: unset;
+    }
+
+    /* no-links, no-links-export
+     * If you want to disable links in your document: one option disables all
+     * links (no-links), and another only disables links in an exported PDF
+     * (no-links-export or no-links-pdf) */
+    :has(div#jvp:is(
+      #no-links-pdf,#disable-links-pdf,.no-links-pdf,.disable-links-pdf,
+      #no-links-export,#disable-links-export,.no-links-export,.disable-links-export)) {
+        a,
+        a:is(:any-link,:link,:active,:visited,:hover) {
+            pointer-events: none;
+            cursor: default;
+            color: inherit;
+            text-decoration: unset;
+            border: unset;
+        }
     }
 }
 
