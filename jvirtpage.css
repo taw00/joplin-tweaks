@@ -190,7 +190,8 @@
 /* no-links, no-links-export
  * If you want to disable links in your document: one option disables all
  * links (no-links), and another only disables links in an exported PDF
- * (no-links-export or no-links-pdf) */
+ * (no-links-export)
+ * Note, no-links-export rules defined in @media print section */
 :has(div#jvp:is(#no-links,#disable-links,.no-links,.disable-links)) {
     a,
     a:is(:any-link,:link,:active,:visited,:hover) {
@@ -284,11 +285,11 @@ body.page-note {
          * margin/padding. Then if it is <div id="jvp"></div> then blank the
          * next element's top margin/padding. If you do anything fancy, well, we
          * just can't account for that. :) */
-        & :first-child:not(#jvp,#jvpoff) {
+        & :first-child:not(#jvp) {
             margin-block-start: 0;
             padding-block-start: 0;
         }
-        & :first-child:is(#jvp,#jvpoff) + * {
+        & :first-child:is(#jvp) + * {
             margin-block-start: 0;
             padding-block-start: 0;
         }
@@ -304,44 +305,6 @@ body.page-note {
             border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
             opacity: 0.5;
         }
-
-        /* debugging only: sketch the top margin * /
-        &::before {
-            display: block;
-            position: absolute;
-            content: "";
-            top: 0; left: 0;
-            height: 1in;
-            width: 100%;
-            border: green 1px dashed;
-            opacity: 1;
-        }*/
-
-        /* debugging only: sketch a left margin * /
-        &::after {
-            display: block;
-            position: absolute;
-            content: "";
-            top: 0;
-            left: 0;
-            width: 1in;
-            width: calc(var(--jvp-page-margin));
-            height: var(--jvp-page-height);
-            border: red 1px dashed;
-        }*/
-
-        /* debugging only: show a right margin * /
-        &::after {
-            display: block;
-            position: absolute;
-            content: "";
-            top: 0;
-            right: 0;
-            width: 1in;
-            width: calc(var(--jvp-page-margin));
-            height: var(--jvp-page-height);
-            border: red 1px dashed;
-        }*/
     } /* end #rendered-md */
 
 } /* end @media screen */
@@ -392,7 +355,8 @@ body.page-note {
     /* no-links, no-links-export
      * If you want to disable links in your document: one option disables all
      * links (no-links), and another only disables links in an exported PDF
-     * (no-links-export or no-links-pdf) */
+     * (no-links-export)
+     * Note, no-links rules defined outside of @media print section above */
     :has(div#jvp:is(
       #no-links-pdf,#disable-links-pdf,.no-links-pdf,.disable-links-pdf,
       #no-links-export,#disable-links-export,.no-links-export,.disable-links-export)) {
@@ -414,4 +378,54 @@ body.page-note {
  * any of this formatting to function.
 }
 */
+
+
+
+
+/* DEBUGGING STUFF — DON'T USE --------------------------------------------- */
+#rendered-md {
+    /* debugging only: sketch a top margin */
+    /*
+    &::before {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 0; left: 0;
+        height: 1in;
+        width: 100%;
+        border: green 1px dashed;
+        opacity: 1;
+    }
+    */
+
+    /* debugging only: sketch a left margin */
+    /*
+    &::after {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 1in;
+        width: calc(var(--jvp-page-margin));
+        height: var(--jvp-page-height);
+        border: red 1px dashed;
+    }
+    */
+
+    /* debugging only: show a right margin */
+    /*
+    &::after {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        width: 1in;
+        width: calc(var(--jvp-page-margin));
+        height: var(--jvp-page-height);
+        border: red 1px dashed;
+    }
+    */
+} /* end #rendered-md */
 
