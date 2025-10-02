@@ -132,7 +132,7 @@
             --jvp-page-width: var(--jvp-page-heightA6);
             --jvp-page-height: var(--jvp-page-widthA6);
         }
-        &:has( div#jvp.no-1st-page-marker) {
+        &:has( div#jvp:is(.no-1st-page-marker,.no-page-marker) ) {
             --jvp-1st-page-marker-color: transparent;
         }
         &:has( div#jvp:is(.nopdf,.no-pdf,#nopdf,#no-pdf) ) {
@@ -176,10 +176,7 @@
  * stylings with <div id="jvp off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has(
-    div#jvp:is(.off,#off),
-    div#vpage > article#manuscript
-    ) ) {
+:not( :has( div#jvp:is(.off,#off), div#vpage > article#manuscript ) ) {
 
 
 /*
