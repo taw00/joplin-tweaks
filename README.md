@@ -193,7 +193,7 @@ that bit of UI and give yourself some extra space.
 
 &ZeroWidthSpace;
 
-## <span id="smallertagswidget">—</span> make the tags widget smaller
+## <span id="smallertagswidget">—</span> snippet (UI): make the tags widget smaller
 
 [userchrome-snippet-shrink-click-to-add-tags.css](./userchrome-snippet-shrink-click-to-add-tags.css)
 
