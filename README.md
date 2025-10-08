@@ -24,9 +24,9 @@ in Joplin Cloud.
 > 
 > #### [Tweaks for the Joplin UI](#tweaks-ui)
 > 
-> - [remove the markdown vs. rich text editor switch (button)](#noeditorswitch)
-> - [remove the tags widget](#notagswidget)
-> - [make the tags widget smaller](#smallertagswidget)
+> - snippet (UI): [remove the markdown vs. rich text editor switch (button)](#noeditorswitch)
+> - snippet (UI): [remove the tags widget](#notagswidget)
+> - snippet (UI): [make the tags widget smaller](#smallertagswidget)
 
 &ZeroWidthSpace;
 
