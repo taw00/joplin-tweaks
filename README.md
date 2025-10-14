@@ -48,7 +48,8 @@ associated documentation.
 
 ## <span id="jvirtpagecss">—</span> Render Jopin note preview as an attractive virtual page
 
-[jvirtpage.css](./jvirtpage.css), Documentation: [jvirtpage.md](docs/jvirtpage.md)
+Stylesheet: [jvirtpage.css](./jvirtpage.css)  
+Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 - Preview your document as an aesthetically pleasing virtual page that
   matches international standard dimensions for US Letter, US Half-letter, A4,
