@@ -40,20 +40,21 @@ in Joplin Cloud.
 
 # <span id="tweaks-renderer-md"></span>Tweaks for the Markdown Previewer & Joplin Cloud & Exported Notes
 
-The snippets are added to the `userstyle.css` style configuration file.
-`jvirtpage.css` is treated differently. See the associated documentation.
+The snippets below are added to the `userstyle.css` style configuration file.
+`jvirtpage.css` is expected to be imported into a document directly. See the
+associated documentation.
 
 &ZeroWidthSpace;
 
 ## <span id="jvirtpagecss">—</span> Render Jopin note preview as an attractive virtual page
 
-[jvirtpage.css](./jvirtpage.css) and [docs](docs/jvirtpage.md)
+[jvirtpage.css](./jvirtpage.css), Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 - Preview your document as an aesthetically pleasing virtual page that
   matches international standard dimensions for US Letter, US Half-letter, A4,
   A5, A6 pages. Themeable: default (white page), dim, and dark views.
 - Render the document to those dimensions when you export to PDF.
-- For more detail, please read:
+- For more detail, please read the documentation:
   https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md
 
 ### Quickstart guide to `jvirtpage.css`
