@@ -53,7 +53,7 @@
         --jvp-indentA6:  calc(var(--jvp-page-marginA6)  * .5);
 
         /* the defaults for page dimensions and margin and indent */
-        --jvp-page-width:   var(--jvp-page-widthUS);
+        --jvp-page-width:  var(--jvp-page-widthUS);
         --jvp-page-height: var(--jvp-page-heightUS);
         --jvp-page-margin: var(--jvp-page-marginUS);
         --jvp-indent:      var(--jvp-page-indentUS);
@@ -254,12 +254,22 @@ body.page-note {
      * - Fade the navbar and footer. Still present, just not prominent. */
     body.page-note {
         /* footer with copyright and T&Cs - fade to watermark */
-        & > div.footer { opacity: .5; }
+        & > div.footer div.content {
+            opacity: initial;
+            --jvp-tmp-footer-color: hsl(from var(--jvp-paper-color) h s l / 50%);
+            --jvp-tmp-footer-color-link: hsl(from var(--jvp-tmp-footer-color) h s l / 90%);
+            color: var(--jvp-tmp-footer-color);
+            & a {
+                color: var(--jvp-tmp-footer-color-link);
+            }
+        }
         & > main.main > div.container.main-container {
-            /* branded navbar - fade to watermark */
+            /* branded navbar - fade to watermark and remove fluff*/
             & > nav.navbar {
-                opacity: .15;
+                opacity: 0.2;
                 background-color: inherit;
+                box-shadow: unset;
+                border: unset;
             }
         }
     }
@@ -298,12 +308,24 @@ body.page-note {
         &::before {
             display: block;
             position: absolute;
+            opacity: 0.4;
             content: "";
+            /*
             top: var(--jvp-page-height);
             left: 0;
             width: calc(var(--jvp-page-margin) / 2);
             border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
-            opacity: 0.5;
+            */
+            --tmp-content-height: calc(var(--jvp-page-height) - var(--jvp-page-margin) - var(--jvp-page-margin));
+            top: var(--jvp-page-margin);
+            left: 0;
+            width: calc(var(--jvp-page-margin) / 2);
+            height: calc(var(--tmp-content-height));
+            border-block-start: var(--jvp-1st-page-marker-color) dotted 2px;
+            /*border-inline-start: var(--jvp-1st-page-marker-color) dashed 2px;*/
+            border-inline-end: var(--jvp-1st-page-marker-color) dotted 2px;
+            border-block-end: var(--jvp-1st-page-marker-color) dotted 2px;
+            margin-inline-start: calc(var(--jvp-page-margin) * .45);
         }
     } /* end #rendered-md */
 
