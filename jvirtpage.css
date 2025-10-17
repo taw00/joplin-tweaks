@@ -256,9 +256,6 @@ body.page-note {
     /* Joplin Cloud stuff
      * - Fade the navbar and footer. Still present, just not prominent. */
     body.page-note {
-        /* show bit of margin surrounding the virtual page on small screens */
-        width: 96%;
-        max-width: var(--jvp-page-width);
         /* footer with copyright and T&Cs - fade to watermark */
         & > div.footer div.content {
             opacity: initial;
