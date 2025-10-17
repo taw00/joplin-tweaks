@@ -261,9 +261,9 @@ body.page-note {
         /* footer with copyright and T&Cs - fade to watermark */
         & > div.footer div.content {
             opacity: initial;
-            color: var(--jvp-footer-color);
+            color: var(--jvp-jcloud-footer-color);
             & a {
-                color: var(--jvp-footer-color-link);
+                color: var(--jvp-jcloud-footer-color-link);
             }
         }
         & > main.main > div.container.main-container {
