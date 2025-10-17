@@ -25,18 +25,16 @@
         --jvp-paper-color: white;
         --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
         --jvp-paper-box-shadow: 0 0 var(--jvp-page-spacing) black;
-        --jvp-1st-page-marker-color: var(--jvp-desktop-color);
+        --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 30%);
 
         --jvp-dim-text-color: black;
         --jvp-dim-paper-color: hsl(0deg 0% 75%); /* silver */
         --jvp-dim-desktop-color: hsl(0deg 0% 41%); /* dimgray */
-        --jvp-dim-1st-page-marker-color: var(--jvp-dim-desktop-color);
 
         --jvp-dark-text-color: hsl(0deg 0% 96%); /* whitesmoke; not white */
         --jvp-dark-paper-color: hsl(0deg 0% 12%); /* very dark gray */
         --jvp-dark-desktop-color: hsl(0deg 0% 20%); /* darker than dimgray */
         /*--jvp-dark-desktop-color: hsl(222deg 12% 16%);*/ /* a dark purple-blue */
-        --jvp-dark-1st-page-marker-color: var(--jvp-dark-desktop-color);
 
         /* popular page dimensions */
         --jvp-page-widthUS:  8.5in;  --jvp-page-heightUS:   11in;  --jvp-page-marginUS:   1in;
@@ -75,7 +73,7 @@
             --jvp-text-color:    var(--jvp-dark-text-color);
             --jvp-paper-color:   var(--jvp-dark-paper-color);
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
-            --jvp-1st-page-marker-color: var(--jvp-dark-1st-page-marker-color);
+            --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 20%);
             --jvp-jcloud-footer-color: hsl(from black h s l / 35%);
             --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 50%);
         }
@@ -83,7 +81,7 @@
             --jvp-text-color:    var(--jvp-dim-text-color);
             --jvp-paper-color:   var(--jvp-dim-paper-color);
             --jvp-desktop-color: var(--jvp-dim-desktop-color);
-            --jvp-1st-page-marker-color: var(--jvp-dim-1st-page-marker-color);
+            --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 30%);
         }
 
         &:has( div#jvp:is(.US,.us) ) {
@@ -230,7 +228,7 @@ body.page-note {
  * configuration for screen and HTML rendering
  */
 @media screen {
-    html { background-color: transparent; }
+    html { background-color: var(--jvp-desktop-color); }
     body {
         /* a virtual paper look: <body> is the "desk" behind the paper */
         background-color: var(--jvp-desktop-color);
@@ -301,35 +299,37 @@ body.page-note {
          * margin/padding. Then if it is <div id="jvp"></div> then blank the
          * next element's top margin/padding. If you do anything fancy, well, we
          * just can't account for that. :) */
-        & :first-child:not(#jvp) {
+        & :first-child {
             margin-block-start: 0;
             padding-block-start: 0;
-        }
-        & :first-child:is(#jvp) + * {
-            margin-block-start: 0;
-            padding-block-start: 0;
+            &:is(#jbp) + * {
+                margin-block-start: 0;
+                padding-block-start: 0;
+            }
+            &:is(style) {
+                & + * {
+                    margin-block-start: 0;
+                    padding-block-start: 0;
+                }
+                & + :is(#jvp) + * {
+                    margin-block-start: 0;
+                    padding-block-start: 0;
+                }
+            }
         }
 
         /* add a 1st-page-marker to the rendering */
-        &::before {
+        & p:first-of-type::after {
             display: block;
             position: absolute;
             opacity: 0.4;
             content: "";
-            /*
-            top: var(--jvp-page-height);
-            left: 0;
-            width: calc(var(--jvp-page-margin) / 2);
-            border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
-            */
             --tmp-content-height: calc(var(--jvp-page-height) - var(--jvp-page-margin) - var(--jvp-page-margin));
             top: var(--jvp-page-margin);
             left: 0;
             width: calc(var(--jvp-page-margin) / 4);
             height: calc(var(--tmp-content-height));
             border-block-start: var(--jvp-1st-page-marker-color) solid 2px;
-            /*border-inline-start: var(--jvp-1st-page-marker-color) dashed 2px;*/
-            /*border-inline-end: var(--jvp-1st-page-marker-color) dotted 2px;*/
             border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
             margin-inline-start: calc(var(--jvp-page-margin) * .75);
         }
