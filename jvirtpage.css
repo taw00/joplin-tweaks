@@ -324,10 +324,10 @@ body.page-note {
             left: 0;
             width: calc(var(--jvp-page-margin) / 4);
             height: calc(var(--tmp-content-height));
-            border-block-start: var(--jvp-1st-page-marker-color) dotted 2px;
+            border-block-start: var(--jvp-1st-page-marker-color) solid 2px;
             /*border-inline-start: var(--jvp-1st-page-marker-color) dashed 2px;*/
             /*border-inline-end: var(--jvp-1st-page-marker-color) dotted 2px;*/
-            border-block-end: var(--jvp-1st-page-marker-color) dotted 2px;
+            border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
             margin-inline-start: calc(var(--jvp-page-margin) * .75);
         }
     } /* end #rendered-md */
