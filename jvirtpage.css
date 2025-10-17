@@ -64,7 +64,7 @@
 
         /* Joplin Cloud stuff */
         --jvp-jcloud-footer-color: hsl(from var(--jvp-paper-color) h s l / 50%);
-        --jvp-jcloud-footer-color-link: hsl(from var(--jvp-tmp-footer-color) h s l / 90%);
+        --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 90%);
 
         /* SWITCHES
          * Switches to change the default page dimensions, margins, indent and
@@ -77,7 +77,7 @@
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
             --jvp-1st-page-marker-color: var(--jvp-dark-1st-page-marker-color);
             --jvp-jcloud-footer-color: hsl(from black h s l / 35%);
-            --jvp-jcloud-footer-color-link: hsl(from var(--jvp-tmp-footer-color) h s l / 50%);
+            --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 50%);
         }
         &:has( div#jvp:is(.dim) ) {
             --jvp-text-color:    var(--jvp-dim-text-color);
