@@ -20,12 +20,22 @@
 
 @layer jvirtpage {
     :root {
+        /* default behavior of a linked-to PDF in a note - currently enabled
+         * also controlled by classes no-pdfs and show-pdfs */
+        --jvp-pdf-display: none;  /* want, by default, not displayed? (remains a link) */
+        --jvp-pdf-display: block; /* want, by default, displayed (embedded) */
+
+        /* default behavior of the margin markers - currently displayed
+         * also controlled by classes no-markers and show-markers */
+        --jvp-margin-markers-display: none;  /* want them off */
+        --jvp-margin-markers-display: block; /* want them on */
+
         /* CONSTANTS */
         --jvp-text-color: black;
         --jvp-paper-color: white;
         --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
         --jvp-paper-box-shadow: 0 0 var(--jvp-page-spacing) black;
-        --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 30%);
+        --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
 
         --jvp-dim-text-color: black;
         --jvp-dim-paper-color: hsl(0deg 0% 75%); /* silver */
@@ -56,10 +66,6 @@
         --jvp-page-margin: var(--jvp-page-marginUS);
         --jvp-indent:      var(--jvp-page-indentUS);
 
-        /* the default behavior of a linked-to PDF in a note */
-        --jvp-pdf-display: none;  /* if you want it not embedded (remains a link) by default */
-        --jvp-pdf-display: block; /* if you want it displayed (embedded) by default */
-
         /* Joplin Cloud stuff */
         --jvp-jcloud-footer-color: hsl(from var(--jvp-paper-color) h s l / 50%);
         --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 90%);
@@ -73,7 +79,7 @@
             --jvp-text-color:    var(--jvp-dark-text-color);
             --jvp-paper-color:   var(--jvp-dark-paper-color);
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
-            --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 20%);
+            --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 8%);
             --jvp-jcloud-footer-color: hsl(from black h s l / 35%);
             --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 50%);
         }
@@ -81,7 +87,7 @@
             --jvp-text-color:    var(--jvp-dim-text-color);
             --jvp-paper-color:   var(--jvp-dim-paper-color);
             --jvp-desktop-color: var(--jvp-dim-desktop-color);
-            --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 30%);
+            --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
         }
 
         &:has( div#jvp:is(.US,.us) ) {
@@ -135,13 +141,16 @@
             --jvp-page-width:  var(--jvp-page-heightA6);
             --jvp-page-height: var(--jvp-page-widthA6);
         }
-        &:has( div#jvp:is(.no-1st-page-marker,.no-page-marker) ) {
-            --jvp-1st-page-marker-color: transparent;
+        &:has( div#jvp:is(.no-page-markers,.no-markers, #no-page-markers,#no-markers) ) {
+            --jvp-margin-markers-display: none;
         }
-        &:has( div#jvp:is(.nopdf,.no-pdf,#nopdf,#no-pdf) ) {
+        &:has( div#jvp:is(.show-page-markers,.show-markers, #show-page-markers,#show-markers) ) {
+            --jvp-margin-markers-display: block;
+        }
+        &:has( div#jvp:is(.nopdfs,.no-pdfs,#nopdfs,#no-pdfs, .nopdf,.no-pdf,#nopdf,#no-pdf) ) {
             --jvp-pdf-display: none;
         }
-        &:has( div#jvp:is(.showpdf,.show-pdf,#showpdf,#show-pdf) ) {
+        &:has( div#jvp:is(.showpdfs,.show-pdfs,#showpdfs,#show-pdfs, .showpdf,.show-pdf,#showpdf,#show-pdf) ) {
             --jvp-pdf-display: block;
         }
 
@@ -299,7 +308,7 @@ body.page-note {
         & :first-child {
             margin-block-start: 0;
             padding-block-start: 0;
-            &:is(#jbp) + * {
+            &:is(#jvp) + * {
                 margin-block-start: 0;
                 padding-block-start: 0;
             }
@@ -315,20 +324,37 @@ body.page-note {
             }
         }
 
-        /* add a 1st-page-marker to the rendering */
-        & p:first-of-type::after {
-            display: block;
+        /* add a left-side 1st-page-marker to the rendering */
+        & p:last-of-type::before {
+            display: var(--jvp-margin-markers-display);
             position: absolute;
-            opacity: 0.4;
             content: "";
             --tmp-content-height: calc(var(--jvp-page-height) - var(--jvp-page-margin) - var(--jvp-page-margin));
             top: var(--jvp-page-margin);
             left: 0;
             width: calc(var(--jvp-page-margin) / 4);
             height: calc(var(--tmp-content-height));
-            border-block-start: var(--jvp-1st-page-marker-color) solid 2px;
-            border-block-end: var(--jvp-1st-page-marker-color) solid 2px;
+            border-block: var(--jvp-1st-page-marker-color) solid 2px;
+            border-inline-start: unset;
+            border-inline-end: var(--jvp-1st-page-marker-color) solid 1px;
             margin-inline-start: calc(var(--jvp-page-margin) * .75);
+            margin-inline-end: unset;
+        }
+        /* add a right-side 1st-page-marker to the rendering */
+        & p:last-of-type::after {
+            display: var(--jvp-margin-markers-display);
+            position: absolute;
+            content: "";
+            --tmp-content-height: calc(var(--jvp-page-height) - var(--jvp-page-margin) - var(--jvp-page-margin));
+            top: var(--jvp-page-margin);
+            right: 0;
+            width: calc(var(--jvp-page-margin) / 4);
+            height: calc(var(--tmp-content-height));
+            border-block: var(--jvp-1st-page-marker-color) solid 2px;
+            border-inline-start: var(--jvp-1st-page-marker-color) solid 1px;
+            border-inline-end: unset;
+            margin-inline-start: unset;
+            margin-inline-end: calc(var(--jvp-page-margin) * .75);
         }
     } /* end #rendered-md */
 
@@ -453,4 +479,3 @@ body.page-note {
     }
     */
 } /* end #rendered-md */
-
