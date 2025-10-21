@@ -301,11 +301,12 @@ body.page-note {
         min-height: var(--jvp-page-height);
 
         /* This is either ugly or clever. Maybe simply "too clever" …
-         * If the first child is not <div id="jvp"></div> then blank its top
-         * margin/padding. Then if it is <div id="jvp"></div> then blank the
-         * next element's top margin/padding. If you do anything fancy, well, we
-         * just can't account for that. :) */
-        & :first-child {
+         * We are attempting to remove the top margin from the first element.
+         * But that element block may be one of <style></style> or
+         * <div id="jvp"></div>. And so we keep working down the line.
+         * Note, for :last-child, we are less concerned if the end spacing is
+         * absolutely cleared out. */
+        & > :first-child {
             margin-block-start: 0;
             padding-block-start: 0;
             &:is(#jvp) + * {
@@ -323,9 +324,13 @@ body.page-note {
                 }
             }
         }
+        & > :last-child {
+            margin-block-end: 0;
+            padding-block-end: 0;
+        }
 
-        /* add a left-side 1st-page-marker to the rendering */
-        & p:last-of-type::before {
+        /* add a left-side 1st-page margin marker to the rendering */
+        & div#jvp::before {
             display: var(--jvp-margin-markers-display);
             position: absolute;
             content: "";
@@ -340,8 +345,8 @@ body.page-note {
             margin-inline-start: calc(var(--jvp-page-margin) * .75);
             margin-inline-end: unset;
         }
-        /* add a right-side 1st-page-marker to the rendering */
-        & p:last-of-type::after {
+        /* add a right-side 1st-page margin marker to the rendering */
+        & div#jvp::after {
             display: var(--jvp-margin-markers-display);
             position: absolute;
             content: "";
