@@ -141,16 +141,16 @@
             --jvp-page-width:  var(--jvp-page-heightA6);
             --jvp-page-height: var(--jvp-page-widthA6);
         }
-        &:has( div#jvp:is(.no-page-markers,.no-markers, #no-page-markers,#no-markers) ) {
+        &:has( div#jvp:is(.no-page-markers,.no-markers) ) {
             --jvp-margin-markers-display: none;
         }
-        &:has( div#jvp:is(.show-page-markers,.show-markers, #show-page-markers,#show-markers) ) {
+        &:has( div#jvp:is(.show-page-markers,.show-markers) ) {
             --jvp-margin-markers-display: block;
         }
-        &:has( div#jvp:is(.nopdfs,.no-pdfs,#nopdfs,#no-pdfs, .nopdf,.no-pdf,#nopdf,#no-pdf) ) {
+        &:has( div#jvp:is(.nopdfs,.no-pdfs, .nopdf,.no-pdf) ) {
             --jvp-pdf-display: none;
         }
-        &:has( div#jvp:is(.showpdfs,.show-pdfs,#showpdfs,#show-pdfs, .showpdf,.show-pdf,#showpdf,#show-pdf) ) {
+        &:has( div#jvp:is(.showpdfs,.show-pdfs, .showpdf,.show-pdf) ) {
             --jvp-pdf-display: block;
         }
 
@@ -185,10 +185,10 @@
 */
 
 /* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jvp off"></div> somewhere within your note.
+ * stylings with <div id="jvp" class="off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has( div#jvp:is(.off,#off), div#vpage > article#manuscript ) ) {
+:not( :has( div#jvp:is(.off), #jvp-off, #jvpoff, div#vpage > article#manuscript ) ) {
 
 
 /*
@@ -427,7 +427,7 @@ body.page-note {
     }
 } /* end @media print */
 
-} /* end :not( :has( div#jvp:is(.off,#off) ) ) */
+} /* end :not( :has( div#jvp:is(.off) ) ) */
 
 /* Uncomment this brace and its mirroring :has toward the top of the file if
  * you want to require <div id="jvp"></div> to exist in a note before allowing

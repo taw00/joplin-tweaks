@@ -140,7 +140,7 @@ SWITCH can be one of …
 - `off`  
   This will disable all of `jvirtpage.css`'s functionality.
   I.e., if you want to turn off these stylings for a particular note, just add
-  `<div id="jvp" class="off"></div>` (or `<div id="jvp off"></div>`)
+  `<div id="jvp" class="off"></div>`
   anywhere within that note.
 - `US`, `A4`, `A5`, `A6`, or `USh`  
   Page dimension switches (`USh` means US Half-letter). `US` is the default.
