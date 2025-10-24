@@ -18,8 +18,8 @@
 */
 
 /* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jtweaks off"></div> somewhere within your note. */
-:not( :has( div#jtweaks:is(.off,#off) ) ) {
+ * stylings with <div id="jtweaks" class="off"></div> somewhere within your note. */
+:not( :has( div#jtweaks:is(.off),#jtweaks-off,#jtweaksoff ) ) {
 
 
 
@@ -32,7 +32,7 @@
 
 
 
-} /* end :not( :has( div#jtweaks:is(.off,#off) ) ) */
+} /* end :not( :has( div#jtweaks:is(.off) ) ) */
 
 /* Uncomment this brace and its mirroring :has toward the top of the file if
  * you want to require <div id="tweaks"></div> to exist in a note before

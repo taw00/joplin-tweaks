@@ -7,9 +7,9 @@
  * document). The second will turn them off only for that document's exported
  * PDF …
  *
- * <div id="jtweaks no-links"></div>
+ * <div id="jtweaks" class="no-links"></div>
  *   or
- * <div id="jtweaks no-links-exports"></div>
+ * <div id="jtweaks" class="no-links-exports"></div>
  *
  * TO ENABLE:
  * Then add this CSS configuration block to your userstyle.css file found in …
@@ -27,8 +27,8 @@
 */
 
 /* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jtweaks off"></div> somewhere within your note. */
-:not( :has( div#jtweaks:is(.off,#off) ) ) {
+ * stylings with <div id="jtweaks" class="off"></div> somewhere within your note. */
+:not( :has( div#jtweaks:is(.off),#jtweaks-off,#jtweaksoff ) ) {
 
 
 
@@ -37,7 +37,7 @@
  * If you want to disable links in your document: one option disables all
  * links (no-links), and another only disables links in an exported PDF
  * (no-links-export or no-links-pdf) */
-:has(div#jvp:is(#no-links,#disable-links,.no-links,.disable-links)) {
+:has(div#jtweaks:is(.no-links,.disable-links)) {
     a,
     a:is(:any-link,:link,:active,:visited,:hover) {
         pointer-events: none;
@@ -53,9 +53,7 @@
      * If you want to disable links in your document: one option disables all
      * links (no-links), and another only disables links in an exported PDF
      * (no-links-export or no-links-pdf) */
-    :has(div#jvp:is(
-      #no-links-pdf,#disable-links-pdf,.no-links-pdf,.disable-links-pdf,
-      #no-links-export,#disable-links-export,.no-links-export,.disable-links-export)) {
+    :has(div#jtweaks:is(.no-links-pdf,.disable-links-pdf,.no-links-export,.disable-links-export)) {
         a,
         a:is(:any-link,:link,:active,:visited,:hover) {
             pointer-events: none;
@@ -70,7 +68,7 @@
 
 
 
-} /* end :not( :has( div#jtweaks:is(.off,#off) ) ) */
+} /* end :not( :has( div#jtweaks:is(.off) ) ) */
 
 /* Uncomment this brace and its mirroring :has toward the top of the file if
  * you want to require <div id="tweaks"></div> to exist in a note before
