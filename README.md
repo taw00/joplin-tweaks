@@ -15,7 +15,7 @@ in Joplin Cloud.
 > 
 > #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-renderer-md)
 > 
-> - Render Jopin note preview as an [attractive virtual page](#jvirtpagecss)
+> - Render Jopin note preview as a [virtual page](#jvirtpagecss) - jvirtpage.css
 > - snippet (exported note): exported notes [should not include scrollbars](#noscrollbars)
 > - snippet (exported note): [remove excess spaced framing](#noframe) of exported content
 > - snippet (exported note): [remove automated note titles](#notitle) from exported note
