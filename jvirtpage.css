@@ -75,7 +75,7 @@
          * theme.  Enabled by sticking this div somewhere in your document, for
          * example:
          *      <div id="jvp" class="A5 landscape dark"></div>               */
-        &:has( div#jvp:is(.dark) ) {
+        &:has( div#jvp:where(.dark) ) {
             --jvp-text-color:    var(--jvp-dark-text-color);
             --jvp-paper-color:   var(--jvp-dark-paper-color);
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
@@ -83,74 +83,74 @@
             --jvp-jcloud-footer-color: hsl(from black h s l / 35%);
             --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 50%);
         }
-        &:has( div#jvp:is(.dim) ) {
+        &:has( div#jvp:where(.dim) ) {
             --jvp-text-color:    var(--jvp-dim-text-color);
             --jvp-paper-color:   var(--jvp-dim-paper-color);
             --jvp-desktop-color: var(--jvp-dim-desktop-color);
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
         }
 
-        &:has( div#jvp:is(.US,.us) ) {
+        &:has( div#jvp:where(.US,.us) ) {
             /* the defaults for everything - already set; being pedantic */
             --jvp-page-width:  var(--jvp-page-widthUS);
             --jvp-page-height: var(--jvp-page-heightUS);
             --jvp-page-margin: var(--jvp-page-marginUS);
             --jvp-indent:      var(--jvp-page-indentUS);
         }
-        &:has( div#jvp:is(.US,.us).landscape ) {
+        &:has( div#jvp:where(.US,.us).landscape ) {
             --jvp-page-width:  var(--jvp-page-heightUS);
             --jvp-page-height: var(--jvp-page-widthUS);
         }
-        &:has( div#jvp:is(.USh,.USH,.ush) ) {
+        &:has( div#jvp:where(.USh,.USH,.ush) ) {
             --jvp-page-width:  var(--jvp-page-widthUSh);
             --jvp-page-height: var(--jvp-page-heightUSh);
             --jvp-page-margin: var(--jvp-page-marginUSh);
             --jvp-indent:      var(--jvp-page-indentUSh);
         }
-        &:has( div#jvp:is(.USh,.USH,.ush).landscape ) {
+        &:has( div#jvp:where(.USh,.USH,.ush).landscape ) {
             --jvp-page-width: var(--jvp-page-heightUSh);
             --jvp-page-height: var(--jvp-page-widthUSh);
         }
-        &:has( div#jvp:is(.A4,.a4) ) {
+        &:has( div#jvp:where(.A4,.a4) ) {
             --jvp-page-width:  var(--jvp-page-widthA4);
             --jvp-page-height: var(--jvp-page-heightA4);
             --jvp-page-margin: var(--jvp-page-marginA4);
             --jvp-indent:      var(--jvp-page-indentA4);
         }
-        &:has( div#jvp:is(.A4,.a4).landscape ) {
+        &:has( div#jvp:where(.A4,.a4).landscape ) {
             --jvp-page-width:  var(--jvp-page-heightA4);
             --jvp-page-height: var(--jvp-page-widthA4);
         }
-        &:has( div#jvp:is(.A5,.a5) ) {
+        &:has( div#jvp:where(.A5,.a5) ) {
             --jvp-page-width:  var(--jvp-page-widthA5);
             --jvp-page-height: var(--jvp-page-heightA5);
             --jvp-page-margin: var(--jvp-page-marginA5);
             --jvp-indent:      var(--jvp-page-indentA5);
         }
-        &:has( div#jvp:is(.A5,.a5).landscape ) {
+        &:has( div#jvp:where(.A5,.a5).landscape ) {
             --jvp-page-width:  var(--jvp-page-heightA5);
             --jvp-page-height: var(--jvp-page-widthA5);
         }
-        &:has( div#jvp:is(.A6,.a6) ) {
+        &:has( div#jvp:where(.A6,.a6) ) {
             --jvp-page-width:  var(--jvp-page-widthA6);
             --jvp-page-height: var(--jvp-page-heightA6);
             --jvp-page-margin: var(--jvp-page-marginA6);
             --jvp-indent:      var(--jvp-page-indentA6);
         }
-        &:has( div#jvp:is(.A6,.a6).landscape ) {
+        &:has( div#jvp:where(.A6,.a6).landscape ) {
             --jvp-page-width:  var(--jvp-page-heightA6);
             --jvp-page-height: var(--jvp-page-widthA6);
         }
-        &:has( div#jvp:is(.no-page-markers,.no-markers) ) {
+        &:has( div#jvp:where(.no-page-markers,.no-markers) ) {
             --jvp-margin-markers-display: none;
         }
-        &:has( div#jvp:is(.show-page-markers,.show-markers) ) {
+        &:has( div#jvp:where(.show-page-markers,.show-markers) ) {
             --jvp-margin-markers-display: block;
         }
-        &:has( div#jvp:is(.nopdfs,.no-pdfs, .nopdf,.no-pdf) ) {
+        &:has( div#jvp:where(.nopdfs,.no-pdfs, .nopdf,.no-pdf) ) {
             --jvp-pdf-display: none;
         }
-        &:has( div#jvp:is(.showpdfs,.show-pdfs, .showpdf,.show-pdf) ) {
+        &:has( div#jvp:where(.showpdfs,.show-pdfs, .showpdf,.show-pdf) ) {
             --jvp-pdf-display: block;
         }
 
@@ -181,14 +181,14 @@
  * want to require <div id="jvp"></div> to exist in a note before allowing any
  * of this formatting to function. I.e., the stylings will be OFF by default if
  * you uncomment this and its ending brace.
-:has( div#jvp ) {
+:has( div:where(#jvp) ) {
 */
 
 /* If on by default (i.e., you haven't uncommented the above), turn off these
  * stylings with <div id="jvp" class="off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has( div#jvp:is(.off), #jvp-off, #jvpoff, div#vpage > article#manuscript ) ) {
+:not( :has( :where(#jvp:where(.off), #jvp-off, #jvpoff, div#vpage > article#manuscript) ) ) {
 
 
 /*
@@ -204,7 +204,7 @@
  * links (no-links), and another only disables links in an exported PDF
  * (no-links-export)
  * Note, no-links-export rules defined in @media print section */
-:has(div#jvp:is(#no-links,#disable-links,.no-links,.disable-links)) {
+:has(:where(#jvp:where(#no-links,#disable-links,.no-links,.disable-links))) {
     a,
     a:is(:any-link,:link,:active,:visited,:hover) {
         pointer-events: none;
@@ -309,16 +309,16 @@ body.page-note {
         & > :first-child {
             margin-block-start: 0;
             padding-block-start: 0;
-            &:is(#jvp) + * {
+            &:where(#jvp) + * {
                 margin-block-start: 0;
                 padding-block-start: 0;
             }
-            &:is(style) {
+            &:where(style) {
                 & + * {
                     margin-block-start: 0;
                     padding-block-start: 0;
                 }
-                & + :is(#jvp) + * {
+                & + :where(#jvp) + * {
                     margin-block-start: 0;
                     padding-block-start: 0;
                 }
@@ -413,9 +413,9 @@ body.page-note {
      * links (no-links), and another only disables links in an exported PDF
      * (no-links-export)
      * Note, no-links rules defined outside of @media print section above */
-    :has(div#jvp:is(
+    :has(:where(#jvp:where(
       #no-links-pdf,#disable-links-pdf,.no-links-pdf,.disable-links-pdf,
-      #no-links-export,#disable-links-export,.no-links-export,.disable-links-export)) {
+      #no-links-export,#disable-links-export,.no-links-export,.disable-links-export))) {
         a,
         a:is(:any-link,:link,:active,:visited,:hover) {
             pointer-events: none;
@@ -427,11 +427,11 @@ body.page-note {
     }
 } /* end @media print */
 
-} /* end :not( :has( div#jvp:is(.off) ) ) */
+} /* end :not( :has( :where(#jvp:where(.off)) ) ) */
 
-/* Uncomment this brace and its mirroring :has toward the top of the file if
- * you want to require <div id="jvp"></div> to exist in a note before allowing
- * any of this formatting to function.
+/* Uncomment the brace below and its mirroring :has( div:where(#jvp) ) { toward
+ * the top of the file if you want to require <div id="jvp"></div> to exist in
+ * a note before allowing any of this formatting to function.
 }
 */
 
