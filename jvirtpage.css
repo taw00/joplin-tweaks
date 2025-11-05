@@ -162,21 +162,6 @@
 } /* end @layer jvirtpage */
 
 
-@page jvp-page-dimensions {
-    /* IMPORTANT NOTE: Joplin 3.4.12 and older disallow exporting to PDF with a
-     * different page size than what you have set in the joplin settings. That
-     * limitation is a bug that should be fixed in the next major release.
-     * https://github.com/laurent22/joplin/issues/13096
-     *
-     * The workaround is to export to HTML, open that in a browser, then print
-     * to file (PDF). In a few months, as of this writing (20250916), this will
-     * no longer be an issue.
-     */
-    size: var(--jvp-page-width) var(--jvp-page-height);
-    margin: var(--jvp-page-margin);
-}
-
-
 /* Uncomment this :has and its mirroring brace at the end of the file if you
  * want to require <div id="jvp"></div> to exist in a note before allowing any
  * of this formatting to function. I.e., the stylings will be OFF by default if
@@ -361,6 +346,32 @@ body.page-note {
             margin-inline-start: unset;
             margin-inline-end: calc(var(--jvp-page-margin) * .75);
         }
+        & div#jvp:is(.help,.switches) {
+            &::before {
+                display: block;
+                position: relative;
+                content: "Switches (all classes):\A"
+                  "\9 off — turn off jvirtpage styles\A"
+                  "\9 dark, dim — themes\A"
+                  "\9 us (default), ush, a4, a5, a6 — @page dimensions\A"
+                  "\9 no-page-markers, show-page-markers (default) — fancy margin indicators\A"
+                  "\9 no-pdfs, show-pdfs (default) — expansion of PDFs within note preview\A"
+                  "\9 no-links-pdf — turn off all links upon export\A"
+                  "\9 help — display this help text";
+                top: 0;
+                left: 0;
+                width: calc(var(--jvp-page-width) - var(--jvp-page-margin) - var(--jvp-page-margin));
+                height: auto;
+                white-space: pre-wrap;
+                border: 2px solid var(--jvp-1st-page-marker-color);
+                padding: 10px;
+                margin-block-end: 10px;
+                margin-inline: unset;
+            }
+            &::after {
+                display: none;
+            }
+        }
     } /* end #rendered-md */
 
 } /* end @media screen */
@@ -438,8 +449,8 @@ body.page-note {
 
 
 
-/* DEBUGGING STUFF — DON'T USE --------------------------------------------- */
-#rendered-md {
+/* DEBUGGING STUFF — DON'T USE -------------------------------------------- * /
+#rendered-md { */
     /* debugging only: sketch a top margin */
     /*
     &::before {
@@ -483,4 +494,20 @@ body.page-note {
         border: red 1px dashed;
     }
     */
-} /* end #rendered-md */
+/*} / * end #rendered-md */
+
+
+@page jvp-page-dimensions {
+    /* IMPORTANT NOTE: Joplin 3.4.12 and older disallow exporting to PDF with a
+     * different page size than what you have set in the joplin settings. That
+     * limitation is a bug that should be fixed in the next major release.
+     * https://github.com/laurent22/joplin/issues/13096
+     *
+     * The workaround is to export to HTML, open that in a browser, then print
+     * to file (PDF). In a few months, as of this writing (20250916), this will
+     * no longer be an issue.
+     */
+    size: var(--jvp-page-width) var(--jvp-page-height);
+    margin: var(--jvp-page-margin);
+}
+
