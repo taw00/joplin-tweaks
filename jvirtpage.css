@@ -54,11 +54,11 @@
         --jvp-page-widthA6:  105mm;  --jvp-page-heightA6:  148mm;  --jvp-page-marginA6: .25in;
 
         /* default for each is 1/2 the default margin widths */
-        --jvp-indentUS:  calc(var(--jvp-page-marginUS)  * .5);
+        --jvp-indentUS:   calc(var(--jvp-page-marginUS) * .5);
         --jvp-indentUSh: calc(var(--jvp-page-marginUSh) * .5);
-        --jvp-indentA4:  calc(var(--jvp-page-marginA4)  * .5);
-        --jvp-indentA5:  calc(var(--jvp-page-marginA5)  * .5);
-        --jvp-indentA6:  calc(var(--jvp-page-marginA6)  * .5);
+        --jvp-indentA4:   calc(var(--jvp-page-marginA4) * .5);
+        --jvp-indentA5:   calc(var(--jvp-page-marginA5) * .5);
+        --jvp-indentA6:   calc(var(--jvp-page-marginA6) * .5);
 
         /* the defaults for page dimensions and margin and indent */
         --jvp-page-width:  var(--jvp-page-widthUS);
@@ -273,9 +273,10 @@ body.page-note {
         position: relative;
         box-shadow: var(--jvp-paper-box-shadow);
         box-sizing: border-box;
-        margin: var(--jvp-page-spacing) auto; /* just sets the page off the top a bit */
-        padding: min(var(--jvp-page-margin),var(--jvp-min-margin))
-                 min(var(--jvp-page-margin),var(--jvp-min-margin));
+        margin-block: var(--jvp-page-spacing); /* just sets the page off the top a bit */
+        margin-inline: auto;
+        padding-block: min(var(--jvp-page-margin),var(--jvp-min-margin));
+        padding-inline: min(var(--jvp-page-margin),var(--jvp-min-margin));
         color: var(--jvp-text-color);
         background-color: var(--jvp-paper-color);
 
@@ -351,13 +352,13 @@ body.page-note {
                 display: block;
                 position: relative;
                 content: "Switches (all classes):\A"
-                  "\9 off — turn off jvirtpage styles\A"
-                  "\9 dark, dim — themes\A"
-                  "\9 us (default), ush, a4, a5, a6 — @page dimensions\A"
-                  "\9 no-page-markers, show-page-markers (default) — fancy margin indicators\A"
-                  "\9 no-pdfs, show-pdfs (default) — expansion of PDFs within note preview\A"
-                  "\9 no-links-pdf — turn off all links upon export\A"
-                  "\9 help — display this help text";
+                  "\9 off\A\9\9 Turn off jvirtpage styles.\A"
+                  "\9 dark, dim\A\9\9 Set an alternative theme.\A"
+                  "\9 us (default), ush, a4, a5, a6\A\9\9 Set @page dimensions.\A"
+                  "\9 no-page-markers, show-page-markers (default)\A\9\9 No/Show fancy margin indicators.\A"
+                  "\9 no-pdfs, show-pdfs (default)\A\9\9 No/Show expansion of PDFs within note preview.\A"
+                  "\9 no-links, no-links-export\A\9\9 Turn off all links. Turn off all links upon export.\A"
+                  "\9 help\A\9\9 Display this help text.";
                 top: 0;
                 left: 0;
                 width: calc(var(--jvp-page-width) - var(--jvp-page-margin) - var(--jvp-page-margin));
@@ -381,11 +382,13 @@ body.page-note {
  * configuration for print and PDF rendering
  */
 @media print {
-    /* the body color needs to be irrelevant (trans) */
+    html,
     body {
         page: jvp-page-dimensions;
-        /* Exported print: the body should be colorless for print */
-        background-color: transparent;
+        width: 100%; max-width: 100%; border: 0; padding: 0; margin: 0; background-color: transparent;
+    }
+    #rendered-md {
+        width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: unset;
     }
 
     /* remove Joplin-inserted title & padding */
@@ -409,15 +412,6 @@ body.page-note {
     }
 
     div#joplin-container-pluginAssetsContainer { display: none !important; }
-
-
-    html,
-    body {
-        width: 100%; max-width: 100%; border: 0; padding: 0; margin: 0; background-color: transparent;
-    }
-    #rendered-md {
-        width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: unset;
-    }
 
     /* no-links, no-links-export
      * If you want to disable links in your document: one option disables all
@@ -445,56 +439,6 @@ body.page-note {
  * a note before allowing any of this formatting to function.
 }
 */
-
-
-
-
-/* DEBUGGING STUFF — DON'T USE -------------------------------------------- * /
-#rendered-md { */
-    /* debugging only: sketch a top margin */
-    /*
-    &::before {
-        display: block;
-        position: absolute;
-        content: "";
-        top: 0; left: 0;
-        height: 1in;
-        width: 100%;
-        border: green 1px dashed;
-        opacity: 1;
-    }
-    */
-
-    /* debugging only: sketch a left margin */
-    /*
-    &::after {
-        display: block;
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        width: 1in;
-        width: calc(var(--jvp-page-margin));
-        height: var(--jvp-page-height);
-        border: red 1px dashed;
-    }
-    */
-
-    /* debugging only: show a right margin */
-    /*
-    &::after {
-        display: block;
-        position: absolute;
-        content: "";
-        top: 0;
-        right: 0;
-        width: 1in;
-        width: calc(var(--jvp-page-margin));
-        height: var(--jvp-page-height);
-        border: red 1px dashed;
-    }
-    */
-/*} / * end #rendered-md */
 
 
 @page jvp-page-dimensions {
