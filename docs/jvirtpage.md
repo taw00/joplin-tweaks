@@ -162,6 +162,8 @@ SWITCH can be one of …
 - `no-links-export`
   This will turn off all link functionality within an *exported* note and
   attempt to set their stylings to something neutral.
+- `help`
+  Display a help summary at the top of your note.
 
 For example, many (maybe most) of my notes are configured as such:  
 `<div id="jvp" class="dark no-pdf"></div>`
