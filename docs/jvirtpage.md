@@ -162,6 +162,11 @@ SWITCH can be one of …
 - `no-links-export`
   This will turn off all link functionality within an *exported* note and
   attempt to set their stylings to something neutral.
+- `show-title`
+  Upon export to PDF or HTML, or upon publish to Joplin Cloud, turn on view of
+  the note title. (default is off)
+- `show-date`
+  Upon publish to Joplin Cloud, show Last Update date.
 - `help`
   Display a help summary at the top of your note.
 

@@ -70,6 +70,11 @@
         --jvp-jcloud-footer-color: hsl(from var(--jvp-paper-color) h s l / 50%);
         --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 90%);
 
+        /* Joplin default title upon HTML or PDF export or Joplin cloud and
+         * last update date in Joplin Cloud.  We like it all off by default */
+        --jvp-title-display: none;
+        --jvp-last-update-display: none;
+
         /* SWITCHES
          * Switches to change the default page dimensions, margins, indent and
          * theme.  Enabled by sticking this div somewhere in your document, for
@@ -153,6 +158,12 @@
         &:has( div#jvp:where(.showpdfs,.show-pdfs, .showpdf,.show-pdf) ) {
             --jvp-pdf-display: block;
         }
+        &:has( div#jvp:where(.show-title) ) {
+            --jvp-title-display: block;
+        }
+        &:has( div#jvp:where(.show-date) ) {
+            --jvp-last-update-display: block;
+        }
 
         /* OTHER CONSTANTS - don't change these */
         --jvp-page-spacing: 20px;
@@ -201,7 +212,7 @@
 }
 
 /* Joplin Cloud stuff
- * - Remove the viewport cruft (title, last-updated, padding, etc.) */
+ * - Remove (or show) the viewport cruft (title, last-updated, padding, etc.) */
 body.page-note {
     & > main.main > div.container.main-container {
         & > div.note-main {
@@ -209,10 +220,10 @@ body.page-note {
             margin: 0 auto;
             padding: 0;
             max-width: 100%;
-            /* remove note title */
-            /* remove "Last updated" line */
-            & > h1.title,
-            & > p.last-updated { display: none; }
+            /* remove or show note title */
+            /* remove or show "Last updated" line */
+            & > h1.title { display: var(--jvp-title-display); }
+            & > p.last-updated { display: var(--jvp-last-update-display); }
         }
     }
 }
@@ -242,7 +253,7 @@ body.page-note {
             margin: 0;
             padding: 0;
             & > div.exported-note-title {
-                display: none !important;
+                display: display: var(--jvp-title-display) !important;
             }
         }
     }
@@ -358,6 +369,8 @@ body.page-note {
                   "\9 no-page-markers, show-page-markers (default)\A\9\9 No/Show fancy margin indicators.\A"
                   "\9 no-pdfs, show-pdfs (default)\A\9\9 No/Show expansion of PDFs within note preview.\A"
                   "\9 no-links, no-links-export\A\9\9 Turn off all links. Turn off all links upon export.\A"
+                  "\9 show-title\A\9\9 Include title in exported (PDF or HTML) or Joplin Cloud view of note.\A"
+                  "\9 show-date\A\9\9 Include last update date in Joplin Cloud view.\A"
                   "\9 help\A\9\9 Display this help text.";
                 top: 0;
                 left: 0;
@@ -391,12 +404,12 @@ body.page-note {
         width: 100%; max-width: 100%; padding: 0; margin: 0; box-shadow: unset;
     }
 
-    /* remove Joplin-inserted title & padding */
+    /* remove or show Joplin-inserted title & padding */
     body > div.exported-note {
         margin: 0;
         padding: 0;
         & > div.exported-note-title {
-            display: none;
+            display: var(--jvp-title-display);
         }
     }
 
