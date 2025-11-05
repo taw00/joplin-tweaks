@@ -351,7 +351,7 @@ body.page-note {
             &::before {
                 display: block;
                 position: relative;
-                content: "Switches (all classes):\A"
+                content: 'Switches, place <div id="jvp" class="insert-switch-here"></div> at top of note:\A'
                   "\9 off\A\9\9 Turn off jvirtpage styles.\A"
                   "\9 dark, dim\A\9\9 Set an alternative theme.\A"
                   "\9 us (default), ush, a4, a5, a6\A\9\9 Set @page dimensions.\A"
