@@ -386,6 +386,14 @@ body.page-note {
                 display: none;
             }
         }
+        & div.note {
+            border: 1px dashed darkgray;
+            padding: 5px 10px;
+            & :last-child {},
+            & :first-child {
+                margin: 0;
+            }
+        }
     } /* end #rendered-md */
 
 } /* end @media screen */
