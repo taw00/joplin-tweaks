@@ -115,6 +115,7 @@ persistent AND available to Joplin Cloud published notes. But, it's messy and I
 don't recommend it. Instead, if you want the styles to be enabled for a
 published note, I would instead directly import the stylesheet (option 2 or 3).
 
+&ZeroWidthSpace;
 
 ## Usage
 
@@ -134,6 +135,8 @@ Again, by default, the page will be …
 - Black text
 - White paper
 - Darkened "desktop"
+
+### Switches
 
 If you want to change the default behavior, add this line anywhere in your
   note …
@@ -163,13 +166,13 @@ SWITCH can be one of …
 - `no-links`  
   This will turn off all link functionality within a note and attempt to set
   their stylings to something neutral.
-- `no-links-export`
+- `no-links-export` —affects exported notes only
   This will turn off all link functionality within an *exported* note and
   attempt to set their stylings to something neutral.
-- `show-title`
+- `show-title` —affects exported &amp; Joplin Cloud rendered notes only
   Upon export to PDF or HTML, or upon publish to Joplin Cloud, turn on view of
   the note title. (default is off)
-- `show-date`
+- `show-date` —affects Joplin Cloud rendered notes only
   Upon publish to Joplin Cloud, show Last Update date.
 - `help`
   Display a help summary at the top of your note.
