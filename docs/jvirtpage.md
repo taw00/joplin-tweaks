@@ -24,6 +24,10 @@ markdown viewer (the previewer).
 > ~~~
 > 4. right-click on the new CSS note and "Copy markdown link"
 > 5. Tools >  Options > Local CSS > Global CSS > insert link you just copied
+>
+> LIMITATION: The "Global CSS" option only extends to the rendered view. If you
+> want the CSS to be applied to the exported note, you have to use the @import
+> method shown above.
 
 By default, the page will be …
 - US Letter with 1in margins
@@ -33,7 +37,7 @@ By default, the page will be …
 
 > All of these are are adjustable. See "switches" below.
 
-Exported to PDF or Print will … do what you expect preserve the page dimensions
+Exported to PDF or Print will do what you expect preserve the page dimensions
 and margins. Except in the case of …
 
 > ### [IMPORTANT NOTE: Joplin PDF Rendering Bug](https://github.com/laurent22/joplin/issues/13096)
