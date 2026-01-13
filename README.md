@@ -91,17 +91,6 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 ### Example 2: dark theme and A6 in a landscape orientation
 ![jvirtpage-dark-a6-landscape](docs/images/jvirtpage-dark-a6-landscape.png)
 
-> ### [IMPORTANT NOTE: Joplin PDF Rendering Bug](https://github.com/laurent22/joplin/issues/13096)
-> 
-> Joplin 3.4.12 and older disallow exporting to PDF with a different page size
-> than what you have set in the joplin settings. That limitation is a bug that
-> should be fixed in the next major release. (Ref.
-> https://github.com/laurent22/joplin/issues/13096)
->
-> **The workaround** is to export to HTML, open that in a browser, then print
-> to file (PDF). In a few months—as of this writing (20250916)—this will
-> no longer be an issue.
-
 &ZeroWidthSpace;
 
 ## <span id="noscrollbars">—</span> snippet (exported note): exported notes should not include scrollbars
