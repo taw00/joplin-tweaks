@@ -182,7 +182,8 @@
  * stylings with <div id="jvp" class="off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has( :where(#jvp:where(.off), #jvp-off, #jvpoff, div#vpage > article#manuscript) ) ) {
+:not( :has( :where(#jvp:where(.off), #jvp-off, #jvpoff, div#vpage > article#manuscript, #rendered-md > #sn-md) ) ) {
+
 
 
 /*
