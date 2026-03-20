@@ -395,6 +395,7 @@ body.page-note {
             }
         }
         & div.note {
+            display: var(--jvp-note-display);
             border: 1px dashed darkgray;
             padding: 5px 10px;
             & :last-child {},
