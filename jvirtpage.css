@@ -20,8 +20,10 @@
     :root {
         /* default behavior of a linked-to PDF in a note - currently enabled
          * also controlled by classes no-pdfs and show-pdfs */
-        --jvp-pdf-display: none;  /* want, by default, not displayed? (remains a link) */
-        --jvp-pdf-display: block; /* want, by default, displayed (embedded) */
+        --jvp-pdf-display: none;   /* PDF links not rendered (remains a link); use class no-pdf to turn off */
+        --jvp-pdf-display: block;  /* PDF rendered inside of the Joplin note (the default)*/
+        --jvp-note-display: none;  /* jvp notes not rendered; use class no-notes to turn off */
+        --jvp-note-display: block; /* jvp notes rendered (the default) */
 
         /* default behavior of the margin markers - currently displayed
          * also controlled by classes no-markers and show-markers */
@@ -161,6 +163,12 @@
         }
         &:has( div#jvp:where(.show-date) ) {
             --jvp-last-update-display: block;
+        }
+        &:has( div#jvp:where(.nonote,.nonotes,.no-note,.no-notes) ) {
+            --jvp-note-display: none;
+        }
+        &:has( div#jvp:where(.shownote,.shownotes,.show-note,.show-notes) ) {
+            --jvp-note-display: block;
         }
 
         /* OTHER CONSTANTS - don't change these */
@@ -367,6 +375,7 @@ body.page-note {
                   "\9 us (default), ush, a4, a5, a6\A\9\9 Set @page dimensions.\A"
                   "\9 no-page-markers, show-page-markers (default)\A\9\9 No/Show fancy margin indicators.\A"
                   "\9 no-pdfs, show-pdfs (default)\A\9\9 No/Show expansion of PDFs within note preview.\A"
+                  "\9 no-notes, show-notes (default)\A\9\9 No/Show jvp notes.\A"
                   "\9 no-links, no-links-export\A\9\9 Turn off all links. Turn off all links upon export.\A"
                   "\9 show-title\A\9\9 Include title in exported (PDF or HTML) or Joplin Cloud view of note.\A"
                   "\9 show-date\A\9\9 Include last update date in Joplin Cloud view.\A"

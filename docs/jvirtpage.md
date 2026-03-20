@@ -146,11 +146,16 @@ SWITCH can be one of …
   default.
 - `no-1st-page-marker`  
   Turns off the marker that notes the page length of the current configuration.
-- `no-pdf`  
-  Turns off rendering a PDF in the note.
-- `show-pdf`  
-  Turns on rendering a PDF in the note (only useful if you turn it off by
-  default by editing the initial constant value within the CSS).
+- `no-pdfs`  
+  Turns off rendering of PDFs in the note.
+- `show-pdfs`  
+  Turns on rendering of PDFs in the notae. (Only useful if you turn it off by
+  default by editing the initial constant value within the CSS.)
+- `no-notes`  
+  Turns off rendering of jvp notes within the document.
+- `show-notes`  
+  Turns on rendering of jvp notes within the document. (Only useful if you turn it off by
+  default by editing the initial constant value within the CSS.)
 - `no-links`  
   This will turn off all link functionality within a note and attempt to set
   their stylings to something neutral.
