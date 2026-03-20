@@ -70,7 +70,7 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 ```html
 <style>
-    @import url("/path/to/joplin-tweaks/jvirtpage.css");
+    @import "/path/to/joplin-tweaks/jvirtpage.css";
 </style>
 ```
 

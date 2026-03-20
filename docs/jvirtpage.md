@@ -11,7 +11,7 @@ markdown viewer (the previewer).
 > 3. add this to the top of your notes
 > ```html
 > <style>
->     @import url("/path/to/joplin-tweaks/jvirtpage.css");
+>     @import "/path/to/joplin-tweaks/jvirtpage.css";
 > </style>
 > ```
 >
@@ -56,7 +56,7 @@ the stylesheet to `userstyle.css`.
 - Then do this at the top of your note …
 ```html
 <style>
-    @import url("/path/to/joplin-tweaks/jvirtpage.css");
+    @import "/path/to/joplin-tweaks/jvirtpage.css";
 </style>
 ```
 
@@ -65,7 +65,7 @@ the stylesheet to `userstyle.css`.
 - Stick the `jvirtpage.css` somewhere on the web where it is accessible to
   your system
 - Change the `@import` example above to look something like:
-  `@import url("https://mywebserver.com/pub/jvirtpage.css";`
+  `@import "https://mywebserver.com/pub/jvirtpage.css";`
 
 3. If you want to import from a "CSS note" …
 
@@ -75,7 +75,7 @@ the stylesheet to `userstyle.css`.
   *You may have to delete all of the preliminary comments (they sometimes break the plugin)*
 - Right click on the css note and "Copy Markdown Link"
 - Use only the :/HASHVALUE part of it and, for example …
-  `@import url(":/7d66d959fa974468b4670db7228943a1");`
+  `@import ":/7d66d959fa974468b4670db7228943a1";`
 
 4. If you want this formattting available by default for ALL of your notes …
 
