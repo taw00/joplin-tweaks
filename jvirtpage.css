@@ -341,9 +341,9 @@ body.page-note {
             content: "";
             --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
             --tmp-content-height: calc(var(--jvp-page-height) - var(--tmp-page-margin) - var(--tmp-page-margin));
-            top: var(--jvp-page-margin);
+            top: var(--tmp-page-margin);
             left: 0;
-            width: calc(var(--jvp-page-margin) / 4);
+            width: calc(var(--tmp-page-margin) / 4);
             height: calc(var(--tmp-content-height));
             border-block: var(--jvp-1st-page-marker-color) solid 2px;
             border-inline-start: unset;
@@ -358,9 +358,9 @@ body.page-note {
             content: "";
             --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
             --tmp-content-height: calc(var(--jvp-page-height) - var(--tmp-page-margin) - var(--tmp-page-margin));
-            top: var(--jvp-page-margin);
+            top: var(--tmp-page-margin);
             right: 0;
-            width: calc(var(--jvp-page-margin) / 4);
+            width: calc(var(--tmp-page-margin) / 4);
             height: calc(var(--tmp-content-height));
             border-block: var(--jvp-1st-page-marker-color) solid 2px;
             border-inline-start: var(--jvp-1st-page-marker-color) solid 1px;
