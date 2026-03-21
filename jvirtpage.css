@@ -293,8 +293,9 @@ body.page-note {
         box-sizing: border-box;
         margin-block: var(--jvp-page-spacing); /* just sets the page off the top a bit */
         margin-inline: auto;
-        padding-block: min(var(--jvp-page-margin),var(--jvp-min-margin));
-        padding-inline: min(var(--jvp-page-margin),var(--jvp-min-margin));
+        --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
+        padding-block: var(--tmp-page-margin);
+        padding-inline: var(--tmp-page-margin);
         color: var(--jvp-text-color);
         background-color: var(--jvp-paper-color);
 
@@ -338,7 +339,8 @@ body.page-note {
             display: var(--jvp-margin-markers-display);
             position: absolute;
             content: "";
-            --tmp-content-height: calc(var(--jvp-page-height) - var(--jvp-page-margin) - var(--jvp-page-margin));
+            --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
+            --tmp-content-height: calc(var(--jvp-page-height) - var(--tmp-page-margin) - var(--tmp-page-margin));
             top: var(--jvp-page-margin);
             left: 0;
             width: calc(var(--jvp-page-margin) / 4);
@@ -346,7 +348,7 @@ body.page-note {
             border-block: var(--jvp-1st-page-marker-color) solid 2px;
             border-inline-start: unset;
             border-inline-end: var(--jvp-1st-page-marker-color) solid 1px;
-            margin-inline-start: calc(var(--jvp-page-margin) * .75);
+            margin-inline-start: calc(var(--tmp-page-margin) * .75);
             margin-inline-end: unset;
         }
         /* add a right-side 1st-page margin marker to the rendering */
@@ -354,7 +356,8 @@ body.page-note {
             display: var(--jvp-margin-markers-display);
             position: absolute;
             content: "";
-            --tmp-content-height: calc(var(--jvp-page-height) - var(--jvp-page-margin) - var(--jvp-page-margin));
+            --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
+            --tmp-content-height: calc(var(--jvp-page-height) - var(--tmp-page-margin) - var(--tmp-page-margin));
             top: var(--jvp-page-margin);
             right: 0;
             width: calc(var(--jvp-page-margin) / 4);
@@ -363,7 +366,7 @@ body.page-note {
             border-inline-start: var(--jvp-1st-page-marker-color) solid 1px;
             border-inline-end: unset;
             margin-inline-start: unset;
-            margin-inline-end: calc(var(--jvp-page-margin) * .75);
+            margin-inline-end: calc(var(--tmp-page-margin) * .75);
         }
         & div#jvp:is(.help,.switches) {
             &::before {
