@@ -9,8 +9,6 @@
  * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
  */ 
 div.tag-bar {
-     height: 10px !important;
-}
-div.tag-bar * {
-     font-size: 8px !important;
+    height: 1em !important;
+    & * { font-size: 0.5em !important; }
 }

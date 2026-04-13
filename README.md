@@ -26,7 +26,8 @@ in Joplin Cloud.
 > 
 > - snippet (UI): [remove the markdown vs. rich text editor switch (button)](#noeditorswitch)
 > - snippet (UI): [remove the tags widget](#notagswidget)
-> - snippet (UI): [make the tags widget smaller](#smallertagswidget)
+> - snippet (UI): [make the tags widget smaller/thinner](#smallertagswidget)
+> - snippet (UI): [make the bottom status bar thinner](#smallerstatusbar)
 
 &ZeroWidthSpace;
 
@@ -189,7 +190,16 @@ that bit of UI and give yourself some extra space.
 [userchrome-snippet-shrink-click-to-add-tags.css](./userchrome-snippet-shrink-click-to-add-tags.css)
 
 Do you use tags, but wished the tags widget that sits below your note in the UI
-was a bit smaller? This does exactly that.
+was a bit thinner? This does exactly that.
+
+&ZeroWidthSpace;
+
+## <span id="smallerstatusbar">—</span> snippet (UI): shrink the bottom status bar significantly.
+
+[userchrome-snippet-shrink-status-bar.css](./userchrome-snippet-shrink-status-bar.css)
+
+You may have to adjust this depending on if you shrink the tags, remove click
+to add tags, etc.
 
 &ZeroWidthSpace;
 
