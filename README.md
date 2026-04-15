@@ -60,11 +60,23 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 ### Quickstart guide to `jvirtpage.css`
 
-1. Download this repository …
+1. Install Joplin's "Import Local CSS" plugin and restart
+
+2. Create note in Jopin and add these three lines to the top …
+
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+```
+
+**or …**
+
+1. Install Joplin's "Import Local CSS" plugin and restart
+
+2. Download this repository …
 
 `git clone https://github.com/taw00/joplin-tweaks`
-
-2. Install Joplin's "Import Local CSS" plugin and restart
 
 3. Create note in Joplin and add these three lines to the top …
 
@@ -74,11 +86,13 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 </style>
 ```
 
-4. Save, and you should see a pretty, virtualized page in the preview pane in
-   the Joplin application.
+** and now …**
 
-5. Want an A5 landscape virtual page with a dark themed? Add this fourth line
-   to your note …
+- Save it, and you should see a pretty, virtualized page in the preview pane in
+  the Joplin application.
+
+- Want an A5 landscape virtual page with a dark themed? Add this fourth line
+  to your note …
 
 ```html
 <div id="jvp" class="A5 landscape dark"></div>

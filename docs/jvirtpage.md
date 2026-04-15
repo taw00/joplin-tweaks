@@ -6,28 +6,28 @@ markdown viewer (the previewer).
 
 > ### TL;DR
 >
-> 1. download this repository
-> 2. install the "Import Local CSS" plugin and restart Joplin
-> 3. add this to the top of your notes
+> 1. Install Joplin's "Import Local CSS" plugin and restart
+> 2. Create note in Jopin and add these three lines to the top …
 > ```html
 > <style>
->     @import "/path/to/joplin-tweaks/jvirtpage.css";
+>     @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
 > </style>
 > ```
 >
 > Alternatively, to enable this CSS for all of your notes by default …
-> 3. cut-n-paste `jvirtpage.css` into a note, but surrounded by
+> 1. Install Joplin's "Import Local CSS" plugin and restart
+> 2. Created a note that will be imported by other notes …
 > ~~~html
 > ```css
-> this CSS document inserted here
+> @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
 > ```
 > ~~~
-> 4. right-click on the new CSS note and "Copy markdown link"
-> 5. Tools >  Options > Local CSS > Global CSS > insert link you just copied
+> 3. right-click on the new CSS note and "Copy markdown link"
+> 4. Tools >  Options > Local CSS > Global CSS > insert link you just copied
 >
 > LIMITATION: The "Global CSS" option only extends to the rendered view. If you
-> want the CSS to be applied to the exported note, you have to use the @import
-> method shown above.
+> want the CSS to be applied to the exported note, you have to use the first
+> method listed above method shown above.
 
 By default, the page will be …
 - US Letter with 1in margins
@@ -64,13 +64,15 @@ the stylesheet to `userstyle.css`.
 
 - Stick the `jvirtpage.css` somewhere on the web where it is accessible to
   your system
-- Change the `@import` example above to look something like:
+- Change the `@import` example above to look something like:  
   `@import "https://mywebserver.com/pub/jvirtpage.css";`
+- Or use it straight from the github repo …  
+  `@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";`
 
 3. If you want to import from a "CSS note" …
 
 - Create note. Name it something like `jvirtpage.css`
-- Copy this stylesheet into the note
+- Copy this stylesheet into the note (or @import the github link)
 - Wrap the whole thing in a ``\`css and ``\` fenced code block  
   *You may have to delete all of the preliminary comments (they sometimes break the plugin)*
 - Right click on the css note and "Copy Markdown Link"

@@ -5,8 +5,18 @@
  * Joplin markdown viewer (the previewer).
  * 
  * Install the "Import Local CSS" plugin. Then @import this stylesheet within
- * your note.
- *
+ * your note:
+
+<style>
+    @import "/path/to/joplin-tweaks/jvirtpage.css";
+</style>
+
+ * … or …
+
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+
  * For more detail, refer to the documentation:
  * https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md
  *
