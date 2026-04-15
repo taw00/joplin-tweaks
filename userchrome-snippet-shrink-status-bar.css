@@ -1,0 +1,14 @@
+/* Make the bottom-most status bar shorter
+ *
+ * Add this CSS configuration block to your userchrome.css file found in …
+ * Linux/macOS: ~/.config/joplin-desktop/
+ * -or-
+ * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+
+
+div.editor-status-bar {
+    font-size: .75rem;
+    height: 1rem;
+    & div.spacer { height: 1rem; }
+}
