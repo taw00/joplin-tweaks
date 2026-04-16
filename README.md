@@ -87,7 +87,7 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 </style>
 ```
 
-** and now …**
+**and now …**
 
 - Save it, and you should see a pretty, virtualized page in the preview pane in
   the Joplin application.
@@ -112,6 +112,8 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 [userstyle-snippet-exports-no-pre-scrollbars.css](./userstyle-snippet-exports-no-pre-scrollbars.css)
 
+`@import "https://taw00.github.io/joplin-tweaks/userstyle-snippet-exports-no-pre-scrollbars.css";`
+
 Joplin exports that include things like programming code will include
 scrollbars in the PDF that are, of course, just visual clutter. Instead we
 trim any code that extends beyond the visual window and remove any scrollbars.
@@ -124,6 +126,8 @@ appear on the page completely.
 
 [userstyle-snippet-exports-remove-padded-frame.css](./userstyle-snippet-exports-remove-padded-frame.css)
 
+`@import "https://taw00.github.io/joplin-tweaks/userstyle-snippet-exports-remove-padded-frame.css";`
+
 When exporting a raw note, Joplin will frame it and add margin space around the
 note. We remove that when this snippet of CSS.
 
@@ -132,6 +136,8 @@ note. We remove that when this snippet of CSS.
 ## <span id="notitle">—</span> snippet (exported note): remove automated note titles from exported note
 
 [userstyle-snippet-exports-remove-title.css](./userstyle-snippet-exports-remove-title.css)
+
+`@import "https://taw00.github.io/joplin-tweaks/./userstyle-snippet-exports-remove-title.css";`
 
 Most of the time, I simply do not want Joplin adding a note title to my
 exported content. If I want a title, I will add it to the note myself. This
@@ -142,6 +148,8 @@ snippet removes that inserted/automated title.
 ## <span id="embeddedpdf">—</span> (#jtweaks switches) toggle behavior of linked-to PDF
 
 [userstyle-snippet-toggle-embedded-pdf.css](./userstyle-snippet-toggle-embedded-pdf.css)
+
+`@import "https://taw00.github.io/joplin-tweaks/userstyle-snippet-toggle-embedded-pdf.css";`
 
 Joplin, by default, will expand a PDF within a functional viewport within a
 note.  An embedded PDF, if you will. This feature is very convenient, but I
@@ -160,6 +168,8 @@ there may be a conflict. Or not. Experiment. :)*
 ## <span id="disablelinks">—</span> (#jtweaks switches) disable links for a note and/or exported PDF
 
 [userstyle-snippet-disable-links.css](./userstyle-snippet-disable-links.css)
+
+`@import "https://taw00.github.io/joplin-tweaks/userstyle-snippet-disable-links.css";`
 
 Sometimes you just wanna disable links in a note. Or, as if often the case,
 in it's exported PDF. The `jweaks` switches are: `no-links` and
@@ -185,6 +195,8 @@ These are added to the `userchrome.css` styling configuration file.
 
 [userchrome-snippet-remove-editor-switching-button.css](./userchrome-snippet-remove-editor-switching-button.css)
 
+`@import "https://taw00.github.io/joplin-tweaks/userchrome-snippet-remove-editor-switching-button.css";`
+
 Do you only use the markdown editor and not the "rich text editor" then get rid
 of that button that lets you toggle between the two.
 
@@ -193,6 +205,8 @@ of that button that lets you toggle between the two.
 ## <span id="notagswidget">—</span> snippet (UI): remove the tags widget
 
 [userchrome-snippet-remove-click-to-add-tags.css](./userchrome-snippet-remove-click-to-add-tags.css)
+
+`@import "https://taw00.github.io/joplin-tweaks/userchrome-snippet-remove-click-to-add-tags.css";`
 
 Some folks don't use Joplin's tagging system at all. If so, maybe just remove
 that bit of UI and give yourself some extra space.
@@ -203,6 +217,8 @@ that bit of UI and give yourself some extra space.
 
 [userchrome-snippet-shrink-click-to-add-tags.css](./userchrome-snippet-shrink-click-to-add-tags.css)
 
+`@import "https://taw00.github.io/joplin-tweaks/userchrome-snippet-shrink-click-to-add-tags.css";`
+
 Do you use tags, but wished the tags widget that sits below your note in the UI
 was a bit thinner? This does exactly that.
 
@@ -211,6 +227,8 @@ was a bit thinner? This does exactly that.
 ## <span id="smallerstatusbar">—</span> snippet (UI): shrink the bottom status bar significantly.
 
 [userchrome-snippet-shrink-status-bar.css](./userchrome-snippet-shrink-status-bar.css)
+
+`@import "https://taw00.github.io/joplin-tweaks/userchrome-snippet-shrink-status-bar.css";`
 
 You may have to adjust this depending on if you shrink the tags, remove click
 to add tags, etc.
