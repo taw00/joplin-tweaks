@@ -83,6 +83,7 @@
         /* Joplin default title upon HTML or PDF export or Joplin cloud and
          * last update date in Joplin Cloud.  We like it all off by default */
         --jvp-title-display: none;
+        --jvp-title-display-export: var(--jvp-title-display);
         --jvp-last-update-display: none;
 
         /* SWITCHES
@@ -171,6 +172,15 @@
         &:has( div#jvp:where(.show-title) ) {
             --jvp-title-display: block;
         }
+        &:has( div#jvp:where(.show-title-export) ) {
+            --jvp-title-display-export: block;
+        }
+        &:has( div#jvp:where(.no-title) ) {
+            --jvp-title-display: none;
+        }
+        &:has( div#jvp:where(.no-title-export) ) {
+            --jvp-title-display-export: none;
+        }
         &:has( div#jvp:where(.show-date) ) {
             --jvp-last-update-display: block;
         }
@@ -257,21 +267,17 @@ body.page-note {
         padding: 0;
     }
 
-    body#joplin-container-body {
+    body#joplin-container-body > #joplin-container-content {
         /* Remove the padding and bg that frames #rendered-md */
-        & > #joplin-container-content {
-            background-color: transparent;
-            padding: 0;
-        }
+        background-color: transparent;
+        padding: 0;
     }
     /* exported to HTML */
-    body:not(#joplin-container-body) {
-        & > div.exported-note {
-            margin: 0;
-            padding: 0;
-            & > div.exported-note-title {
-                display: var(--jvp-title-display) !important;
-            }
+    body:not(#joplin-container-body) > div.exported-note {
+        margin: 0;
+        padding: 0;
+        & > div.exported-note-title {
+            display: var(--jvp-title-display) !important;
         }
     }
 
