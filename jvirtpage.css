@@ -83,7 +83,6 @@
         /* Joplin default title upon HTML or PDF export or Joplin cloud and
          * last update date in Joplin Cloud.  We like it all off by default */
         --jvp-title-display: none;
-        --jvp-title-display-export: var(--jvp-title-display);
         --jvp-last-update-display: none;
 
         /* SWITCHES
@@ -172,14 +171,8 @@
         &:has( div#jvp:where(.show-title) ) {
             --jvp-title-display: block;
         }
-        &:has( div#jvp:where(.show-title-export) ) {
-            --jvp-title-display-export: block;
-        }
         &:has( div#jvp:where(.no-title) ) {
             --jvp-title-display: none;
-        }
-        &:has( div#jvp:where(.no-title-export) ) {
-            --jvp-title-display-export: none;
         }
         &:has( div#jvp:where(.show-date) ) {
             --jvp-last-update-display: block;
@@ -396,7 +389,7 @@ body.page-note {
                   "\9 no-pdfs, show-pdfs (default)\A\9\9 No/Show expansion of PDFs within note preview.\A"
                   "\9 no-notes, show-notes (default)\A\9\9 No/Show jvp notes.\A"
                   "\9 no-links, no-links-export\A\9\9 Turn off all links. Turn off all links upon export.\A"
-                  "\9 show-title\A\9\9 Include title in exported (PDF or HTML) or Joplin Cloud view of note.\A"
+                  "\9 show-title\A\9\9 Include title in exported (PDF or HTML) or Joplin Cloud view.\A"
                   "\9 show-date\A\9\9 Include last update date in Joplin Cloud view.\A"
                   "\9 help\A\9\9 Display this help text.";
                 top: 0;
