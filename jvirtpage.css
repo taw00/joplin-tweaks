@@ -390,6 +390,7 @@ body.page-note {
                   "\9 no-notes, show-notes (default)\A\9\9 No/Show jvp notes.\A"
                   "\9 no-links, no-links-export\A\9\9 Turn off all links. Turn off all links upon export.\A"
                   "\9 show-title\A\9\9 Include title in exported (PDF or HTML) or Joplin Cloud view.\A"
+                  "\9 no-title\A\9\9 Do not include title in exported (PDF or HTML) or Joplin Cloud view.\A"
                   "\9 show-date\A\9\9 Include last update date in Joplin Cloud view.\A"
                   "\9 help\A\9\9 Display this help text.";
                 top: 0;
