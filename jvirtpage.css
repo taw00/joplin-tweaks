@@ -42,16 +42,27 @@
 
         /* CONSTANTS */
         --jvp-text-color: black;
+        --jvp-text-color-link: hsl(219deg, 82%, 30%); /* from https://necolas.github.io/normalize.css/ but dark */
+        --jvp-text-color-link-hover: hsl(219deg, 82%, 45%); /* same, but lighter */
+
+        --jvp-jcloud-last-update-color: var(--jvp-text-color);
+        --jvp-jcloud-title-color: var(--jvp-text-color);
+
         --jvp-paper-color: white;
         --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
+
         --jvp-paper-box-shadow: 0 0 var(--jvp-page-spacing) black;
         --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
 
         --jvp-dim-text-color: black;
+        --jvp-dim-text-color-link: hsl(219deg, 82%, 30%); /* same */
+        --jvp-dim-text-color-link-hover: hsl(219deg, 82%, 45%); /* same */
         --jvp-dim-paper-color: hsl(0deg 0% 75%); /* silver */
         --jvp-dim-desktop-color: hsl(0deg 0% 41%); /* dimgray */
 
         --jvp-dark-text-color: hsl(0deg 0% 96%); /* whitesmoke; not white */
+        --jvp-dark-text-color-link: hsl(219deg, 82%, 80%); /* the reverse, but lighter */
+        --jvp-dark-text-color-link-hover: hsl(219deg, 82%, 70%); /* the reverse, but lighter */
         --jvp-dark-paper-color: hsl(0deg 0% 12%); /* very dark gray */
         --jvp-dark-desktop-color: hsl(0deg 0% 20%); /* darker than dimgray */
         /*--jvp-dark-desktop-color: hsl(222deg 12% 16%);*/ /* a dark purple-blue */
@@ -77,13 +88,13 @@
         --jvp-indent:      var(--jvp-page-indentUS);
 
         /* Joplin Cloud stuff */
-        --jvp-jcloud-footer-color: hsl(from var(--jvp-paper-color) h s l / 50%);
-        --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 90%);
+        --jvp-jcloud-footer-color: hsl(from var(--jvp-text-color) h s l / 30%);
+        --jvp-jcloud-footer-color-link: hsl(from var(--jvp-text-color-link) h s l / 40%);
 
         /* Joplin default title upon HTML or PDF export or Joplin cloud and
          * last update date in Joplin Cloud.  We like it all off by default */
-        --jvp-title-display: none;
-        --jvp-last-update-display: none;
+        --jvp-title-display: block;
+        --jvp-last-update-display: block;
 
         /* SWITCHES
          * Switches to change the default page dimensions, margins, indent and
@@ -92,14 +103,16 @@
          *      <div id="jvp" class="A5 landscape dark"></div>               */
         &:has( div#jvp:where(.dark) ) {
             --jvp-text-color:    var(--jvp-dark-text-color);
+            --jvp-text-color-link: var(--jvp-dark-text-color-link);
+            --jvp-text-color-link-hover: var(--jvp-dark-text-color-link-hover);
             --jvp-paper-color:   var(--jvp-dark-paper-color);
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 8%);
-            --jvp-jcloud-footer-color: hsl(from black h s l / 35%);
-            --jvp-jcloud-footer-color-link: hsl(from var(--jvp-jcloud-footer-color) h s l / 50%);
         }
         &:has( div#jvp:where(.dim) ) {
             --jvp-text-color:    var(--jvp-dim-text-color);
+            --jvp-text-color-link: var(--jvp-dim-text-color-link);
+            --jvp-text-color-link-hover: var(--jvp-dim-text-color-link-hover);
             --jvp-paper-color:   var(--jvp-dim-paper-color);
             --jvp-desktop-color: var(--jvp-dim-desktop-color);
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
@@ -177,6 +190,9 @@
         &:has( div#jvp:where(.show-date) ) {
             --jvp-last-update-display: block;
         }
+        &:has( div#jvp:where(.no-date) ) {
+            --jvp-last-update-display: none;
+        }
         &:has( div#jvp:where(.nonote,.nonotes,.no-note,.no-notes) ) {
             --jvp-note-display: none;
         }
@@ -187,7 +203,6 @@
         /* OTHER CONSTANTS - don't change these */
         --jvp-page-spacing: 20px;
         --jvp-min-margin: 13vw; /* 13% of the viewport width. */
-
     } /* end :root */
 } /* end @layer jvirtpage */
 
@@ -293,8 +308,19 @@ body.page-note {
                 box-shadow: unset;
                 border: unset;
             }
+            & > div.note-main {
+                & > p.last-updated {
+                    opacity: 0.6;
+                    color: var(--jvp-jcloud-last-update-color);
+                }
+                & > h1.title {
+                    opacity: 0.6;
+                    color: var(--jvp-jcloud-title-color);
+                }
+            }
         }
     }
+
 
     #rendered-md {
         position: relative;
@@ -307,6 +333,8 @@ body.page-note {
         padding-inline: var(--tmp-page-margin);
         color: var(--jvp-text-color);
         background-color: var(--jvp-paper-color);
+        a { color: var(--jvp-text-color-link); }
+        a:hover { color: var(--jvp-text-color-link-hover); }
 
         /* show bit of margin surrounding the virtual page on small screens */
         width: 96%;
@@ -389,9 +417,10 @@ body.page-note {
                   "\9 no-pdfs, show-pdfs (default)\A\9\9 No/Show expansion of PDFs within note preview.\A"
                   "\9 no-notes, show-notes (default)\A\9\9 No/Show jvp notes.\A"
                   "\9 no-links, no-links-export\A\9\9 Turn off all links. Turn off all links upon export.\A"
-                  "\9 show-title\A\9\9 Include title in exported (PDF or HTML) or Joplin Cloud view.\A"
+                  "\9 show-title\A\9\9 (default) Include title in exported (PDF or HTML) or Joplin Cloud view.\A"
                   "\9 no-title\A\9\9 Do not include title in exported (PDF or HTML) or Joplin Cloud view.\A"
-                  "\9 show-date\A\9\9 Include last update date in Joplin Cloud view.\A"
+                  "\9 show-date\A\9\9 (default) Include last update date in Joplin Cloud view.\A"
+                  "\9 no-date\A\9\9 Do not include last update date in Joplin Cloud view.\A"
                   "\9 help\A\9\9 Display this help text.";
                 top: 0;
                 left: 0;
@@ -411,7 +440,7 @@ body.page-note {
             display: var(--jvp-note-display);
             border: 1px dashed darkgray;
             padding: 5px 10px;
-            & :last-child {},
+            & :last-child,
             & :first-child {
                 margin: 0;
             }
@@ -440,17 +469,6 @@ body.page-note {
         padding: 0;
         & > div.exported-note-title {
             display: var(--jvp-title-display);
-        }
-    }
-
-    /* Joplin Cloud stuff
-     * - We don't want anything but our document to be printed. */
-    body.page-note {
-        /* remove footer with copyright and T&Cs */
-        & > div.footer { display: none; }
-        & > main.main > div.container.main-container {
-            /* remove branded navbar */
-            & > nav.navbar { display: none; }
         }
     }
 
