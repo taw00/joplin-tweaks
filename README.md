@@ -15,7 +15,7 @@ in Joplin Cloud.
 > 
 > #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-renderer-md)
 > 
-> - Render Jopin note preview as a [virtual page](#jvirtpagecss) - jvirtpage.css
+> - stylesheet: render note preview as a [virtual page](#jvirtpagecss) - jvirtpage.css
 > - snippet (exported note): exported notes [should not include scrollbars](#noscrollbars)
 > - snippet (exported note): [remove excess spaced framing](#noframe) of exported content
 > - snippet (exported note): [remove automated note titles](#notitle) from exported note
@@ -47,7 +47,7 @@ associated documentation.
 
 &ZeroWidthSpace;
 
-## <span id="jvirtpagecss">—</span> Render Jopin note preview as an attractive virtual page
+## <span id="jvirtpagecss">—</span> stylesheet: render a note preview as an attractive virtual page
 
 Stylesheet: [jvirtpage.css](./jvirtpage.css)  
 Documentation: [jvirtpage.md](docs/jvirtpage.md)
@@ -63,7 +63,7 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 1. Install Joplin's "Import Local CSS" plugin and restart
 
-2. Create note in Jopin and add these three lines to the top …
+2. Create note in Joplin and add these three lines to the top …
 
 ```html
 <style>
@@ -108,6 +108,8 @@ Documentation: [jvirtpage.md](docs/jvirtpage.md)
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 ## <span id="noscrollbars">—</span> snippet (exported note): exported notes should not include scrollbars
 
 [userstyle-snippet-exports-no-pre-scrollbars.css](./userstyle-snippet-exports-no-pre-scrollbars.css)
@@ -122,6 +124,8 @@ appear on the page completely.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 ## <span id="noframe">—</span> snippet (exported note): remove excess spaced framing of exported content
 
 [userstyle-snippet-exports-remove-padded-frame.css](./userstyle-snippet-exports-remove-padded-frame.css)
@@ -130,6 +134,8 @@ appear on the page completely.
 
 When exporting a raw note, Joplin will frame it and add margin space around the
 note. We remove that when this snippet of CSS.
+
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
@@ -142,6 +148,8 @@ note. We remove that when this snippet of CSS.
 Most of the time, I simply do not want Joplin adding a note title to my
 exported content. If I want a title, I will add it to the note myself. This
 snippet removes that inserted/automated title.
+
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
@@ -165,6 +173,8 @@ there may be a conflict. Or not. Experiment. :)*
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 ## <span id="disablelinks">—</span> (#jtweaks switches) disable links for a note and/or exported PDF
 
 [userstyle-snippet-disable-links.css](./userstyle-snippet-disable-links.css)
@@ -181,6 +191,7 @@ in it's exported PDF. The `jweaks` switches are: `no-links` and
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
 
 
 
@@ -202,6 +213,8 @@ of that button that lets you toggle between the two.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 ## <span id="notagswidget">—</span> snippet (UI): remove the tags widget
 
 [userchrome-snippet-remove-click-to-add-tags.css](./userchrome-snippet-remove-click-to-add-tags.css)
@@ -213,6 +226,8 @@ that bit of UI and give yourself some extra space.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
+
 ## <span id="smallertagswidget">—</span> snippet (UI): make the tags widget smaller
 
 [userchrome-snippet-shrink-click-to-add-tags.css](./userchrome-snippet-shrink-click-to-add-tags.css)
@@ -221,6 +236,8 @@ that bit of UI and give yourself some extra space.
 
 Do you use tags, but wished the tags widget that sits below your note in the UI
 was a bit thinner? This does exactly that.
+
+&ZeroWidthSpace;
 
 &ZeroWidthSpace;
 
@@ -239,6 +256,7 @@ to add tags, etc.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
 
 
 
