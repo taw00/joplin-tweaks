@@ -13,7 +13,7 @@ in Joplin Cloud.
 
 > ### Table of Tweaks
 > 
-> #### [Tweaks for the Markdown Previewer & Joplin Cloud](#tweaks-renderer-md)
+> #### [Tweaks to the Markdown Previewer & Joplin Cloud](#tweaks-renderer-md)
 > 
 > - stylesheet: render note preview as a [virtual page](#jvirtpagecss) - jvirtpage.css
 > - snippet (exported note): exported notes [should not include scrollbars](#noscrollbars)
@@ -22,7 +22,7 @@ in Joplin Cloud.
 > - snippet (rendered and exported note): [toggle the embedded display of linked-to PDF](#embeddedpdf)
 > - snippet (rendered and exported note): [disable links](#disablelinks)
 > 
-> #### [Tweaks for the Joplin UI](#tweaks-ui)
+> #### [Tweaks to the Joplin UI](#tweaks-ui)
 > 
 > - snippet (UI): [remove the markdown vs. rich text editor switch (button)](#noeditorswitch)
 > - snippet (UI): [remove the tags widget](#notagswidget)
@@ -39,7 +39,7 @@ in Joplin Cloud.
 
 
 
-# <span id="tweaks-renderer-md"></span>Tweaks for the Markdown Previewer & Joplin Cloud & Exported Notes
+# <span id="tweaks-renderer-md"></span>Tweaks to the Markdown Previewer & Joplin Cloud & Exported Notes
 
 The snippets below are added to the `userstyle.css` style configuration file.
 `jvirtpage.css` is expected to be imported into a document directly. See the
