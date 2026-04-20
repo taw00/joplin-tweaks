@@ -85,7 +85,7 @@
         --jvp-page-width:  var(--jvp-page-widthUS);
         --jvp-page-height: var(--jvp-page-heightUS);
         --jvp-page-margin: var(--jvp-page-marginUS);
-        --jvp-indent:      var(--jvp-page-indentUS);
+        --jvp-indent:      var(--jvp-indentUS);
 
         /* Joplin Cloud stuff */
         --jvp-jcloud-footer-color: hsl(from var(--jvp-text-color) h s l / 30%);
@@ -94,14 +94,14 @@
         /* Joplin default title upon HTML or PDF export or Joplin cloud and
          * last update date in Joplin Cloud.  We like it all off by default */
         --jvp-title-display: block;
-        --jvp-last-update-display: block;
+        --jvp-last-updated-display: block;
 
         /* SWITCHES
          * Switches to change the default page dimensions, margins, indent and
          * theme.  Enabled by sticking this div somewhere in your document, for
          * example:
          *      <div id="jvp" class="A5 landscape dark"></div>               */
-        &:has( div#jvp:where(.dark) ) {
+        &:has( :where(div#jvp.dark) ) {
             --jvp-text-color:    var(--jvp-dark-text-color);
             --jvp-text-color-link: var(--jvp-dark-text-color-link);
             --jvp-text-color-link-hover: var(--jvp-dark-text-color-link-hover);
@@ -109,7 +109,7 @@
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 8%);
         }
-        &:has( div#jvp:where(.dim) ) {
+        &:has( :where(div#jvp.dim) ) {
             --jvp-text-color:    var(--jvp-dim-text-color);
             --jvp-text-color-link: var(--jvp-dim-text-color-link);
             --jvp-text-color-link-hover: var(--jvp-dim-text-color-link-hover);
@@ -118,85 +118,85 @@
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
         }
 
-        &:has( div#jvp:where(.US,.us) ) {
+        &:has( :where(div#jvp:where(.US,.us)) ) {
             /* the defaults for everything - already set; being pedantic */
             --jvp-page-width:  var(--jvp-page-widthUS);
             --jvp-page-height: var(--jvp-page-heightUS);
             --jvp-page-margin: var(--jvp-page-marginUS);
-            --jvp-indent:      var(--jvp-page-indentUS);
+            --jvp-indent:      var(--jvp-indentUS);
         }
-        &:has( div#jvp:where(.US,.us).landscape ) {
+        &:has( :where(div#jvp:where(.US,.us).landscape) ) {
             --jvp-page-width:  var(--jvp-page-heightUS);
             --jvp-page-height: var(--jvp-page-widthUS);
         }
-        &:has( div#jvp:where(.USh,.USH,.ush) ) {
+        &:has( :where(div#jvp:where(.USh,.USH,.ush)) ) {
             --jvp-page-width:  var(--jvp-page-widthUSh);
             --jvp-page-height: var(--jvp-page-heightUSh);
             --jvp-page-margin: var(--jvp-page-marginUSh);
-            --jvp-indent:      var(--jvp-page-indentUSh);
+            --jvp-indent:      var(--jvp-indentUSh);
         }
-        &:has( div#jvp:where(.USh,.USH,.ush).landscape ) {
+        &:has( :where(div#jvp:where(.USh,.USH,.ush).landscape) ) {
             --jvp-page-width: var(--jvp-page-heightUSh);
             --jvp-page-height: var(--jvp-page-widthUSh);
         }
-        &:has( div#jvp:where(.A4,.a4) ) {
+        &:has( :where(div#jvp:where(.A4,.a4)) ) {
             --jvp-page-width:  var(--jvp-page-widthA4);
             --jvp-page-height: var(--jvp-page-heightA4);
             --jvp-page-margin: var(--jvp-page-marginA4);
-            --jvp-indent:      var(--jvp-page-indentA4);
+            --jvp-indent:      var(--jvp-indentA4);
         }
-        &:has( div#jvp:where(.A4,.a4).landscape ) {
+        &:has( :where(div#jvp:where(.A4,.a4).landscape) ) {
             --jvp-page-width:  var(--jvp-page-heightA4);
             --jvp-page-height: var(--jvp-page-widthA4);
         }
-        &:has( div#jvp:where(.A5,.a5) ) {
+        &:has( :where(div#jvp:where(.A5,.a5)) ) {
             --jvp-page-width:  var(--jvp-page-widthA5);
             --jvp-page-height: var(--jvp-page-heightA5);
             --jvp-page-margin: var(--jvp-page-marginA5);
-            --jvp-indent:      var(--jvp-page-indentA5);
+            --jvp-indent:      var(--jvp-indentA5);
         }
-        &:has( div#jvp:where(.A5,.a5).landscape ) {
+        &:has( :where(div#jvp:where(.A5,.a5).landscape) ) {
             --jvp-page-width:  var(--jvp-page-heightA5);
             --jvp-page-height: var(--jvp-page-widthA5);
         }
-        &:has( div#jvp:where(.A6,.a6) ) {
+        &:has( :where(div#jvp:where(.A6,.a6)) ) {
             --jvp-page-width:  var(--jvp-page-widthA6);
             --jvp-page-height: var(--jvp-page-heightA6);
             --jvp-page-margin: var(--jvp-page-marginA6);
-            --jvp-indent:      var(--jvp-page-indentA6);
+            --jvp-indent:      var(--jvp-indentA6);
         }
-        &:has( div#jvp:where(.A6,.a6).landscape ) {
+        &:has( :where(div#jvp:where(.A6,.a6).landscape) ) {
             --jvp-page-width:  var(--jvp-page-heightA6);
             --jvp-page-height: var(--jvp-page-widthA6);
         }
-        &:has( div#jvp:where(.no-page-markers,.no-markers) ) {
+        &:has( :where(div#jvp:where(.no-page-markers,.no-markers)) ) {
             --jvp-margin-markers-display: none;
         }
-        &:has( div#jvp:where(.show-page-markers,.show-markers) ) {
+        &:has( :where(div#jvp:where(.show-page-markers,.show-markers)) ) {
             --jvp-margin-markers-display: block;
         }
-        &:has( div#jvp:where(.nopdfs,.no-pdfs, .nopdf,.no-pdf) ) {
+        &:has( :where(div#jvp:where(.nopdfs,.no-pdfs, .nopdf,.no-pdf)) ) {
             --jvp-pdf-display: none;
         }
-        &:has( div#jvp:where(.showpdfs,.show-pdfs, .showpdf,.show-pdf) ) {
+        &:has( :where(div#jvp:where(.showpdfs,.show-pdfs, .showpdf,.show-pdf)) ) {
             --jvp-pdf-display: block;
         }
-        &:has( div#jvp:where(.show-title) ) {
+        &:has( :where(div#jvp.show-title) ) {
             --jvp-title-display: block;
         }
-        &:has( div#jvp:where(.no-title) ) {
+        &:has( :where(div#jvp.no-title) ) {
             --jvp-title-display: none;
         }
-        &:has( div#jvp:where(.show-date) ) {
-            --jvp-last-update-display: block;
+        &:has( :where(div#jvp.show-date) ) {
+            --jvp-last-updated-display: block;
         }
-        &:has( div#jvp:where(.no-date) ) {
-            --jvp-last-update-display: none;
+        &:has( :where(div#jvp.no-date) ) {
+            --jvp-last-updated-display: none;
         }
-        &:has( div#jvp:where(.nonote,.nonotes,.no-note,.no-notes) ) {
+        &:has( :where(div#jvp:where(.nonote,.nonotes,.no-note,.no-notes)) ) {
             --jvp-note-display: none;
         }
-        &:has( div#jvp:where(.shownote,.shownotes,.show-note,.show-notes) ) {
+        &:has( :where(div#jvp:where(.shownote,.shownotes,.show-note,.show-notes)) ) {
             --jvp-note-display: block;
         }
 
@@ -258,7 +258,7 @@ body.page-note {
             /* remove or show note title */
             /* remove or show "Last updated" line */
             & > h1.title { display: var(--jvp-title-display); }
-            & > p.last-updated { display: var(--jvp-last-update-display); }
+            & > p.last-updated { display: var(--jvp-last-updated-display); }
         }
     }
 }
@@ -530,4 +530,3 @@ body.page-note {
     size: var(--jvp-page-width) var(--jvp-page-height);
     margin: var(--jvp-page-margin);
 }
-
