@@ -77,13 +77,13 @@
         --jvp-default-text-color-link: hsl(219deg, 82%, 30%); /* from https://necolas.github.io/normalize.css/ +dark */
         --jvp-default-text-color-link-hover: hsl(219deg, 82%, 45%); /* same, but lighter */
         --jvp-default-paper-color: white;
-        --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
+        --jvp-default-desktop-color: hsl(0deg 0% 66%); /* darkgray */
 
         --jvp-text-color: var(--jvp-default-text-color);
         --jvp-text-color-link: var(--jvp-default-text-color-link);
         --jvp-text-color-link-hover: var(--jvp-default-text-color-link-hover);
         --jvp-paper-color: var(--jvp-default-paper-color);
-        --jvp-desktop-color: var(--jvp-desktop-color);
+        --jvp-desktop-color: var(--jvp-default-desktop-color);
 
         --jvp-default-code-text-color: var(--jvp-text-color);
       /*--jvp-default-code-background-color: hsl(from var(--jvp-desktop-color) h s l / 40%);
