@@ -17,6 +17,16 @@
     @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
 </style>
 
+ * … and if, for example, you prefer A4 as your default page dimensions.
+ *   create a jvirtpageA4.css that looks like this and import it instead:
+
+@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+:root {
+    --jvp-page-width:  var(--jvp-page-widthA4);
+    --jvp-page-height: var(--jvp-page-heightA4);
+    --jvp-page-margin: var(--jvp-page-marginA4);
+}
+
  * For more detail, refer to the documentation:
  * https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md
  *
@@ -28,17 +38,39 @@
 
 @layer jvirtpage {
     :root {
+        /* popular page dimensions */
+        --jvp-page-widthUS:  8.5in;  --jvp-page-heightUS:   11in;  --jvp-page-marginUS:   1in;
+        --jvp-page-widthUSh: 5.5in;  --jvp-page-heightUSh: 8.5in;  --jvp-page-marginUSh: .5in;
+        --jvp-page-widthA4:  210mm;  --jvp-page-heightA4:  297mm;  --jvp-page-marginA4:   1in;
+        --jvp-page-widthA5:  148mm;  --jvp-page-heightA5:  210mm;  --jvp-page-marginA5:  .5in;
+        --jvp-page-widthA6:  105mm;  --jvp-page-heightA6:  148mm;  --jvp-page-marginA6: .25in;
+
+        /* the defaults for page dimensions and margin */
+        --jvp-page-width:  var(--jvp-page-widthUS);
+        --jvp-page-height: var(--jvp-page-heightUS);
+        --jvp-page-margin: var(--jvp-page-marginUS);
+
+        /* set the working page width & height values */
+        --jvp-pgwidth:  var(--jvp-page-width);
+        --jvp-pgheight: var(--jvp-page-height);
+
+        /* indent is calculated from the margin. FUTURE USAGE (not used yet) */
+        --jvp-indent: calc(var(--jvp-page-margin)  * .5);
+
         /* default behavior of a linked-to PDF in a note - currently enabled
-         * also controlled by classes no-pdfs and show-pdfs */
-        --jvp-pdf-display: none;   /* PDF links not rendered (remains a link); use class no-pdf to turn off */
-        --jvp-pdf-display: block;  /* PDF rendered inside of the Joplin note (the default)*/
-        --jvp-note-display: none;  /* jvp notes not rendered; use class no-notes to turn off */
-        --jvp-note-display: block; /* jvp notes rendered (the default) */
+         * also controlled by classes no-pdfs and show-pdfs
+         * 'none' means not rendered. 'block' means rendered. We default to
+         * rendered. */
+        /*--jvp-pdf-display: none;
+        --jvp-note-display: none;*/
+        --jvp-pdf-display: block;
+        --jvp-note-display: block;
 
         /* default behavior of the margin markers - currently displayed
-         * also controlled by classes no-markers and show-markers */
-        --jvp-margin-markers-display: none;  /* want them off */
-        --jvp-margin-markers-display: block; /* want them on */
+         * also controlled by classes no-markers and show-markers
+         * 'none' means no margin markers; 'block' means display them */
+        /*--jvp-margin-markers-display: none;*/
+        --jvp-margin-markers-display: block;
 
         /* CONSTANTS */
         --jvp-text-color: black;
@@ -67,26 +99,6 @@
         --jvp-dark-desktop-color: hsl(0deg 0% 20%); /* darker than dimgray */
         /*--jvp-dark-desktop-color: hsl(222deg 12% 16%);*/ /* a dark purple-blue */
 
-        /* popular page dimensions */
-        --jvp-page-widthUS:  8.5in;  --jvp-page-heightUS:   11in;  --jvp-page-marginUS:   1in;
-        --jvp-page-widthUSh: 5.5in;  --jvp-page-heightUSh: 8.5in;  --jvp-page-marginUSh: .5in;
-        --jvp-page-widthA4:  210mm;  --jvp-page-heightA4:  297mm;  --jvp-page-marginA4:   1in;
-        --jvp-page-widthA5:  148mm;  --jvp-page-heightA5:  210mm;  --jvp-page-marginA5:  .5in;
-        --jvp-page-widthA6:  105mm;  --jvp-page-heightA6:  148mm;  --jvp-page-marginA6: .25in;
-
-        /* default for each is 1/2 the default margin widths */
-        --jvp-indentUS:   calc(var(--jvp-page-marginUS) * .5);
-        --jvp-indentUSh: calc(var(--jvp-page-marginUSh) * .5);
-        --jvp-indentA4:   calc(var(--jvp-page-marginA4) * .5);
-        --jvp-indentA5:   calc(var(--jvp-page-marginA5) * .5);
-        --jvp-indentA6:   calc(var(--jvp-page-marginA6) * .5);
-
-        /* the defaults for page dimensions and margin and indent */
-        --jvp-page-width:  var(--jvp-page-widthUS);
-        --jvp-page-height: var(--jvp-page-heightUS);
-        --jvp-page-margin: var(--jvp-page-marginUS);
-        --jvp-indent:      var(--jvp-indentUS);
-
         /* Joplin Cloud stuff */
         --jvp-jcloud-footer-color: hsl(from var(--jvp-text-color) h s l / 30%);
         --jvp-jcloud-footer-color-link: hsl(from var(--jvp-text-color-link) h s l / 40%);
@@ -97,10 +109,13 @@
         --jvp-last-updated-display: block;
 
         /* SWITCHES
-         * Switches to change the default page dimensions, margins, indent and
-         * theme.  Enabled by sticking this div somewhere in your document, for
-         * example:
-         *      <div id="jvp" class="A5 landscape dark"></div>               */
+         *
+         * Switches to change the default page dimensions, margins/indents, and
+         * theme. Enabled by sticking this div-block somewhere in your
+         * document, for example:
+         *      <div id="jvp" class="A5 landscape dark"></div>
+         * There are also switches for showing and not showing notes and PDFs
+         * and Joplin titles in exported stuff and updated date, etc. */
         &:has( :where(div#jvp.dark) ) {
             --jvp-text-color:    var(--jvp-dark-text-color);
             --jvp-text-color-link: var(--jvp-dark-text-color-link);
@@ -118,86 +133,71 @@
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
         }
 
-        &:has( :where(div#jvp:where(.US,.us)) ) {
+        &:has( :where(div#jvp:is(.US,.us)) ) {
             /* the defaults for everything - already set; being pedantic */
             --jvp-page-width:  var(--jvp-page-widthUS);
             --jvp-page-height: var(--jvp-page-heightUS);
             --jvp-page-margin: var(--jvp-page-marginUS);
-            --jvp-indent:      var(--jvp-indentUS);
         }
-        &:has( :where(div#jvp:where(.US,.us).landscape) ) {
-            --jvp-page-width:  var(--jvp-page-heightUS);
-            --jvp-page-height: var(--jvp-page-widthUS);
-        }
-        &:has( :where(div#jvp:where(.USh,.USH,.ush)) ) {
+        &:has( :where(div#jvp:is(.USh,.USH,.ush)) ) {
             --jvp-page-width:  var(--jvp-page-widthUSh);
             --jvp-page-height: var(--jvp-page-heightUSh);
             --jvp-page-margin: var(--jvp-page-marginUSh);
-            --jvp-indent:      var(--jvp-indentUSh);
         }
-        &:has( :where(div#jvp:where(.USh,.USH,.ush).landscape) ) {
-            --jvp-page-width: var(--jvp-page-heightUSh);
-            --jvp-page-height: var(--jvp-page-widthUSh);
-        }
-        &:has( :where(div#jvp:where(.A4,.a4)) ) {
+        &:has( :where(div#jvp:is(.A4,.a4)) ) {
             --jvp-page-width:  var(--jvp-page-widthA4);
             --jvp-page-height: var(--jvp-page-heightA4);
             --jvp-page-margin: var(--jvp-page-marginA4);
-            --jvp-indent:      var(--jvp-indentA4);
         }
-        &:has( :where(div#jvp:where(.A4,.a4).landscape) ) {
-            --jvp-page-width:  var(--jvp-page-heightA4);
-            --jvp-page-height: var(--jvp-page-widthA4);
-        }
-        &:has( :where(div#jvp:where(.A5,.a5)) ) {
+        &:has( :where(div#jvp:is(.A5,.a5)) ) {
             --jvp-page-width:  var(--jvp-page-widthA5);
             --jvp-page-height: var(--jvp-page-heightA5);
             --jvp-page-margin: var(--jvp-page-marginA5);
-            --jvp-indent:      var(--jvp-indentA5);
         }
-        &:has( :where(div#jvp:where(.A5,.a5).landscape) ) {
-            --jvp-page-width:  var(--jvp-page-heightA5);
-            --jvp-page-height: var(--jvp-page-widthA5);
-        }
-        &:has( :where(div#jvp:where(.A6,.a6)) ) {
+        &:has( :where(div#jvp:is(.A6,.a6)) ) {
             --jvp-page-width:  var(--jvp-page-widthA6);
             --jvp-page-height: var(--jvp-page-heightA6);
             --jvp-page-margin: var(--jvp-page-marginA6);
-            --jvp-indent:      var(--jvp-indentA6);
         }
-        &:has( :where(div#jvp:where(.A6,.a6).landscape) ) {
-            --jvp-page-width:  var(--jvp-page-heightA6);
-            --jvp-page-height: var(--jvp-page-widthA6);
-        }
-        &:has( :where(div#jvp:where(.no-page-markers,.no-markers)) ) {
+
+        &:has( :where(div#jvp:is(.no-page-markers,.no-markers)) ) {
             --jvp-margin-markers-display: none;
         }
-        &:has( :where(div#jvp:where(.show-page-markers,.show-markers)) ) {
+        &:has( :where(div#jvp:is(.show-page-markers,.show-markers)) ) {
             --jvp-margin-markers-display: block;
         }
-        &:has( :where(div#jvp:where(.nopdfs,.no-pdfs, .nopdf,.no-pdf)) ) {
+
+        &:has( :where(div#jvp:is(.nopdfs,.no-pdfs, .nopdf,.no-pdf)) ) {
             --jvp-pdf-display: none;
         }
-        &:has( :where(div#jvp:where(.showpdfs,.show-pdfs, .showpdf,.show-pdf)) ) {
+        &:has( :where(div#jvp:is(.showpdfs,.show-pdfs, .showpdf,.show-pdf)) ) {
             --jvp-pdf-display: block;
         }
+
         &:has( :where(div#jvp.show-title) ) {
             --jvp-title-display: block;
         }
         &:has( :where(div#jvp.no-title) ) {
             --jvp-title-display: none;
         }
+
         &:has( :where(div#jvp.show-date) ) {
             --jvp-last-updated-display: block;
         }
         &:has( :where(div#jvp.no-date) ) {
             --jvp-last-updated-display: none;
         }
-        &:has( :where(div#jvp:where(.nonote,.nonotes,.no-note,.no-notes)) ) {
+
+        &:has( :where(div#jvp:is(.nonote,.nonotes,.no-note,.no-notes)) ) {
             --jvp-note-display: none;
         }
-        &:has( :where(div#jvp:where(.shownote,.shownotes,.show-note,.show-notes)) ) {
+        &:has( :where(div#jvp:is(.shownote,.shownotes,.show-note,.show-notes)) ) {
             --jvp-note-display: block;
+        }
+
+        &:has( :where(div#jvp.landscape) ) {
+            --jvp-pgwidth:  var(--jvp-page-height);
+            --jvp-pgheight: var(--jvp-page-width);
         }
 
         /* OTHER CONSTANTS - don't change these */
@@ -218,7 +218,7 @@
  * stylings with <div id="jvp" class="off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has( :where(#jvp:where(.off), #jvp-off, #jvpoff, div#vpage > article#manuscript, #rendered-md > #sn-md) ) ) {
+:not( :has( :where(#jvp.off, #jvp-off, #jvpoff, div#vpage > article#manuscript, #rendered-md > #sn-md) ) ) {
 
 
 
@@ -338,9 +338,9 @@ body.page-note {
 
         /* show bit of margin surrounding the virtual page on small screens */
         width: 96%;
-        max-width: var(--jvp-page-width);
+        max-width: var(--jvp-pgwidth);
 
-        min-height: var(--jvp-page-height);
+        min-height: var(--jvp-pgheight);
 
         /* This is either ugly or clever. Maybe simply "too clever" …
          * We are attempting to remove the top margin from the first element.
@@ -377,7 +377,7 @@ body.page-note {
             position: absolute;
             content: "";
             --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
-            --tmp-content-height: calc(var(--jvp-page-height) - var(--tmp-page-margin) - var(--tmp-page-margin));
+            --tmp-content-height: calc(var(--jvp-pgheight) - var(--tmp-page-margin) - var(--tmp-page-margin));
             top: var(--tmp-page-margin);
             left: 0;
             width: calc(var(--tmp-page-margin) / 4);
@@ -394,7 +394,7 @@ body.page-note {
             position: absolute;
             content: "";
             --tmp-page-margin: min(var(--jvp-page-margin),var(--jvp-min-margin));
-            --tmp-content-height: calc(var(--jvp-page-height) - var(--tmp-page-margin) - var(--tmp-page-margin));
+            --tmp-content-height: calc(var(--jvp-pgheight) - var(--tmp-page-margin) - var(--tmp-page-margin));
             top: var(--tmp-page-margin);
             right: 0;
             width: calc(var(--tmp-page-margin) / 4);
@@ -424,7 +424,7 @@ body.page-note {
                   "\9 help\A\9\9 Display this help text.";
                 top: 0;
                 left: 0;
-                width: calc(var(--jvp-page-width) - var(--jvp-page-margin) - var(--jvp-page-margin));
+                width: calc(var(--jvp-pgwidth) - var(--jvp-page-margin) - var(--jvp-page-margin));
                 height: auto;
                 white-space: pre-wrap;
                 border: 2px solid var(--jvp-1st-page-marker-color);
@@ -527,6 +527,6 @@ body.page-note {
 
 
 @page jvp-page-dimensions {
-    size: var(--jvp-page-width) var(--jvp-page-height);
+    size: var(--jvp-pgwidth) var(--jvp-pgheight);
     margin: var(--jvp-page-margin);
 }

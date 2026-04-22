@@ -36,6 +36,20 @@ By default, the page will be …
 - Darkened "desktop"
 
 > All of these are are adjustable. See "switches" below.
+>
+> BUT. If you wish, for example, A4 as your default for all imports of
+> jvirtpage.css. Create jvirtpageA4.css with this content and import it
+> instead:
+>
+> ```css
+> @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+> :root {
+>     --jvp-page-width:  var(--jvp-page-widthA4);
+>     --jvp-page-height: var(--jvp-page-heightA4);
+>     --jvp-page-margin: var(--jvp-page-marginA4);
+> }
+> ```
+
 
 Exported to PDF or Print will do what you expect preserve the page dimensions
 and margins.
@@ -128,8 +142,9 @@ Again, by default, the page will be …
 
 ### Switches
 
-If you want to change the default behavior, add this line anywhere in your
-  note …
+If you want to change the default behavior for a single note, add this line
+anywhere in your note …
+
 `<div id="jvp" class="SWITCH"></div>`
 
 SWITCH can be one of …
@@ -151,13 +166,13 @@ SWITCH can be one of …
 - `no-pdfs`  
   Turns off rendering of PDFs in the note.
 - `show-pdfs`  
-  Turns on rendering of PDFs in the notae. (Only useful if you turn it off by
+  Turns on rendering of PDFs in the note. (Only useful if you turn it off by
   default by editing the initial constant value within the CSS.)
 - `no-notes`  
   Turns off rendering of jvp notes within the document.
 - `show-notes`  
-  Turns on rendering of jvp notes within the document. (Only useful if you turn it off by
-  default by editing the initial constant value within the CSS.)
+  Turns on rendering of jvp notes within the document. (Only useful if you turn
+  it off by default by editing the initial constant value within the CSS.)
 - `no-links`  
   This will turn off all link functionality within a note and attempt to set
   their stylings to something neutral.
