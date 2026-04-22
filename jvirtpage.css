@@ -73,28 +73,40 @@
         --jvp-margin-markers-display: block;
 
         /* CONSTANTS */
-        --jvp-text-color: black;
-        --jvp-text-color-link: hsl(219deg, 82%, 30%); /* from https://necolas.github.io/normalize.css/ but dark */
-        --jvp-text-color-link-hover: hsl(219deg, 82%, 45%); /* same, but lighter */
+        --jvp-default-text-color: black;
+        --jvp-default-text-color-link: hsl(219deg, 82%, 30%); /* from https://necolas.github.io/normalize.css/ +dark */
+        --jvp-default-text-color-link-hover: hsl(219deg, 82%, 45%); /* same, but lighter */
+        --jvp-default-paper-color: white;
+        --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
+
+        --jvp-text-color: var(--jvp-default-text-color);
+        --jvp-text-color-link: var(--jvp-default-text-color-link);
+        --jvp-text-color-link-hover: var(--jvp-default-text-color-link-hover);
+        --jvp-paper-color: var(--jvp-default-paper-color);
+        --jvp-desktop-color: var(--jvp-desktop-color);
+
+        --jvp-default-code-text-color: var(--jvp-text-color);
+      /*--jvp-default-code-background-color: hsl(from var(--jvp-desktop-color) h s l / 40%);
+        --jvp-default-code-border: 1px solid hsl(from var(--jvp-code-text-color) h s l / 10%);*/
+        --jvp-default-code-background-color: transparent;
+        --jvp-default-code-border: 0;
+        --jvp-default-pre-saturation-filter: 400%;
+        --jvp-default-pre-brightness-filter: 70%;
+
+        --jvp-code-text-color: var(--jvp-default-code-text-color);
+      /*--jvp-code-background-color: var(--jvp-default-code-background-color);
+        --jvp-code-border: var(--jvp-default-code-border);*/
+        --jvp-code-background-color: var(--jvp-default-code-background-color);
+        --jvp-code-border: var(--jvp-default-code-border);
+        --jvp-pre-saturation-filter: var(--jvp-default-pre-saturation-filter);
+        --jvp-pre-brightness-filter: var(--jvp-default-pre-brightness-filter);
 
         --jvp-jcloud-last-update-color: var(--jvp-text-color);
         --jvp-jcloud-title-color: var(--jvp-text-color);
 
-        --jvp-paper-color: white;
-        --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
-
-        --jvp-code-text-color: var(--jvp-text-color);
-        /*--jvp-code-background-color: hsl(from var(--jvp-desktop-color) h s l / 40%);
-        --jvp-code-border: 1px solid hsl(from var(--jvp-code-text-color) h s l / 10%);*/
-        --jvp-code-background-color: none;
-        --jvp-code-border: 0;
-        --jvp-pre-saturation-filter: 400%;
-        --jvp-pre-brightness-filter: 70%;
-        /*--jvp-pre-saturation-filter: 0%;
-        --jvp-pre-brightness-filter: 0%;*/
-
         --jvp-paper-box-shadow: 0 0 var(--jvp-page-spacing) black;
         --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
+
 
         --jvp-dim-text-color: black;
         --jvp-dim-text-color-link: hsl(219deg, 82%, 30%); /* same */
@@ -221,14 +233,21 @@
         /* OTHER CONSTANTS - don't change these */
         --jvp-page-spacing: 20px;
         --jvp-min-margin: 13vw; /* 13% of the viewport width. */
+        /*
+        --jvp-pre-saturation-filter: 0%;
+        --jvp-pre-brightness-filter: 0%;
+        --jvp-pre-saturation-filter: 100%;
+        --jvp-pre-brightness-filter: 200%;*/
     } /* end :root */
 } /* end @layer jvirtpage */
 
 
-/* Uncomment this :has and its mirroring brace at the end of the file if you
- * want to require <div id="jvp"></div> to exist in a note before allowing any
- * of this formatting to function. I.e., the stylings will be OFF by default if
- * you uncomment this and its ending brace.
+/* Uncomment this :has declaration and its mirroring brace at the end of the
+ * file if you want to require <div id="jvp"></div> to exist in a note before
+ * allowing any of this formatting to function.
+ * I.e., if you import this stylesheet, you don't normally have to declare the
+ * div block for it these rules to take effect. If you DO uncomment these
+ * braces, this stylesheet will not take effect until you add that div block.
 :has( div:where(#jvp) ) {
 */
 
@@ -236,7 +255,10 @@
  * stylings with <div id="jvp" class="off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has( :where(#jvp.off, #jvp-off, #jvpoff, div#vpage > article#manuscript, #rendered-md > #sn-md) ) ) {
+:not( :has(
+  :where(#jvp:is(.off,.disabled),
+         #jvp-off, #jvpoff, #jvp-disabled, #jvpdisabled,
+         div#vpage > article#manuscript, #rendered-md > #sn-md) ) ) {
 
 
 
@@ -265,20 +287,41 @@
 }
 
 
-/* make code blocks and pre's blend in more with the theme */
-#rendered-md {
-    & p code {
+/* make code blocks and pre's blend in more with the theme
+ * - class native-code reverts background color and code color to for both
+ *   inline and fenced code blocks to whatever Joplin thinks they should be.
+ *   Also, it adds a tiny bit of padding to make it more readable.
+ * - class no-syntax eliminates all syntax coloration in a fenced codeblock */
+:has(#jvp.native-code) { :where(#rendered-md) :is(pre,pre.hljs) { padding-inline-start: 5px; } }
+
+:not(:has(:where(#jvp.native-code))) {
+:where(#rendered-md) {
+    & p :is(code,code.inline-code) {
         color: var(--jvp-code-text-color);
         background-color: var(--jvp-code-background-color);
         border: var(--jvp-code-border);
     }
-    & pre {
-        padding: 5px;
+    & :is(pre,pre.hljs) {
+        /*padding: 5px;*/
         color: var(--jvp-code-text-color);
         background-color: transparent;
         * { filter: saturate(var(--jvp-pre-saturation-filter)) brightness(var(--jvp-pre-brightness-filter)); }
     }
 }
+}
+
+:has(:where(#jvp.no-syntax)) {
+:where(#rendered-md) {
+    & :is(pre,pre.hljs) {
+        /*padding: 5px;*/
+        background-color: transparent;
+        & * {
+            color: var(--jvp-text-color);
+        }
+    }
+}
+}
+
 
 
 /* Joplin Cloud stuff
@@ -445,9 +488,12 @@ body.page-note {
                 display: block;
                 position: relative;
                 content: 'Switches, place <div id="jvp" class="insert-switch-here"></div> at top of note:\A'
-                  "\9 off\A\9\9 Turn off jvirtpage styles.\A"
-                  "\9 dark, dim\A\9\9 Set an alternative theme.\A"
+                  "\9 off\A\9\9 Disable the jvirtpage stylesheet.\A"
                   "\9 us (default), ush, a4, a5, a6\A\9\9 Set @page dimensions.\A"
+                  "\9 landscape\A\9\9 Flip the width x height. Default is portrait.\A"
+                  "\9 dark, dim\A\9\9 Set an alternative theme to the normal white-paper theme.\A"
+                  "\9 native-code\A\9\9 All code—inline or fenced—will be themed according to native Joplin.\A"
+                  "\9 no-syntax\A\9\9 Eliminate all fenced code block syntax coloration.\A"
                   "\9 no-page-markers, show-page-markers (default)\A\9\9 No/Show fancy margin indicators.\A"
                   "\9 no-pdfs, show-pdfs (default)\A\9\9 No/Show expansion of PDFs within note preview.\A"
                   "\9 no-notes, show-notes (default)\A\9\9 No/Show jvp notes.\A"
@@ -489,6 +535,21 @@ body.page-note {
  * configuration for print and PDF rendering
  */
 @media print {
+    /* reset all of the colors to the white-paper default */
+    & {
+        --jvp-text-color: var(--jvp-default-text-color);
+        --jvp-text-color-link: var(--jvp-default-text-color-link);
+        --jvp-text-color-link-hover: var(--jvp-default-text-color-link-hover);
+        --jvp-paper-color: transparent;
+        --jvp-desktop-color: transparent;
+        --jvp-code-text-color: var(--jvp-default-code-text-color);
+      /*--jvp-code-background-color: var(--jvp-default-code-background-color);
+        --jvp-code-border: var(--jvp-default-code-border);*/
+        --jvp-code-background-color: var(--jvp-default-code-background-color);
+        --jvp-code-border: var(--jvp-default-code-border);
+        --jvp-pre-saturation-filter: var(--jvp-default-pre-saturation-filter);
+        --jvp-pre-brightness-filter: var(--jvp-default-pre-brightness-filter);
+    }
     html,
     body {
         page: jvp-page-dimensions;

@@ -4,55 +4,106 @@ jvirtpage.css is a stylesheet that will enable any note within the Joplin
 application to render as an aesthetically pleasing virtual page in the Joplin
 markdown viewer (the previewer).
 
-> ### TL;DR
->
-> 1. Install Joplin's "Import Local CSS" plugin and restart
-> 2. Create note in Jopin and add these three lines to the top …
-> ```html
-> <style>
->     @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
-> </style>
-> ```
->
-> Alternatively, to enable this CSS for all of your notes by default …
-> 1. Install Joplin's "Import Local CSS" plugin and restart
-> 2. Created a note that will be imported by other notes …
-> ~~~html
-> ```css
-> @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
-> ```
-> ~~~
-> 3. right-click on the new CSS note and "Copy markdown link"
-> 4. Tools >  Options > Local CSS > Global CSS > insert link you just copied
->
+### TL;DR
+
+1. Install Joplin's "Import Local CSS" plugin and restart
+2. Create note in Jopin and add these three lines to the top …
+
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+```
+
+Alternatively, to enable this CSS for all of your notes by default …
+
+1. Install Joplin's "Import Local CSS" plugin and restart
+2. Created a note that will be imported by other notes …
+
+~~~html
+```css
+@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+```
+~~~
+
+ 3. right-click on the new CSS note and "Copy markdown link"
+ 4. Tools >  Options > Local CSS > Global CSS > insert link you just copied
+
 > LIMITATION: The "Global CSS" option only extends to the rendered view. If you
 > want the CSS to be applied to the exported note, you have to use the first
 > method listed above method shown above.
 
 By default, the page will be …
+
 - US Letter with 1in margins
 - Black text
 - White paper
 - Darkened "desktop"
 
-> All of these are are adjustable. See "switches" below.
->
-> BUT. If you wish, for example, A4 as your default for all imports of
-> jvirtpage.css. Create jvirtpageA4.css with this content and import it
-> instead:
->
+All of these are are adjustable with switches (see all switches below). For
+example, if I wanted to make the note in the dimensions of A4 …
+
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+<div id="jvp" class="A4"></div>
+
+Here is my note, with the page-dimensions aligning with A4.
+```
+
+BUT. If you wish, for example, A4 as your default for all imports of
+jvirtpage.css. Create a `jvirtpageA4.css` stylesheet with this content and
+import it instead:
+
+ ```css
+ /* jvirtpageA4.css */
+ @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+ :root {
+     --jvp-page-width:  var(--jvp-page-widthA4);
+     --jvp-page-height: var(--jvp-page-heightA4);
+     --jvp-page-margin: var(--jvp-page-marginA4);
+ }
+ ```
+
+Since I commonly turn off syntax highlighting on code blocks, PDF display, and
+titles and dates when I export, I could do this on every note …
+
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+<div id="jvp" class="no-syntax no-pdf no-title no-date"></div>
+
+Here is my note. It will appear on a US-letter-dimensioned page, no Joplin
+PDF expansion will occur, there will be no syntax highlighting if I have
+fenced code blocks. And if I export to a PDF, no title nor update date will be
+shared.
+```
+
+But I use that often enough that I created my own stylesheet where those are
+the defaults …
+
 > ```css
+> /* jvirtpage-mydefaults.css */
 > @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
 > :root {
->     --jvp-page-width:  var(--jvp-page-widthA4);
->     --jvp-page-height: var(--jvp-page-heightA4);
->     --jvp-page-margin: var(--jvp-page-marginA4);
+>     #rendered-md pre * { color: var(--jvp-text-color); } /* no-syntax */
+>     --jvp-pdf-display: none;   /* no-pdf */
+>     --jvp-title-display: none; /* no-title */
+>     --jvp-date-display: none;  /* no-date */
 > }
 > ```
 
+That's the TL;DR and should get you 90% of the way to where you want to go
+with this.
 
-Exported to PDF or Print will do what you expect preserve the page dimensions
-and margins.
+&ZeroWidthSpace;
+
+
+
+
+# More detail …
 
 ## Methods of Enabling the Stylesheet
 
@@ -63,35 +114,81 @@ Local CSS" plugin to set the stylesheet as the default for all notes, or add
 the stylesheet to `userstyle.css`.
 
 > Do this first before doing anything else:  
-> Install the "Import local CSS" Joplin plugin (and restart).
+> In Joplin, install the "Import local CSS" Joplin plugin (and restart).
 
-1. Importing the stylesheet from the filesystem …
+Four ways to import the stylesheet:
 
-- Then do this at the top of your note …
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+    @import "/path/to/joplin-tweaks/jvirtpage.css";
+    @import "https://mywebserver.example.com/pub/jvirtpage.css";
+    @import ":/7d66d959fa974468b4670db7228943a1";
+</style>
+```
+
+1. Using the stylesheet directly from the repository
+
+Note, I do break the upstream stylesheet from time to time, so … if it flakes
+out on you, that may be what happened.
+
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+```
+
+2. Importing the stylesheet from the filesystem …
+
+- Download the whole repository from https://github.com/taw00/joplin-tweaks
+  using `git clone https://github.com/taw00/joplin-tweaks` or just a manual
+  download. Or just download `jvirtpage.css` (it has no dependencies).
+- Add this to the top of your note …
+
 ```html
 <style>
     @import "/path/to/joplin-tweaks/jvirtpage.css";
 </style>
 ```
 
-2. If you are importing this into your note from the web …
+3. Importing the stylesheet from the web …
 
-- Stick the `jvirtpage.css` somewhere on the web where it is accessible to
-  your system
-- Change the `@import` example above to look something like:  
-  `@import "https://mywebserver.com/pub/jvirtpage.css";`
-- Or use it straight from the github repo …  
-  `@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";`
+- Grab the style sheet similarly to step 2. But on your own webserver.
+- Make sure it has the right permissions so that your webserver can serve it.
 
-3. If you want to import from a "CSS note" …
+```html
+<style>
+    @import "https://mywebserver.example.com/pub/jvirtpage.css";
+</style>
+```
 
-- Create note. Name it something like `jvirtpage.css`
+4. Import from a Joplin note …
+
+- Create note. Name it something like `jvirtpage.css-note`
 - Copy this stylesheet into the note (or @import the github link)
-- Wrap the whole thing in a ``\`css and ``\` fenced code block  
-  *You may have to delete all of the preliminary comments (they sometimes break the plugin)*
+- Wrap the whole thing in a ``\`css and ``\` fenced code block
 - Right click on the css note and "Copy Markdown Link"
-- Use only the :/HASHVALUE part of it and, for example …
-  `@import ":/7d66d959fa974468b4670db7228943a1";`
+- Use only the `:/HASHVALUE` part of it (the one in the example is just an
+  example)
+
+~~~html
+```css
+/* jvirtpage.css-note */
+@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+:root {
+    /* if I want to turn off PDF expansion by default */
+    --jvp-pdf-display: block;
+}
+```
+~~~
+
+- in your notes, import that note …
+
+```html
+<style>
+    @import ":/7d66d959fa974468b4670db7228943a1";
+</style>
+```
 
 4. If you want this formattting available by default for ALL of your notes …
 
@@ -100,28 +197,9 @@ the stylesheet to `userstyle.css`.
   `[jvirtpage.css](:/7d66d959fa974468b4670db7228943a1)`
 - This configuration must be repeated on each device.
 
-4.b. If you want this formatting available by default for all notes, but only
-enabled with a switch …
-
-- Perform step 4 above
-- Edit the CSS note and uncomment the `:has( div#jvp ) {`  and `}` lines that
-  wrap `@media screen` and `@media print`
-- Add `<div id="jvp"></div>` to any note you wish to be rendered as a virtual
-  page. In this case, without the `<div>` element, the page will be rendered
-  according to Joplin's defaults.
-
-5. Add stylesheet to `userstyle.css` (not recommended)
-
-If you cut-n-paste this styles sheet into the `userstyle.css` inside the
-`joplin-desktop` folder (Linux/macOS: `~/.config/joplin-desktop/` -or- Windows:
-`C:\Users\%USERNAME%\.config\joplin-desktop\`) the styles will also be
-persistent AND available to Joplin Cloud published notes. But, it's messy and I
-don't recommend it. Instead, if you want the styles to be enabled for a
-published note, I would instead directly import the stylesheet (option 2 or 3).
-
 &ZeroWidthSpace;
 
-## Usage
+## Usage Notes
 
 Once imported into a note or enabled for all notes, the default behavior should
 be evident. The preview for the styled note should be rendered as a "virtual
@@ -159,8 +237,13 @@ SWITCH can be one of …
 - `landscape`  
   Switch that flips the width x height. Default is portrait.
 - `dim` or `dark`  
-  Theme switches. Black text on a white page on a gray backound is the
+  Dim theme or dark theme. A more white-paper-like them with black text is the
   default.
+- `no-syntax`\
+  Eliminate all fenced code block syntax coloration.
+- `native-code`\
+  All code—inline or fenced—will be themed according to native Joplin, even if
+  it conflicts with the theme of jvirtpage.css.
 - `no-1st-page-marker`  
   Turns off the marker that notes the page length of the current configuration.
 - `no-pdfs`  
