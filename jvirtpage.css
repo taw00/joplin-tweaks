@@ -83,6 +83,16 @@
         --jvp-paper-color: white;
         --jvp-desktop-color: hsl(0deg 0% 66%); /* darkgray */
 
+        --jvp-code-text-color: var(--jvp-text-color);
+        /*--jvp-code-background-color: hsl(from var(--jvp-desktop-color) h s l / 40%);
+        --jvp-code-border: 1px solid hsl(from var(--jvp-code-text-color) h s l / 10%);*/
+        --jvp-code-background-color: none;
+        --jvp-code-border: 0;
+        --jvp-pre-saturation-filter: 400%;
+        --jvp-pre-brightness-filter: 70%;
+        /*--jvp-pre-saturation-filter: 0%;
+        --jvp-pre-brightness-filter: 0%;*/
+
         --jvp-paper-box-shadow: 0 0 var(--jvp-page-spacing) black;
         --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
 
@@ -123,6 +133,10 @@
             --jvp-paper-color:   var(--jvp-dark-paper-color);
             --jvp-desktop-color: var(--jvp-dark-desktop-color);
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 8%);
+            /*--jvp-code-background-color: hsl(from var(--jvp-desktop-color) h s l / 80%);
+            --jvp-code-border: 1px solid hsl(from var(--jvp-code-text-color) h s l / 10%);*/
+            --jvp-pre-saturation-filter: 200%;
+            --jvp-pre-brightness-filter: 90%;
         }
         &:has( :where(div#jvp.dim) ) {
             --jvp-text-color:    var(--jvp-dim-text-color);
@@ -131,6 +145,10 @@
             --jvp-paper-color:   var(--jvp-dim-paper-color);
             --jvp-desktop-color: var(--jvp-dim-desktop-color);
             --jvp-1st-page-marker-color: hsl(from var(--jvp-text-color) h s l / 10%);
+            /*--jvp-code-background-color: hsl(from var(--jvp-desktop-color) h s l / 40%);
+            --jvp-code-border: 1px solid hsl(from var(--jvp-code-text-color) h s l / 10%);*/
+            --jvp-pre-saturation-filter: 200%;
+            --jvp-pre-brightness-filter: 70%;
         }
 
         &:has( :where(div#jvp:is(.US,.us)) ) {
@@ -245,6 +263,23 @@
         border: unset;
     }
 }
+
+
+/* make code blocks and pre's blend in more with the theme */
+#rendered-md {
+    & p code {
+        color: var(--jvp-code-text-color);
+        background-color: var(--jvp-code-background-color);
+        border: var(--jvp-code-border);
+    }
+    & pre {
+        padding: 5px;
+        color: var(--jvp-code-text-color);
+        background-color: transparent;
+        * { filter: saturate(var(--jvp-pre-saturation-filter)) brightness(var(--jvp-pre-brightness-filter)); }
+    }
+}
+
 
 /* Joplin Cloud stuff
  * - Remove (or show) the viewport cruft (title, last-updated, padding, etc.) */
