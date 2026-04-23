@@ -273,6 +273,10 @@ anywhere in your note …
 
 `<div id="jvp" class="SWITCH"></div>`
 
+For example, many (maybe most) of my notes are configured as such:  
+`<div id="jvp" class="dark no-pdf no-syntax"></div>`
+
+
 SWITCH can be one of …
 
 - `off`  
@@ -317,9 +321,6 @@ SWITCH can be one of …
   Upon publish to Joplin Cloud, show Last Update date.
 - `help`
   Display a help summary at the top of your note.
-
-For example, many (maybe most) of my notes are configured as such:  
-`<div id="jvp" class="dark no-pdf"></div>`
 
 —
 
