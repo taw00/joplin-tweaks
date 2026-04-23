@@ -321,7 +321,7 @@ SWITCH can be one of …
 For example, many (maybe most) of my notes are configured as such:  
 `<div id="jvp" class="dark no-pdf"></div>`
 
--
+—
 
 Enjoy!
 
