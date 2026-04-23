@@ -1,0 +1,247 @@
+<style>
+    html { background-color: darkgray; }
+    body {
+        width: 75%;
+        margin-inline: auto;
+        padding: 5%;
+        box-shadow: 0 0 20px black;
+        background-color: lightgray;
+    }
+    body img { width: 100%; }
+</style>
+
+<h1 id="joplin-tweaks">joplin-tweaks</h1>
+<p>Style customizations for <a href="https://joplinapp.org/">Joplin</a>,
+a secure open-source, notebook application.</p>
+<p>Included in this repository are snippets of CSS that customize the
+look and feel of the Joplin UI, its markdown previewer, and how
+documents are presented in Joplin Cloud.</p>
+<p>​</p>
+<p>​</p>
+<blockquote>
+<h3 id="table-of-tweaks">Table of Tweaks</h3>
+<h4 id="tweaks-for-the-markdown-previewer--joplin-cloud"><a
+href="#tweaks-renderer-md">Tweaks to the Markdown Previewer &amp;
+Joplin Cloud</a></h4>
+<ul>
+<li>stylesheet: render a note preview as a <a href="#jvirtpagecss">virtual
+page</a> - jvirtpage.css</li>
+<li>snippet (exported note): exported notes <a
+href="#noscrollbars">should not include scrollbars</a></li>
+<li>snippet (exported note): <a href="#noframe">remove excess spaced
+framing</a> of exported content</li>
+<li>snippet (exported note): <a href="#notitle">remove automated note
+titles</a> from exported note</li>
+<li>snippet (rendered and exported note): <a href="#embeddedpdf">toggle
+the embedded display of linked-to PDF</a></li>
+<li>snippet (rendered and exported note): <a
+href="#disablelinks">disable links</a></li>
+</ul>
+<h4 id="tweaks-to-the-joplin-ui"><a href="#tweaks-ui">Tweaks to the
+Joplin UI</a></h4>
+<ul>
+<li>snippet (UI): <a href="#noeditorswitch">remove the markdown vs. rich
+text editor switch (button)</a></li>
+<li>snippet (UI): <a href="#notagswidget">remove the tags
+widget</a></li>
+<li>snippet (UI): <a href="#smallertagswidget">make the tags widget
+smaller/thinner</a></li>
+<li>snippet (UI): <a href="#smallerstatusbar">make the bottom status bar
+thinner</a></li>
+</ul>
+</blockquote>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<h1
+id="tweaks-to-the-markdown-previewer--joplin-cloud--exported-notes"><span id="tweaks-renderer-md"></span>Tweaks
+to the Markdown Previewer &amp; Joplin Cloud &amp; Exported Notes</h1>
+<p>The snippets below are added to the <code>userstyle.css</code> style
+configuration file. <code>jvirtpage.css</code> is expected to be
+imported into a document directly. See the associated documentation.</p>
+<p>​</p>
+<h2
+id="-render-a-note-preview-as-an-attractive-virtual-page"><span id="jvirtpagecss">—</span>
+stylesheet: render a note preview as an attractive virtual page</h2>
+<p>Stylesheet: <a href="./jvirtpage.css">jvirtpage.css</a><br />
+Documentation: <a href="docs/jvirtpage.md">jvirtpage.md</a></p>
+<ul>
+<li>Preview your document as an aesthetically pleasing virtual page that
+matches international standard dimensions for US Letter, US Half-letter,
+A4, A5, A6 pages. Themeable: default (white page), dim, and dark
+views.</li>
+<li>Render the document to those dimensions when you export to PDF.</li>
+<li>For more detail, please read the documentation: <a
+href="https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md">https://github.com/taw00/joplin-tweaks/docs/jvirtpage.md</a></li>
+</ul>
+<h3 id="quickstart-guide-to-jvirtpagecss">Quickstart guide to
+<code>jvirtpage.css</code></h3>
+<ol type="1">
+<li><p>Install Joplin's "Import Local CSS" plugin and restart</p></li>
+<li><p>Create note in Joplin and add these three lines to the top
+…</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">@import</span> <span class="st">&quot;https://taw00.github.io/joplin-tweaks/jvirtpage.css&quot;</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>or …</strong></p>
+<ol type="1">
+<li><p>Install Joplin's "Import Local CSS" plugin and restart</p></li>
+<li><p>Download this repository …</p></li>
+</ol>
+<p><code>git clone https://github.com/taw00/joplin-tweaks</code></p>
+<ol start="3" type="1">
+<li>Create note in Joplin and add these three lines to the top …</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">@import</span> <span class="st">&quot;/path/to/joplin-tweaks/jvirtpage.css&quot;</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><b>and now …</b></p>
+<ul>
+<li><p>Save it, and you should see a pretty, virtualized page in the
+preview pane in the Joplin application.</p></li>
+<li><p>Want an A5 landscape virtual page with a dark themed? Add this
+fourth line to your note …</p></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;jvp&quot;</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;A5 landscape dark&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="example-1-no-customization">Example 1: no customization</h3>
+<p><img src="docs/images/jvirtpage-default-us-letter.png"
+alt="jvirtpage-default-us-letter" /></p>
+<h3 id="example-2-dark-theme-and-a6-in-a-landscape-orientation">Example
+2: dark theme and A6 in a landscape orientation</h3>
+<p><img src="docs/images/jvirtpage-dark-a6-landscape.png"
+alt="jvirtpage-dark-a6-landscape" /></p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-snippet-exported-note-exported-notes-should-not-include-scrollbars"><span id="noscrollbars">—</span>
+snippet (exported note): exported notes should not include
+scrollbars</h2>
+<p><a
+href="./userstyle-snippet-exports-no-pre-scrollbars.css">userstyle-snippet-exports-no-pre-scrollbars.css</a></p>
+<p>Joplin exports that include things like programming code will include
+scrollbars in the PDF that are, of course, just visual clutter. Instead
+we trim any code that extends beyond the visual window and remove any
+scrollbars. It is up to the document creator to reformat those code
+blocks so that they appear on the page completely.</p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-snippet-exported-note-remove-excess-spaced-framing-of-exported-content"><span id="noframe">—</span>
+snippet (exported note): remove excess spaced framing of exported
+content</h2>
+<p><a
+href="./userstyle-snippet-exports-remove-padded-frame.css">userstyle-snippet-exports-remove-padded-frame.css</a></p>
+<p>When exporting a raw note, Joplin will frame it and add margin space
+around the note. We remove that when this snippet of CSS.</p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-snippet-exported-note-remove-automated-note-titles-from-exported-note"><span id="notitle">—</span>
+snippet (exported note): remove automated note titles from exported
+note</h2>
+<p><a
+href="./userstyle-snippet-exports-remove-title.css">userstyle-snippet-exports-remove-title.css</a></p>
+<p>Most of the time, I simply do not want Joplin adding a note title to
+my exported content. If I want a title, I will add it to the note
+myself. This snippet removes that inserted/automated title.</p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-jtweaks-switches-toggle-behavior-of-linked-to-pdf"><span id="embeddedpdf">—</span>
+(#jtweaks switches) toggle behavior of linked-to PDF</h2>
+<p><a
+href="./userstyle-snippet-toggle-embedded-pdf.css">userstyle-snippet-toggle-embedded-pdf.css</a></p>
+<p>Joplin, by default, will expand a PDF within a functional viewport
+within a note. An embedded PDF, if you will. This feature is very
+convenient, but I also don't have a need for it most of the time. This
+CSS snippet adds a toggle of sorts. Add this snippet to your
+<code>userstyle.css</code> configuration and add
+<code>&lt;div id="jtweaks no-pdf"&gt;&lt;/div&gt;</code> anywhere within
+your note to turn this behavior off. And if you configured the CSS to
+turn off the display of PDFs by default (like I do), do the same, but
+add <code>&lt;div id="jtweaks show-pdf"&gt;&lt;/div&gt;</code> when you
+want to show that PDF.</p>
+<p><em>Note: This switch is also built into <code>jvirtpage.css</code>,
+and so, if you use both there may be a conflict. Or not. Experiment.
+:)</em></p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-jtweaks-switches-disable-links-for-a-note-andor-exported-pdf"><span id="disablelinks">—</span>
+(#jtweaks switches) disable links for a note and/or exported PDF</h2>
+<p><a
+href="./userstyle-snippet-disable-links.css">userstyle-snippet-disable-links.css</a></p>
+<p>Sometimes you just wanna disable links in a note. Or, as if often the
+case, in it's exported PDF. The <code>jweaks</code> switches are:
+<code>no-links</code> and <code>no-links-export</code></p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<h1 id="tweaks-to-the-joplin-ui"><span id="#tweaks-ui"></span>Tweaks to
+the Joplin UI</h1>
+<p>These are added to the <code>userchrome.css</code> styling
+configuration file.</p>
+<p>​</p>
+<h2
+id="-snippet-ui-remove-the-markdown-vs-rich-text-editor-switch-button"><span id="#noeditorswitch">—</span>
+snippet (UI): remove the markdown vs. rich text editor switch
+(button)</h2>
+<p><a
+href="./userchrome-snippet-remove-editor-switching-button.css">userchrome-snippet-remove-editor-switching-button.css</a></p>
+<p>Do you only use the markdown editor and not the "rich text editor"
+then get rid of that button that lets you toggle between the two.</p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-snippet-ui-remove-the-tags-widget"><span id="notagswidget">—</span>
+snippet (UI): remove the tags widget</h2>
+<p><a
+href="./userchrome-snippet-remove-click-to-add-tags.css">userchrome-snippet-remove-click-to-add-tags.css</a></p>
+<p>Some folks don't use Joplin's tagging system at all. If so, maybe
+just remove that bit of UI and give yourself some extra space.</p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-snippet-ui-make-the-tags-widget-smaller"><span id="smallertagswidget">—</span>
+snippet (UI): make the tags widget smaller</h2>
+<p><a
+href="./userchrome-snippet-shrink-click-to-add-tags.css">userchrome-snippet-shrink-click-to-add-tags.css</a></p>
+<p>Do you use tags, but wished the tags widget that sits below your note
+in the UI was a bit thinner? This does exactly that.</p>
+<p>​</p>
+<p>​</p>
+<h2
+id="-snippet-ui-shrink-the-bottom-status-bar-significantly"><span id="smallerstatusbar">—</span>
+snippet (UI): shrink the bottom status bar significantly.</h2>
+<p><a
+href="./userchrome-snippet-shrink-status-bar.css">userchrome-snippet-shrink-status-bar.css</a></p>
+<p>You may have to adjust this depending on if you shrink the tags,
+remove click to add tags, etc.</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+<hr />
+<p>Joplin is Copyright (c) Laurent Cozic</p>
+<p>This readme, the documentation, and another additional work is …</p>
+<p>Copyright (c) Todd Warner &lt;t0dd [at] protonmail [dot]
+com&gt;<br />
+This work is licensed under Attribution 4.0 International. To view a
+copy of this license, visit <a
+href="http://creativecommons.org/licenses/by/4.0/">http://creativecommons.org/licenses/by/4.0/</a></p>
+<p>If you have any questions or concerns, open an issue in Github or
+email me at t0dd [at] protonmail [dot] com.</p>
+<hr />
+<h4 id="thanking-me">Thanking me?</h4>
+<p>Several people have asked how they could thank me for work that I
+have done that they found valueable. Well, one easy way to thank me is
+to "buy me a cup of coffee": <a
+href="https://buymeacoff.ee/toddwarner">https://buymeacoff.ee/toddwarner</a>
+Or just send me an email (see above) and express your appreciation. Or
+star this on Github. Or whatever.</p>
+<p>Cheers!</p>
