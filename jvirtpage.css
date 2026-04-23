@@ -233,11 +233,6 @@
         /* OTHER CONSTANTS - don't change these */
         --jvp-page-spacing: 20px;
         --jvp-min-margin: 13vw; /* 13% of the viewport width. */
-        /*
-        --jvp-pre-saturation-filter: 0%;
-        --jvp-pre-brightness-filter: 0%;
-        --jvp-pre-saturation-filter: 100%;
-        --jvp-pre-brightness-filter: 200%;*/
     } /* end :root */
 } /* end @layer jvirtpage */
 
