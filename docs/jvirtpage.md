@@ -41,13 +41,14 @@ By default, the page will be …
 - Darkened "desktop"
 
 All of these are are adjustable with switches (see all switches below). For
-example, if I wanted to make the note in the dimensions of A4 …
+example, if I wanted to make the note in the dimensions of A4, and use a dark
+theme instead of a light them …
 
 ```html
 <style>
     @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
 </style>
-<div id="jvp" class="A4"></div>
+<div id="jvp" class="A4 dark"></div>
 
 Here is my note, with the page-dimensions aligning with A4.
 ```
@@ -56,15 +57,15 @@ BUT. If you wish, for example, A4 as your default for all imports of
 jvirtpage.css. Create a `jvirtpageA4.css` stylesheet with this content and
 import it instead:
 
- ```css
- /* jvirtpageA4.css */
- @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
- :root {
-     --jvp-page-width:  var(--jvp-page-widthA4);
-     --jvp-page-height: var(--jvp-page-heightA4);
-     --jvp-page-margin: var(--jvp-page-marginA4);
- }
- ```
+```css
+/* jvirtpageA4.css */
+@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+:root {
+    --jvp-page-width:  var(--jvp-page-widthA4);
+    --jvp-page-height: var(--jvp-page-heightA4);
+    --jvp-page-margin: var(--jvp-page-marginA4);
+}
+```
 
 Since I commonly turn off syntax highlighting on code blocks, PDF display, and
 titles and dates when I export, I could do this on every note …
@@ -84,22 +85,40 @@ shared.
 But I use that often enough that I created my own stylesheet where those are
 the defaults …
 
-> ```css
-> /* jvirtpage-mydefaults.css */
-> @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
-> :root {
->     #rendered-md pre * { color: var(--jvp-text-color); } /* no-syntax */
->     --jvp-pdf-display: none;   /* no-pdf */
->     --jvp-title-display: none; /* no-title */
->     --jvp-date-display: none;  /* no-date */
-> }
-> ```
+```css
+/* jvirtpage-mydefaults.css */
+@import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+:root {
+    #rendered-md pre * { color: var(--jvp-text-color); } /* no-syntax */
+    --jvp-pdf-display: none;   /* no-pdf */
+    --jvp-title-display: none; /* no-title */
+    --jvp-date-display: none;  /* no-date */
+}
+```
+
+Finally, sometimes I want to turn off the virtual page for a bit. Maybe I am
+testing some other layout of something. I don't have to comment out the
+`@import`. I just add `off` to the set of classes …
+
+```html
+<style>
+    @import "https://taw00.github.io/joplin-tweaks/jvirtpage.css";
+</style>
+<div id="jvp" class="off no-syntax no-pdf no-title no-date"></div>
+
+Here is my note. I added the off switch to the set of classes and so, this
+note will be temperarily not styled to look like a virtual page. All I have to
+do is remove off from the list of classes and the view will switch right back.
+```
+
+&ZeroWidthSpace;
 
 That's the TL;DR and should get you 90% of the way to where you want to go
 with this.
 
 &ZeroWidthSpace;
 
+&ZeroWidthSpace;
 
 
 
@@ -110,8 +129,8 @@ with this.
 There are five ways to enable this stylesheet for a note. Either … (1) import
 it into your note from the filesystem, or (2) import it into your note from the
 web, (3) import it from a dedicated stylesheet note, (4) configure the "Import
-Local CSS" plugin to set the stylesheet as the default for all notes, or add
-the stylesheet to `userstyle.css`.
+Local CSS" plugin to set the stylesheet as the default for all notes, or (5)
+add the stylesheet to `userstyle.css`.
 
 > Do this first before doing anything else:  
 > In Joplin, install the "Import local CSS" Joplin plugin (and restart).
@@ -197,6 +216,35 @@ out on you, that may be what happened.
   `[jvirtpage.css](:/7d66d959fa974468b4670db7228943a1)`
 - This configuration must be repeated on each device.
 
+5. If you want this formattting available by default for ALL of your notes
+   (desktop Joplin only) …
+
+Copying the entire stylesheet into your `userstyle.css` configuration file.
+That can be found
+
+- On linux and macOS: `~/.config/joplin-desktop/userstyle.css`
+- One windows: `C:\users\<username>\.config\joplin-desktop\userstyle.css`
+
+Steps …
+
+- Download `jvirtpage.css`
+- Open `jvirtpage.css` and `userstyle.css` in an editor.
+- Cut and paste all of `jvirtpage.css` into `userstyle.css`
+- If you already have some things configured in `userstyle.css` I leave it to
+  you to merge to the concepts.
+
+For both options (4) and (5), if you want to modify the behavior of the
+rendering to a virtual page, you simply insert the line
+`<div id="jvp" class=""></div>` anywhere in your note. Some you will likely add
+a `<div id="jvp" class="off"></div>` because you want to turn it off for that
+note.
+
+Good luck. —t
+
+&ZeroWidthSpace;
+
+&ZeroWidthSpace;
+
 &ZeroWidthSpace;
 
 ## Usage Notes
@@ -280,4 +328,3 @@ Enjoy!
 Copyright (c) Todd Warner  
 This work is licensed under Attribution 4.0 International. To view a copy
 of this license, visit http://creativecommons.org/licenses/by/4.0/
-
