@@ -516,9 +516,11 @@ body.page-note {
             display: var(--jvp-note-display);
             border: 1px dashed darkgray;
             padding: 5px 10px;
-            & :last-child,
             & :first-child {
-                margin: 0;
+                margin-block-start: 0;
+            }
+            & > :last-child {
+                margin-block-end: 0;
             }
         }
     } /* end #rendered-md */
