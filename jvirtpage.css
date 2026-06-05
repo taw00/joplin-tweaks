@@ -250,10 +250,12 @@
  * stylings with <div id="jvp" class="off"></div> somewhere within your note.
  * (Note that the div#vpage rule makes this compatible with the manuscript-css
  * project.) */
-:not( :has(
-  :where(#jvp:is(.off,.disabled),
-         #jvp-off, #jvpoff, #jvp-disabled, #jvpdisabled,
-         div#vpage > article#manuscript, #rendered-md > #sn-md) ) ) {
+:not( :has( :where(
+    #jvp:is(.off,.disabled),
+    #jvp-off, #jvpoff, #jvp-disabled, #jvpdisabled,
+    div#vpage > article#manuscript, #rendered-md > #sn-md,
+    div.joplin-tinymce
+    ) ) ) {
 
 
 
