@@ -563,7 +563,7 @@ body.page-note {
         margin: 0;
         padding: 0;
         & > div.exported-note-title {
-            display: var(--jvp-title-display);
+            display: var(--jvp-title-display) !important;
         }
     }
 
