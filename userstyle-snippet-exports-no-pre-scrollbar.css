@@ -21,6 +21,13 @@
  * Linux/macOS: ~/.config/joplin-desktop/
  * -or-
  * Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ *
+ * Note, this tweak is associated with id="jtweaks". If you include this
+ * snippet but want to temporarily turn it and all jtweaks off, simply add
+ * this anywhere within the note …
+ *
+ * <div id="jtweaks" class="off"></div>
+ *
  */ 
 
 /* Uncomment this :has and its mirroring brace at the end of the file if you
@@ -31,8 +38,7 @@
 */
 
 
-/* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jtweaks" class="off"></div> somewhere within your note. */
+/* Switch that allows flipping off this tweak along with all jtweaks. */
 :not( :has( div#jtweaks:is(.off),#jtweaks-off,#jtweaksoff ) ) {
 
 

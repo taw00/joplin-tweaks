@@ -18,6 +18,13 @@
  * <div id="jtweaks" class="show-pdf"></div>
  *   or
  * <div id="jtweaks" class="no-pdf"></div>
+ *
+ * Note, this tweak is associated with id="jtweaks". If you include this
+ * snippet but want to temporarily turn it and all jtweaks off, simply add
+ * this anywhere within the note …
+ *
+ * <div id="jtweaks" class="off"></div>
+ *
  */ 
 
 @layer jtweaks {
@@ -45,8 +52,7 @@
 :has( div#jtweaks ) {
 */
 
-/* If on by default (i.e., you haven't uncommented the above), turn off these
- * stylings with <div id="jtweaks" class="off"></div> somewhere within your note. */
+/* Switch that allows flipping off this tweak along with all jtweaks. */
 :not( :has( div#jtweaks:is(.off),#jtweaks-off,#jtweaksoff ) ) {
 
 
