@@ -325,7 +325,7 @@
  * - Remove (or show) the viewport cruft (title, last-updated, padding, etc.) */
 body.page-note {
     & > main.main > div.container.main-container {
-        & > div.note-main {
+        & > div.published-note-layout > div.note-main {
             /* viewport to 100% */
             margin: 0 auto;
             padding: 0;
@@ -383,7 +383,7 @@ body.page-note {
                 box-shadow: unset;
                 border: unset;
             }
-            & > div.note-main {
+            & > div.published-note-layout > div.note-main {
                 & > p.last-updated {
                     opacity: 0.6;
                     color: var(--jvp-jcloud-last-update-color);
@@ -597,7 +597,7 @@ body.page-note {
             & > div.container.main-container {
                 /* remove branded navbar */
                 & > nav.navbar { display: none; }
-                & > div.note-main {
+                & > div.published-note-layout > div.note-main {
                     /* viewport to 100% */
                     margin: 0 auto;
                     padding: 0;
