@@ -1,0 +1,56 @@
+/* Highlight the ancestry tree of any notebook.
+ *
+ * Noted limitation: The ancestry tree will not highlight if the tree is 
+ * collapsed.
+ *
+ * Add this CSS configuration block to your userchrome.css file found in …
+ * - Linux or macOS: ~/.config/joplin-desktop/
+ *   -or-
+ * - Windows: C:\Users\%USERNAME%\.config\joplin-desktop\
+ */ 
+
+
+/* notebook selection ancestry highlights */
+@layer l-jtweak-joplin-userchrome-constants {
+:root {
+    /* ancestry color mappings */
+    .list-item-depth-1 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-2 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-3 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-4 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-5 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-6 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-7 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-8 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-depth-9 { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2); }
+    .list-item-container.selected { --jtweak-notebook-color-ancestry: var(--joplin-color-warn2) }
+} /* end root */
+} /* end layer */
+
+
+/* ancestry highlighting rules */
+.list-item-container.selected .title,
+
+.list-item-container.list-item-depth-1:has(~ .selected:not(.list-item-depth-1)):not(:has(~ .list-item-depth-1 ~ .selected)) .title,
+
+.list-item-container.list-item-depth-2:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-3:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-4:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-5:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-6:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-7:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6, .list-item-depth-7))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6, .list-item-depth-7) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-8:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6, .list-item-depth-7, .list-item-depth-8))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6, .list-item-depth-7, .list-item-depth-8) ~ .selected)) .title,
+
+.list-item-container.list-item-depth-9:has(~ .selected:not(:is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6, .list-item-depth-7, .list-item-depth-8, .list-item-depth-9))):not(:has(~ :is(.list-item-depth-1, .list-item-depth-2, .list-item-depth-3, .list-item-depth-4, .list-item-depth-5, .list-item-depth-6, .list-item-depth-7, .list-item-depth-8, .list-item-depth-9) ~ .selected)) .title,
+
+{
+    color: var(--jtweak-notebook-color-ancestry);
+    font-weight: bolder;
+    font-size: 105%;
+}

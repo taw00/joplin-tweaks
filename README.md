@@ -28,6 +28,7 @@ in Joplin Cloud.
 > - snippet (UI): [remove the tags widget](#notagswidget)
 > - snippet (UI): [make the tags widget smaller/thinner](#smallertagswidget)
 > - snippet (UI): [make the bottom status bar thinner](#smallerstatusbar)
+> - snippet (UI): [highlight the ancestry tree of a selected notebook](#ancestrytree)
 
 &ZeroWidthSpace;
 
@@ -249,6 +250,18 @@ was a bit thinner? This does exactly that.
 
 You may have to adjust this depending on if you shrink the tags, remove click
 to add tags, etc.
+
+&ZeroWidthSpace;
+
+&ZeroWidthSpace;
+
+## <span id="ancestrytree">—</span> snippet (UI): highlight the ancestry tree of a selected notebook
+
+[userchrome-snippet-highlight-selected-notebook-ancestry-tree.css](./userchrome-snippet-highlight-selected-notebook-ancestry-tree.css)
+
+Just makes your notebook tree more sensible by highlighting the trail of
+notebooks that leads to the one you currently have selected.
+
 
 &ZeroWidthSpace;
 
